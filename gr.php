@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DataTables</title> <!-- Google Font: Source Sans Pro -->
+    <title>Government Resolutions</title> <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> <!-- Font Awesome -->
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css"> <!-- DataTables -->
     <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -53,6 +53,7 @@
                                                 <th class="text-center">Ministry</th>
                                                 <th class="text-center">Description</th>
                                                 <th class="text-center">Attachment</th>
+                                                <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -77,6 +78,9 @@
                                                         <img src="pdf.png" alt="PDF Icon" width="32" height="32">
                                                     </a>
                                                 </td>
+                                                <td class="project-actions text-center">
+                                                    <a class="btn btn-danger btn-sm" href="gr_delete.php?delete=<?php echo $row['id']; ?>"><i class="fas fa-trash"></i>Delete</a>
+                                                </td>
                                             </tr>
                                             <?php
                                                 }
@@ -93,6 +97,7 @@
                                                 <th class="text-center">Ministry</th>
                                                 <th class="text-center">Description</th>
                                                 <th class="text-center">Attachment</th>
+                                                <th class="text-center">Action</th>
                                             </tr>
                                         </tfoot>
                                     </table>

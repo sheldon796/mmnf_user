@@ -1,38 +1,21 @@
-<?php
-include "function.php";
-
+<?php include "function.php";
 if (isset($_POST['submit'])) {
+    $sr_no = $_POST['sr_no'];
     $scholarship = $_POST['scholarship'];
     $beneficiaries = $_POST['beneficiaries'];
     $eligibility = $_POST['eligibility'];
     $percentage = $_POST['percentage'];
     $gender = $_POST['gender'];
-
-    $sql = "INSERT INTO scholarship_details (scholarship, beneficiaries, eligibility, percentage, gender)
-            VALUES (?, ?, ?, ?, ?)";
-
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "sssss", $scholarship, $beneficiaries, $eligibility, $percentage, $gender);
-
-    if (mysqli_stmt_execute($stmt)) {
-        unset($_POST);
-        unset($_REQUEST);
-        echo "Data inserted successfully.";
-        $last_id = mysqli_insert_id($conn);
-        echo "Last inserted ID is: " . $last_id;
-?>
-        <script>
-            window.location = "eligible_schemes.php";
-        </script>
-<?php
-    } else {
-        echo "Error: " . mysqli_error($conn);
-    }
-
-    mysqli_stmt_close($stmt);
+    ?>
+    <script>
+        window.location = "eligible_schemes.php";
+    </script>
+    <?php
+    $sql = "INSERT INTO scholarship_details (sr_no, scholarship, beneficiaries, eligibility, percentage, gender)
+            values ('$sr_no', '$scholarship', '$beneficiaries', '$eligibility', '$percentage', '$gender')";
+    mysqli_query($conn, $sql);
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,15 +58,15 @@ if (isset($_POST['submit'])) {
                             <!-- general form elements -->
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Scholarship Form</h3>
+                                    <h3 class="card-title">Educational Loan Form</h3>
                                 </div> <!-- /.card-header -->
                                 <!-- form start -->
                                 <form role="form" method="post" action="" enctype="multipart/form-data">
                                     <div class="card-body">
                                         <div class="row">
-                                            <!-- <div class="col-lg-4">
+                                            <div class="col-lg-4">
                                                 <div class="form-group"> <label>Serial Number</label> <input type="text" class="form-control" name="sr_no" id="sr_no" placeholder="Enter Serial Number" required=""> </div>
-                                            </div> -->
+                                            </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group"> <label>Scholarship Name</label> <input type="text" class="form-control" name="scholarship" id="scholarship" placeholder="Enter Scholarship Name" required=""> </div>
                                             </div>

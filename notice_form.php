@@ -1,38 +1,37 @@
-<?php
-include "function.php";
-
+<?php include "function.php";
 if (isset($_POST['submit'])) {
-    $scholarship = $_POST['scholarship'];
-    $beneficiaries = $_POST['beneficiaries'];
-    $eligibility = $_POST['eligibility'];
-    $percentage = $_POST['percentage'];
-    $gender = $_POST['gender'];
+    $title = $_POST['title'];
+    $description = $_POST['description'];    
+    $target = "upload/documents/notices/";
+    
+    //Upload GR    
+    $target = $target . basename($_FILES['attachment']['name']);
+    $attachment = ($_FILES['attachment']['name']);
+    $attachmentFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+    
 
-    $sql = "INSERT INTO scholarship_details (scholarship, beneficiaries, eligibility, percentage, gender)
-            VALUES (?, ?, ?, ?, ?)";
-
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "sssss", $scholarship, $beneficiaries, $eligibility, $percentage, $gender);
-
-    if (mysqli_stmt_execute($stmt)) {
-        unset($_POST);
-        unset($_REQUEST);
-        echo "Data inserted successfully.";
-        $last_id = mysqli_insert_id($conn);
-        echo "Last inserted ID is: " . $last_id;
-?>
-        <script>
-            window.location = "eligible_schemes.php";
-        </script>
-<?php
+    // Check if the uploaded file is a PDF
+    if ($attachmentFileType != "pdf") {
+      echo "Only PDF files are allowed.";
+      exit;
+    }
+  
+    if (move_uploaded_file($_FILES['attachment']['tmp_name'], $target)) {
+      echo "Successfully uploaded.";
+      ?>
+    <script>
+        window.location = "notices.php";
+    </script>
+    <?php
     } else {
-        echo "Error: " . mysqli_error($conn);
+      echo "Sorry, the file was not uploaded.";
     }
 
-    mysqli_stmt_close($stmt);
+    $sql = "INSERT INTO notice (title, description, attachment)
+            values ('$title', '$description', '$attachment')";
+    mysqli_query($conn, $sql);
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,29 +74,20 @@ if (isset($_POST['submit'])) {
                             <!-- general form elements -->
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Scholarship Form</h3>
+                                    <h3 class="card-title">Notice Form</h3>
                                 </div> <!-- /.card-header -->
                                 <!-- form start -->
                                 <form role="form" method="post" action="" enctype="multipart/form-data">
                                     <div class="card-body">
                                         <div class="row">
-                                            <!-- <div class="col-lg-4">
-                                                <div class="form-group"> <label>Serial Number</label> <input type="text" class="form-control" name="sr_no" id="sr_no" placeholder="Enter Serial Number" required=""> </div>
-                                            </div> -->
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Scholarship Name</label> <input type="text" class="form-control" name="scholarship" id="scholarship" placeholder="Enter Scholarship Name" required=""> </div>
+                                                <div class="form-group"> <label>Title</label> <input type="text" class="form-control" name="title" id="title" placeholder="Enter Title Here" required=""> </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Beneficiaries</label> <input type="text" class="form-control" name="beneficiaries" id="beneficiaries" placeholder="Enter Beneficiaries Details" required=""> </div>
+                                                <div class="form-group"> <label>Description</label> <input type="text" class="form-control" name="description" id="description" placeholder="Enter Description" required=""> </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Eligibility Criteria</label> <input type="text" class="form-control" name="eligibility" id="eligibility" placeholder="Enter Eligibility Criteria" required=""> </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group"> <label>Desirable Percentage</label> <input type="text" class="form-control" name="percentage" id="percentage" placeholder="Enter Percentage" required=""> </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group"> <label>Gender</label> <input type="text" class="form-control" name="gender" id="gender" placeholder="Enter Gender" required=""> </div>
+                                                <div class="form-group"> <label>Upload Attachment</label><br> <input type="file" name="attachment" class="form-control"> </div>
                                             </div>
                                         </div>
                                     </div> <!-- /.card-body -->

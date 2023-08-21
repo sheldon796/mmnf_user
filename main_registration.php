@@ -1,265 +1,265 @@
-<?php include "function.php";
-if (isset($_POST['submit'])) {
-    $name = $_POST['name'];
-    $fname = $_POST['fname'];
-    $mobile = $_POST['mobile'];
-    $whatsno = $_POST['whatsno'];
-    $email = $_POST['email'];
-    $gender = $_POST['gender'];
-    $age = $_POST['age'];
-    $blood_group = $_POST['blood_group'];
-    $Caste = $_POST['Caste'];
-    $Castigates = $_POST['Castigates'];
-    $other_castigates = $_POST['other_castigates'];
-    $marital_status = $_POST['marital_status'];
-    $current_occupation = $_POST['current_occupation'];
-    $Family_Income = $_POST['Family_Income'];
-    $current_class = $_POST['current_class'];
-    $previous_class = $_POST['previous_class'];
-    $previous_marks = $_POST['previous_marks'];
-    $Address = $_POST['Address'];
-    $District = $_POST['District'];
-    $Taluka = $_POST['Taluka'];
-    $State = $_POST['State'];
-    $PIN = $_POST['PIN'];
-    $Mashjid = $_POST['Mashjid'];
-    $OBC_EWS = $_POST['OBC_EWS'];
-    $Aadhar = $_POST['Aadhar'];
-    $VoterID = $_POST['VoterID'];
-    $Ration = $_POST['Ration'];
-    $PANCard = $_POST['PANCard'];
-    $BirthCertificate = $_POST['BirthCertificate'];
-    $Passport = $_POST['Passport'];
-    $Maktab = $_POST['Maktab'];
-    $VoterCard = $_POST['VoterCard'];
-    $Domicile_Nationality = $_POST['Domicile_Nationality'];
-    $Ayushman_Bharat_Card = $_POST['Ayushman_Bharat_Card'];
-    $E_Shram_Card = $_POST['E_Shram_Card'];
-    $Labourcard = $_POST['Labourcard'];
-    $AccidentalInsurance = $_POST['AccidentalInsurance'];
-    $locker = $_POST['locker'];
-    $target = "upload/documents/";
-    
-    //Upload Adhar Card    
-    $target = $target . basename($_FILES['U_Adhar_Card']['name']);
-    $U_Adhar_Card = ($_FILES['U_Adhar_Card']['name']);
-    $U_Adhar_CardFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
-    
-    //Upload Pan Card    
-    $target = $target . basename($_FILES['U_Pan_Card']['name']);
-    $U_Pan_Card = ($_FILES['U_Pan_Card']['name']);
-    $U_Pan_CardFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
-    
-    //Upload OBC / EWS    
-    $target = $target . basename($_FILES['U_OBC_EWS']['name']);
-    $U_OBC_EWS = ($_FILES['U_OBC_EWS']['name']);
-    $U_OBC_EWSFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+    <?php include "function.php";
+    if (isset($_POST['submit'])) {
+        $name = $_POST['name'];
+        $fname = $_POST['fname'];
+        $mobile = $_POST['mobile'];
+        $whatsno = $_POST['whatsno'];
+        $email = $_POST['email'];
+        $gender = $_POST['gender'];
+        $age = $_POST['age'];
+        $blood_group = $_POST['blood_group'];
+        $Caste = $_POST['Caste'];
+        $Castigates = $_POST['Castigates'];
+        $other_castigates = $_POST['other_castigates'];
+        $marital_status = $_POST['marital_status'];
+        $current_occupation = $_POST['current_occupation'];
+        $Family_Income = $_POST['Family_Income'];
+        $current_class = $_POST['current_class'];
+        $previous_class = $_POST['previous_class'];
+        $previous_marks = $_POST['previous_marks'];
+        $Address = $_POST['Address'];
+        $District = $_POST['District'];
+        $Taluka = $_POST['Taluka'];
+        $State = $_POST['State'];
+        $PIN = $_POST['PIN'];
+        $Mashjid = $_POST['Mashjid'];
+        $OBC_EWS = $_POST['OBC_EWS'];
+        $Aadhar = $_POST['Aadhar'];
+        $VoterID = $_POST['VoterID'];
+        $Ration = $_POST['Ration'];
+        $PANCard = $_POST['PANCard'];
+        $BirthCertificate = $_POST['BirthCertificate'];
+        $Passport = $_POST['Passport'];
+        $Maktab = $_POST['Maktab'];
+        $VoterCard = $_POST['VoterCard'];
+        $Domicile_Nationality = $_POST['Domicile_Nationality'];
+        $Ayushman_Bharat_Card = $_POST['Ayushman_Bharat_Card'];
+        $E_Shram_Card = $_POST['E_Shram_Card'];
+        $Labourcard = $_POST['Labourcard'];
+        $AccidentalInsurance = $_POST['AccidentalInsurance'];
+        $locker = $_POST['locker'];
+        $target = "upload/documents/";
         
-    //Upload  Birth Cetificate   
-    $target = $target . basename($_FILES['U_BirthCertificate']['name']);
-    $U_BirthCertificate = ($_FILES['U_BirthCertificate']['name']);
-    $U_BirthCertificateFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+        //Upload Adhar Card    
+        $target = $target . basename($_FILES['U_Adhar_Card']['name']);
+        $U_Adhar_Card = ($_FILES['U_Adhar_Card']['name']);
+        $U_Adhar_CardFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
         
-    //Upload Ration Card    
-    $target = $target . basename($_FILES['U_RationCard']['name']);
-    $U_RationCard = ($_FILES['U_RationCard']['name']);
-    $U_RationCardFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+        //Upload Pan Card    
+        $target = $target . basename($_FILES['U_Pan_Card']['name']);
+        $U_Pan_Card = ($_FILES['U_Pan_Card']['name']);
+        $U_Pan_CardFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
         
-    //Upload Passport    
-    $target = $target . basename($_FILES['U_Passport']['name']);
-    $U_Passport = ($_FILES['U_Passport']['name']);
-    $U_PassportFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
-        
-    //Upload Domicile & Nationality    
-    $target = $target . basename($_FILES['U_DomicileNationality']['name']);
-    $U_DomicileNationality = ($_FILES['U_DomicileNationality']['name']);
-    $U_DomicileNationalityFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
-        
-    //Upload Bharat Card    
-    $target = $target . basename($_FILES['U_BharatCard']['name']);
-    $U_BharatCard = ($_FILES['U_BharatCard']['name']);
-    $U_BharatCardFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
-        
-    //Upload Shram Card    
-    $target = $target . basename($_FILES['U_E_ShramCard']['name']);
-    $U_E_ShramCard = ($_FILES['U_E_ShramCard']['name']);
-    $U_E_ShramCardFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
-        
-    //Upload Labour Card    
-    $target = $target . basename($_FILES['U_Labourcard']['name']);
-    $U_Labourcard = ($_FILES['U_Labourcard']['name']);
-    $U_LabourcardFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
-        
-    //Upload Accidental Insurace    
-    $target = $target . basename($_FILES['U_AccidentalInsurance']['name']);
-    $U_AccidentalInsurance = ($_FILES['U_AccidentalInsurance']['name']);
-    $U_AccidentalInsuranceFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+        //Upload OBC / EWS    
+        $target = $target . basename($_FILES['U_OBC_EWS']['name']);
+        $U_OBC_EWS = ($_FILES['U_OBC_EWS']['name']);
+        $U_OBC_EWSFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+            
+        //Upload  Birth Cetificate   
+        $target = $target . basename($_FILES['U_BirthCertificate']['name']);
+        $U_BirthCertificate = ($_FILES['U_BirthCertificate']['name']);
+        $U_BirthCertificateFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+            
+        //Upload Ration Card    
+        $target = $target . basename($_FILES['U_RationCard']['name']);
+        $U_RationCard = ($_FILES['U_RationCard']['name']);
+        $U_RationCardFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+            
+        //Upload Passport    
+        $target = $target . basename($_FILES['U_Passport']['name']);
+        $U_Passport = ($_FILES['U_Passport']['name']);
+        $U_PassportFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+            
+        //Upload Domicile & Nationality    
+        $target = $target . basename($_FILES['U_DomicileNationality']['name']);
+        $U_DomicileNationality = ($_FILES['U_DomicileNationality']['name']);
+        $U_DomicileNationalityFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+            
+        //Upload Bharat Card    
+        $target = $target . basename($_FILES['U_BharatCard']['name']);
+        $U_BharatCard = ($_FILES['U_BharatCard']['name']);
+        $U_BharatCardFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+            
+        //Upload Shram Card    
+        $target = $target . basename($_FILES['U_E_ShramCard']['name']);
+        $U_E_ShramCard = ($_FILES['U_E_ShramCard']['name']);
+        $U_E_ShramCardFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+            
+        //Upload Labour Card    
+        $target = $target . basename($_FILES['U_Labourcard']['name']);
+        $U_Labourcard = ($_FILES['U_Labourcard']['name']);
+        $U_LabourcardFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+            
+        //Upload Accidental Insurace    
+        $target = $target . basename($_FILES['U_AccidentalInsurance']['name']);
+        $U_AccidentalInsurance = ($_FILES['U_AccidentalInsurance']['name']);
+        $U_AccidentalInsuranceFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
 
-    //Upload voter Card    
-    $target = $target . basename($_FILES['U_VoterCard']['name']);
-    $U_VoterCard = ($_FILES['U_VoterCard']['name']);
-    $U_VoterCardFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+        //Upload voter Card    
+        $target = $target . basename($_FILES['U_VoterCard']['name']);
+        $U_VoterCard = ($_FILES['U_VoterCard']['name']);
+        $U_VoterCardFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
 
 
-    // Check if the uploaded file is a PDF
-    if ($U_Adhar_CardFileType != "pdf") {
-      echo "Only PDF files are allowed.";
-      exit;
+        // Check if the uploaded file is a PDF
+        if ($U_Adhar_CardFileType != "pdf") {
+        echo "Only PDF files are allowed.";
+        exit;
+        }
+    
+        if (move_uploaded_file($_FILES['U_Adhar_Card']['tmp_name'], $target)) {
+        echo "Successfully uploaded.";
+        } else {
+        echo "Sorry, the file was not uploaded.";
+        }
+        
+
+        // Check if the uploaded file is a PDF
+        if ($U_Pan_CardFileType != "pdf") {
+            echo "Only PDF files are allowed.";
+            exit;
+        }
+        
+        if (move_uploaded_file($_FILES['U_Pan_Card']['tmp_name'], $target)) {
+            echo "Successfully uploaded.";
+        } else {
+            echo "Sorry, the file was not uploaded.";
+        }
+        
+
+        // Check if the uploaded file is a PDF
+        if ($U_VoterCardFileType != "pdf") {
+            echo "Only PDF files are allowed.";
+            exit;
+        }
+        
+        if (move_uploaded_file($_FILES['U_VoterCard']['tmp_name'], $target)) {
+            echo "Successfully uploaded.";
+        } else {
+            echo "Sorry, the file was not uploaded.";
+        }
+        
+
+        // Check if the uploaded file is a PDF
+        if ($U_OBC_EWSFileType != "pdf") {
+            echo "Only PDF files are allowed.";
+            exit;
+        }
+        
+        if (move_uploaded_file($_FILES['U_OBC_EWS']['tmp_name'], $target)) {
+            echo "Successfully uploaded.";
+        } else {
+            echo "Sorry, the file was not uploaded.";
+        }
+        
+
+        // Check if the uploaded file is a PDF
+        if ($U_BirthCertificateFileType != "pdf") {
+            echo "Only PDF files are allowed.";
+            exit;
+        }
+        
+        if (move_uploaded_file($_FILES['U_BirthCertificate']['tmp_name'], $target)) {
+            echo "Successfully uploaded.";
+        } else {
+            echo "Sorry, the file was not uploaded.";
+        }
+
+
+        // Check if the uploaded file is a PDF
+        if ($U_RationCardFileType != "pdf") {
+            echo "Only PDF files are allowed.";
+            exit;
+        }
+        
+        if (move_uploaded_file($_FILES['U_RationCard']['tmp_name'], $target)) {
+            echo "Successfully uploaded.";
+        } else {
+            echo "Sorry, the file was not uploaded.";
+        }
+        
+
+        // Check if the uploaded file is a PDF
+        if ($U_PassportFileType != "pdf") {
+            echo "Only PDF files are allowed.";
+            exit;
+        }
+        
+        if (move_uploaded_file($_FILES['U_Passport']['tmp_name'], $target)) {
+            echo "Successfully uploaded.";
+        } else {
+            echo "Sorry, the file was not uploaded.";
+        }
+        
+
+        // Check if the uploaded file is a PDF
+        if ($U_DomicileNationalityFileType != "pdf") {
+            echo "Only PDF files are allowed.";
+            exit;
+        }
+        
+        if (move_uploaded_file($_FILES['U_DomicileNationality']['tmp_name'], $target)) {
+            echo "Successfully uploaded.";
+        } else {
+            echo "Sorry, the file was not uploaded.";
+        }
+        
+
+        // Check if the uploaded file is a PDF
+        if ($U_BharatCardFileType != "pdf") {
+            echo "Only PDF files are allowed.";
+            exit;
+        }
+        
+        if (move_uploaded_file($_FILES['U_BharatCard']['tmp_name'], $target)) {
+            echo "Successfully uploaded.";
+        } else {
+            echo "Sorry, the file was not uploaded.";
+        }
+        
+
+        // Check if the uploaded file is a PDF
+        if ($U_E_ShramCardFileType != "pdf") {
+            echo "Only PDF files are allowed.";
+            exit;
+        }
+        
+        if (move_uploaded_file($_FILES['U_E_ShramCard']['tmp_name'], $target)) {
+            echo "Successfully uploaded.";
+        } else {
+            echo "Sorry, the file was not uploaded.";
+        }
+        
+
+        // Check if the uploaded file is a PDF
+        if ($U_LabourcardFileType != "pdf") {
+            echo "Only PDF files are allowed.";
+            exit;
+        }
+        
+        if (move_uploaded_file($_FILES['U_Labourcard']['tmp_name'], $target)) {
+            echo "Successfully uploaded.";
+        } else {
+            echo "Sorry, the file was not uploaded.";
+        }
+        
+
+        // Check if the uploaded file is a PDF
+        if ($U_AccidentalInsuranceFileType != "pdf") {
+            echo "Only PDF files are allowed.";
+            exit;
+        }
+        
+        if (move_uploaded_file($_FILES['U_AccidentalInsurance']['tmp_name'], $target)) {
+            echo "Successfully uploaded.";
+        } else {
+            echo "Sorry, the file was not uploaded.";
+        }
+        $sql = "INSERT INTO portal_membership (name, fname, mobile, whatsno, email, gender, age, blood_group, Caste, Castigates, other_castigates, marital_status, current_occupation, Family_Income, current_class, previous_class, previous_marks, Address, District, Taluka, State, PIN, Mashjid, OBC_EWS, Aadhar, VoterID, Ration, PANCard, BirthCertificate, Passport, Maktab, VoterCard, Domicile_Nationality, Ayushman_Bharat_Card, E_Shram_Card, Labourcard, AccidentalInsurance, locker, U_Adhar_Card, U_Pan_Card, U_VoterCard, U_OBC_EWS, U_BirthCertificate, U_RationCard, U_Passport, U_DomicileNationality, U_BharatCard, U_E_ShramCard, U_Labourcard, U_AccidentalInsurance)
+                values ('$name', '$fname', '$mobile', '$whatsno', '$email', '$gender', '$age', '$blood_group', '$Caste', '$Castigates', '$other_castigates', '$marital_status', '$current_occupation', '$Family_Income', '$current_class', '$previous_class', '$previous_marks', '$Address', '$District', '$Taluka', '$State', '$PIN', '$Mashjid', '$OBC_EWS', '$Aadhar', '$VoterID', '$Ration', '$PANCard', '$BirthCertificate', '$Passport', '$Maktab', '$VoterCard', '$Domicile_Nationality', '$Ayushman_Bharat_Card', '$E_Shram_Card', '$Labourcard', '$AccidentalInsurance', '$locker', '$U_Adhar_Card', '$U_Pan_Card', '$U_VoterCard', '$U_OBC_EWS', '$U_BirthCertificate', '$U_RationCard', '$U_Passport', '$U_DomicileNationality', '$U_BharatCard', '$U_E_ShramCard', '$U_Labourcard', '$U_AccidentalInsurance')";
+        mysqli_query($conn, $sql);
     }
-  
-    if (move_uploaded_file($_FILES['U_Adhar_Card']['tmp_name'], $target)) {
-      echo "Successfully uploaded.";
-    } else {
-      echo "Sorry, the file was not uploaded.";
-    }
-    
-
-    // Check if the uploaded file is a PDF
-    if ($U_Pan_CardFileType != "pdf") {
-        echo "Only PDF files are allowed.";
-        exit;
-      }
-    
-      if (move_uploaded_file($_FILES['U_Pan_Card']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-      } else {
-        echo "Sorry, the file was not uploaded.";
-      }
-      
-
-    // Check if the uploaded file is a PDF
-    if ($U_VoterCardFileType != "pdf") {
-        echo "Only PDF files are allowed.";
-        exit;
-      }
-    
-      if (move_uploaded_file($_FILES['U_VoterCard']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-      } else {
-        echo "Sorry, the file was not uploaded.";
-      }
-      
-
-    // Check if the uploaded file is a PDF
-    if ($U_OBC_EWSFileType != "pdf") {
-        echo "Only PDF files are allowed.";
-        exit;
-      }
-    
-      if (move_uploaded_file($_FILES['U_OBC_EWS']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-      } else {
-        echo "Sorry, the file was not uploaded.";
-      }
-      
-
-    // Check if the uploaded file is a PDF
-    if ($U_BirthCertificateFileType != "pdf") {
-        echo "Only PDF files are allowed.";
-        exit;
-      }
-    
-      if (move_uploaded_file($_FILES['U_BirthCertificate']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-      } else {
-        echo "Sorry, the file was not uploaded.";
-      }
-
-
-    // Check if the uploaded file is a PDF
-    if ($U_RationCardFileType != "pdf") {
-        echo "Only PDF files are allowed.";
-        exit;
-      }
-    
-      if (move_uploaded_file($_FILES['U_RationCard']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-      } else {
-        echo "Sorry, the file was not uploaded.";
-      }
-      
-
-    // Check if the uploaded file is a PDF
-    if ($U_PassportFileType != "pdf") {
-        echo "Only PDF files are allowed.";
-        exit;
-      }
-    
-      if (move_uploaded_file($_FILES['U_Passport']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-      } else {
-        echo "Sorry, the file was not uploaded.";
-      }
-      
-
-    // Check if the uploaded file is a PDF
-    if ($U_DomicileNationalityFileType != "pdf") {
-        echo "Only PDF files are allowed.";
-        exit;
-      }
-    
-      if (move_uploaded_file($_FILES['U_DomicileNationality']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-      } else {
-        echo "Sorry, the file was not uploaded.";
-      }
-      
-
-    // Check if the uploaded file is a PDF
-    if ($U_BharatCardFileType != "pdf") {
-        echo "Only PDF files are allowed.";
-        exit;
-      }
-    
-      if (move_uploaded_file($_FILES['U_BharatCard']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-      } else {
-        echo "Sorry, the file was not uploaded.";
-      }
-      
-
-    // Check if the uploaded file is a PDF
-    if ($U_E_ShramCardFileType != "pdf") {
-        echo "Only PDF files are allowed.";
-        exit;
-      }
-    
-      if (move_uploaded_file($_FILES['U_E_ShramCard']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-      } else {
-        echo "Sorry, the file was not uploaded.";
-      }
-      
-
-    // Check if the uploaded file is a PDF
-    if ($U_LabourcardFileType != "pdf") {
-        echo "Only PDF files are allowed.";
-        exit;
-      }
-    
-      if (move_uploaded_file($_FILES['U_Labourcard']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-      } else {
-        echo "Sorry, the file was not uploaded.";
-      }
-      
-
-    // Check if the uploaded file is a PDF
-    if ($U_AccidentalInsuranceFileType != "pdf") {
-        echo "Only PDF files are allowed.";
-        exit;
-      }
-    
-      if (move_uploaded_file($_FILES['U_AccidentalInsurance']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-      } else {
-        echo "Sorry, the file was not uploaded.";
-      }
-    $sql = "INSERT INTO portal_membership (name, fname, mobile, whatsno, email, gender, age, blood_group, Caste, Castigates, other_castigates, marital_status, current_occupation, Family_Income, current_class, previous_class, previous_marks, Address, District, Taluka, State, PIN, Mashjid, OBC_EWS, Aadhar, VoterID, Ration, PANCard, BirthCertificate, Passport, Maktab, VoterCard, Domicile_Nationality, Ayushman_Bharat_Card, E_Shram_Card, Labourcard, AccidentalInsurance, locker, U_Adhar_Card, U_Pan_Card, U_VoterCard, U_OBC_EWS, U_BirthCertificate, U_RationCard, U_Passport, U_DomicileNationality, U_BharatCard, U_E_ShramCard, U_Labourcard, U_AccidentalInsurance)
-            values ('$name', '$fname', '$mobile', '$whatsno', '$email', '$gender', '$age', '$blood_group', '$Caste', '$Castigates', '$other_castigates', '$marital_status', '$current_occupation', '$Family_Income', '$current_class', '$previous_class', '$previous_marks', '$Address', '$District', '$Taluka', '$State', '$PIN', '$Mashjid', '$OBC_EWS', '$Aadhar', '$VoterID', '$Ration', '$PANCard', '$BirthCertificate', '$Passport', '$Maktab', '$VoterCard', '$Domicile_Nationality', '$Ayushman_Bharat_Card', '$E_Shram_Card', '$Labourcard', '$AccidentalInsurance', '$locker', '$U_Adhar_Card', '$U_Pan_Card', '$U_VoterCard', '$U_OBC_EWS', '$U_BirthCertificate', '$U_RationCard', '$U_Passport', '$U_DomicileNationality', '$U_BharatCard', '$U_E_ShramCard', '$U_Labourcard', '$U_AccidentalInsurance')";
-    mysqli_query($conn, $sql);
-}
-?>
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 

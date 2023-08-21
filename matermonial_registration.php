@@ -1,6 +1,256 @@
+<?php include "function.php";
+if (isset($_POST['submit'])) {
+    $type = $_POST['type'];
+    $name = $_POST['name'];
+    $fname = $_POST['fname'];
+    $Mobile = $_POST['Mobile'];
+    $whatsno = $_POST['whatsno'];
+    $email = $_POST['email'];
+    $Gender = $_POST['Gender'];
+    $Age = $_POST['Age'];
+    $Blood_Group = $_POST['Blood_Group'];
+    $Caste = $_POST['Caste'];
+    $Castigates = $_POST['Castigates'];
+    $other_castigates = $_POST['other_castigates'];
+    $marital_status = $_POST['marital_status'];
+    $current_occupation = $_POST['current_occupation'];
+    $Family_Income = $_POST['Family_Income'];
+    $current_class = $_POST['current_class'];
+    $A_course = $_POST['A_course'];
+    $B_R_number = $_POST['B_R_number'];
+    $P_C_details = $_POST['P_C_details'];
+    $firm_details = $_POST['firm_details'];
+    $B_website = $_POST['B_website'];
+    $insurance = $_POST['insurance'];
+    $mutual_fund = $_POST['mutual_fund'];
+    $share_investment = $_POST['share_investment'];
+    $other_investment = $_POST['other_investment'];
+    $vehicle_detail = array($_POST['vehicle_detail[]']);
+    $property_detail = array($_POST['property_detail[]']);
+    $counselling1 = $_POST['counselling1'];
+    $whom1 = $_POST['whom1'];
+    $date2 = $_POST['date2'];
+    $mode1 = $_POST['mode1'];
+    $counselling2 = $_POST['counselling2'];
+    $whom2 = $_POST['whom2'];
+    $date3 = $_POST['date3'];
+    $mode2 = $_POST['mode2'];
+    $target = "upload/documents/";
+
+    //Upload Adhar Card
+    $target = $target . basename($_FILES['upload1']['name']);
+    $upload1 = ($_FILES['upload1']['name']);
+    $upload1FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+
+    //Upload Pan Card
+    $target = $target . basename($_FILES['upload2']['name']);
+    $upload2 = ($_FILES['upload2']['name']);
+    $upload2FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+
+    //Upload OBC / EWS
+    $target = $target . basename($_FILES['upload3']['name']);
+    $upload3 = ($_FILES['upload3']['name']);
+    $upload3FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+
+    //Upload  Birth Cetificate
+    $target = $target . basename($_FILES['upload4']['name']);
+    $upload4 = ($_FILES['upload4']['name']);
+    $upload4FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+
+    //Upload Ration Card
+    $target = $target . basename($_FILES['upload5']['name']);
+    $upload5 = ($_FILES['upload5']['name']);
+    $upload5FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+
+    //Upload Passport
+    $target = $target . basename($_FILES['upload6']['name']);
+    $upload6 = ($_FILES['upload6']['name']);
+    $upload6FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+    //Upload Passport
+    $target = $target . basename($_FILES['upload7']['name']);
+    $upload7 = ($_FILES['upload7']['name']);
+    $upload7FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+    //Upload Passport
+    $target = $target . basename($_FILES['upload8']['name']);
+    $upload8 = ($_FILES['upload8']['name']);
+    $upload8FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+    //Upload Passport
+    $target = $target . basename($_FILES['upload9']['name']);
+    $upload9 = ($_FILES['upload9']['name']);
+    $upload9FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+    //Upload Passport
+    $target = $target . basename($_FILES['upload10']['name']);
+    $upload10 = ($_FILES['upload10']['name']);
+    $upload10FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+    //Upload Passport
+    $target = $target . basename($_FILES['upload11']['name']);
+    $upload11 = ($_FILES['upload11']['name']);
+    $upload11FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+    //Upload Passport
+    $target = $target . basename($_FILES['upload12']['name']);
+    $upload12 = ($_FILES['upload12']['name']);
+    $upload12FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+    //Upload Passport
+    $target = $target . basename($_FILES['upload13']['name']);
+    $upload13 = ($_FILES['upload13']['name']);
+    $upload13FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+
+    // Check if the uploaded file is a PDF
+    if ($upload1FileType != "pdf") {
+        echo "Only PDF files are allowed.";
+        exit;
+    }
+
+    if (move_uploaded_file($_FILES['upload1']['tmp_name'], $target)) {
+        echo "Successfully uploaded.";
+    } else {
+        echo "Sorry, the file was not uploaded.";
+    }
+
+    // Check if the uploaded file is a PDF
+    if ($upload12FileType != "pdf") {
+        echo "Only PDF files are allowed.";
+        exit;
+    }
+
+    if (move_uploaded_file($_FILES['upload12']['tmp_name'], $target)) {
+        echo "Successfully uploaded.";
+    } else {
+        echo "Sorry, the file was not uploaded.";
+    }
+
+    // Check if the uploaded file is a PDF
+    if ($upload3FileType != "pdf") {
+        echo "Only PDF files are allowed.";
+        exit;
+    }
+
+    if (move_uploaded_file($_FILES['upload3']['tmp_name'], $target)) {
+        echo "Successfully uploaded.";
+    } else {
+        echo "Sorry, the file was not uploaded.";
+    }
+
+    // Check if the uploaded file is a PDF
+    if (!empty($upload14FileType) && $upload14FileType != "pdf") {
+        echo "Only PDF files are allowed.";
+        exit;
+    }
+
+    if (move_uploaded_file($_FILES['upload14']['tmp_name'], $target)) {
+        echo "Successfully uploaded.";
+    } else {
+        echo "Sorry, the file was not uploaded.";
+    }
+
+    // Check if the uploaded file is a PDF
+    if ($upload5FileType != "pdf") {
+        echo "Only PDF files are allowed.";
+        exit;
+    }
+
+    if (move_uploaded_file($_FILES['upload5']['tmp_name'], $target)) {
+        echo "Successfully uploaded.";
+    } else {
+        echo "Sorry, the file was not uploaded.";
+    }
+
+    // Check if the uploaded file is a PDF
+    if ($upload6FileType != "pdf") {
+        echo "Only PDF files are allowed.";
+        exit;
+    }
+
+    if (move_uploaded_file($_FILES['upload6']['tmp_name'], $target)) {
+        echo "Successfully uploaded.";
+    } else {
+        echo "Sorry, the file was not uploaded.";
+    }
+    // Check if the uploaded file is a PDF
+    if ($upload7FileType != "pdf") {
+        echo "Only PDF files are allowed.";
+        exit;
+    }
+
+    if (move_uploaded_file($_FILES['upload7']['tmp_name'], $target)) {
+        echo "Successfully uploaded.";
+    } else {
+        echo "Sorry, the file was not uploaded.";
+    }
+    // Check if the uploaded file is a PDF
+    if ($upload8FileType != "pdf") {
+        echo "Only PDF files are allowed.";
+        exit;
+    }
+
+    if (move_uploaded_file($_FILES['upload8']['tmp_name'], $target)) {
+        echo "Successfully uploaded.";
+    } else {
+        echo "Sorry, the file was not uploaded.";
+    }
+    // Check if the uploaded file is a PDF
+    if ($upload9FileType != "pdf") {
+        echo "Only PDF files are allowed.";
+        exit;
+    }
+
+    if (move_uploaded_file($_FILES['upload9']['tmp_name'], $target)) {
+        echo "Successfully uploaded.";
+    } else {
+        echo "Sorry, the file was not uploaded.";
+    }
+    // Check if the uploaded file is a PDF
+    if ($upload10FileType != "pdf") {
+        echo "Only PDF files are allowed.";
+        exit;
+    }
+
+    if (move_uploaded_file($_FILES['upload10']['tmp_name'], $target)) {
+        echo "Successfully uploaded.";
+    } else {
+        echo "Sorry, the file was not uploaded.";
+    }
+    // Check if the uploaded file is a PDF
+    if ($upload11FileType != "pdf") {
+        echo "Only PDF files are allowed.";
+        exit;
+    }
+
+    if (move_uploaded_file($_FILES['upload11']['tmp_name'], $target)) {
+        echo "Successfully uploaded.";
+    } else {
+        echo "Sorry, the file was not uploaded.";
+    }
+    // Check if the uploaded file is a PDF
+    if ($upload12FileType != "pdf") {
+        echo "Only PDF files are allowed.";
+        exit;
+    }
+
+    if (move_uploaded_file($_FILES['upload12']['tmp_name'], $target)) {
+        echo "Successfully uploaded.";
+    } else {
+        echo "Sorry, the file was not uploaded.";
+    }
+    // Check if the uploaded file is a PDF
+    if ($upload13FileType != "pdf") {
+        echo "Only PDF files are allowed.";
+        exit;
+    }
+
+    if (move_uploaded_file($_FILES['upload13']['tmp_name'], $target)) {
+        echo "Successfully uploaded.";
+    } else {
+        echo "Sorry, the file was not uploaded.";
+    }
+
+    $sql = "INSERT INTO matermonial_registration (type, name, fname, Mobile, whatsno, email, Gender, Age, Blood_Group, Caste, Castigates, other_castigates, marital_status, current_occupation, Family_Income, current_class, A_course, upload1, upload2, upload3, B_R_number, upload4, P_C_details, upload5, firm_details, upload6, upload7, upload8, B_website, upload9, insurance, upload10, mutual_fund, upload11, share_investment, other_investment, vehicle_detail[], property_detail[], upload12, abha_card, upload13, counselling1, whom1, date2, mode1, counselling2, whom2, date3, mode2)
+                values ('$type', '$name', '$fname', '$Mobile', '$whatsno', '$email', '$Gender', '$Age', '$Blood_Group', '$Caste', '$Castigates', '$other_castigates', '$marital_status', '$current_occupation', '$Family_Income', '$current_class', '$A_course', '$upload1', '$upload2', '$upload3', '$B_R_number', '$upload4', '$P_C_details', '$upload5', '$firm_details', '$upload6', '$upload7', '$upload8', '$B_website', '$upload9', '$insurance', '$upload10', '$mutual_fund', '$upload11', '$share_investment', '$other_investment', '$vehicle_detail', '$property_detail', '$upload12', '$abha_card', '$upload13', '$counselling1', '$whom1', '$date2', '$mode1', '$counselling2', '$whom2', '$date3', '$mode2')";
+    mysqli_query($conn, $sql);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,7 +280,7 @@
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-        <!-- Navbar --> <?php include "navbar.php" ; ?> <?php include "aside.php" ; ?>
+        <!-- Navbar --> <?php include "navbar.php";?> <?php include "aside.php";?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -65,7 +315,7 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label for="">Type of Registrations</label> <select class="form-control" name="Gender" id="Gender">
+                                                <div class="form-group"> <label for="">Type of Registrations</label> <select class="form-control" name="type" id="type">
                                                         <option value="">--Select--</option>
                                                         <option value="₹500">₹ 500/- (Non - Verified)</option>
                                                         <option value="₹2,000">₹ 2,000/- (Verified)</option>
@@ -186,13 +436,13 @@
                                                 <div class="form-group"> <label>Please Specify Additional Course Details</label> <input type="text" class="form-control" name="A_course" id="A_course" placeholder="If Yes, Please Specify | If No, Type N.A." required=""> </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Upload Educational certificate</label><br> <input type="file" name="upload" value="upload" class="form-control"> </div>
+                                                <div class="form-group"> <label>Upload Educational certificate</label><br> <input type="file" name="upload1" value="upload1" class="form-control"> </div>
                                             </div>
                                         </div>
-                                    </div> <!-- /.card-body -->                                    
+                                    </div> <!-- /.card-body -->
                                     <div class="card-header" style="background-color:#007bff">
                                         <h3 class="card-title" style="color:white">For Job Information</h3>
-                                    </div>                                
+                                    </div>
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-lg-6">
@@ -200,12 +450,12 @@
                                             </div>
                                             <div class="col-lg-6" >
                                                 <div class="form-group"> <label>Salary Slip</label><br> <input type="file" name="upload3" value="upload3" class="form-control"> </div>
-                                            </div>                                            
+                                            </div>
                                         </div>
-                                    </div> <!-- /.card-body -->                                    
+                                    </div> <!-- /.card-body -->
                                     <div class="card-header" style="background-color:#007bff">
                                         <h3 class="card-title" style="color:white">For Business Information</h3>
-                                    </div>                                
+                                    </div>
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-lg-3">
@@ -227,35 +477,35 @@
                                                 <div class="form-group"> <label>Upload Business Pan Card</label><br> <input type="file" name="upload6" value="upload6" class="form-control"> </div>
                                             </div>
                                             <div class="col-lg-3">
-                                                <div class="form-group"> <label>Balance Sheet</label><br> <input type="file" name="upload6" value="upload6" class="form-control"> </div>
+                                                <div class="form-group"> <label>Balance Sheet</label><br> <input type="file" name="upload7" value="upload7" class="form-control"> </div>
                                             </div>
                                             <div class="col-lg-3">
-                                                <div class="form-group"> <label>Upload Product Profile</label><br> <input type="file" name="upload6" value="upload6" class="form-control"> </div>
+                                                <div class="form-group"> <label>Upload Product Profile</label><br> <input type="file" name="upload8" value="upload8" class="form-control"> </div>
                                             </div>
                                             <div class="col-lg-3">
                                                 <div class="form-group"> <label>Business Website</label> <input type="text" class="form-control" name="B_website" id="B_website" placeholder="Enter URL Here" required=""> </div>
-                                            </div>                                            
+                                            </div>
                                         </div>
-                                    </div> <!-- /.card-body -->                                    
+                                    </div> <!-- /.card-body -->
                                     <div class="card-header" style="background-color:#007bff">
                                         <h3 class="card-title" style="color:white">Financial Details</h3>
-                                    </div>  
+                                    </div>
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Upload ITR Copy</label><br> <input type="file" name="upload7" value="upload7" class="form-control"> </div>
+                                                <div class="form-group"> <label>Upload ITR Copy</label><br> <input type="file" name="upload9" value="upload9" class="form-control"> </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group"> <label>Insurance Policy Number</label> <input type="text" class="form-control" name="insurance" id="insurance" placeholder="Enter Details Here" required=""> </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Upload File (Insurance Policy Copy)</label><br> <input type="file" name="upload8" value="upload8" class="form-control"> </div>
+                                                <div class="form-group"> <label>Upload File (Insurance Policy Copy)</label><br> <input type="file" name="upload10" value="upload10" class="form-control"> </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group"> <label>Mutual Funds Details</label> <input type="text" class="form-control" name="mutual_fund" id="mutual_fund" placeholder="Enter Details Here" required=""> </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Upload File (Mutual Fund Details)</label><br> <input type="file" name="upload9" value="upload9" class="form-control"> </div>
+                                                <div class="form-group"> <label>Upload File (Mutual Fund Details)</label><br> <input type="file" name="upload11" value="upload11" class="form-control"> </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group"> <label>Share Investment Details</label> <input type="text" class="form-control" name="share_investment" id="share_investment" placeholder="Enter Details Here" required=""> </div>
@@ -264,73 +514,73 @@
                                                 <div class="form-group"> <label>Other Investment Details</label> <input type="text" class="form-control" name="other_investment" id="other_investment" placeholder="Enter Details Here" required=""> </div>
                                             </div>
                                         </div>
-                                    </div> <!-- /.card-body -->                                    
+                                    </div> <!-- /.card-body -->
                                     <div class="card-header" style="background-color:#007bff">
                                         <h3 class="card-title" style="color:white">Assests Details</h3>
-                                    </div>  
+                                    </div>
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <!-- checkbox -->
                                                 <div class="form-group"><label>Vehicle Details</label>
-                                                    <div class="form-check"> <input class="form-check-input" type="checkbox" > <label class="form-check-label">Two Wheeler</label> </div>
-                                                    <div class="form-check"> <input class="form-check-input" type="checkbox" > <label class="form-check-label">Three Wheeler</label> </div>
-                                                    <div class="form-check"> <input class="form-check-input" type="checkbox" > <label class="form-check-label">Four Wheeler</label> </div>
-                                                    <div class="form-check"> <input class="form-check-input" type="checkbox" > <label class="form-check-label">Six Wheeler</label> </div>
-                                                    <div class="form-check"> <input class="form-check-input" type="checkbox" > <label class="form-check-label">Ten Wheeler</label> </div>
+                                                    <div class="form-check"> <input name="vehicle_detail[]" value="Two Wheeler" class="form-check-input" type="checkbox" > <label class="form-check-label">Two Wheeler</label> </div>
+                                                    <div class="form-check"> <input name="vehicle_detail[]" value="Three Wheeler" class="form-check-input" type="checkbox" > <label class="form-check-label">Three Wheeler</label> </div>
+                                                    <div class="form-check"> <input name="vehicle_detail[]" value="Four Wheeler" class="form-check-input" type="checkbox" > <label class="form-check-label">Four Wheeler</label> </div>
+                                                    <div class="form-check"> <input name="vehicle_detail[]" value="Six Wheeler" class="form-check-input" type="checkbox" > <label class="form-check-label">Six Wheeler</label> </div>
+                                                    <div class="form-check"> <input name="vehicle_detail[]" value="Ten Wheeler" class="form-check-input" type="checkbox" > <label class="form-check-label">Ten Wheeler</label> </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <!-- checkbox -->
                                                 <div class="form-group"><label>Property Details</label>
-                                                    <div class="form-check"> <input class="form-check-input" type="checkbox" > <label class="form-check-label">Shop</label> </div>
-                                                    <div class="form-check"> <input class="form-check-input" type="checkbox" > <label class="form-check-label">Office</label> </div>
-                                                    <div class="form-check"> <input class="form-check-input" type="checkbox" > <label class="form-check-label">Factory</label> </div>
-                                                    <div class="form-check"> <input class="form-check-input" type="checkbox" > <label class="form-check-label">Godown</label> </div>
-                                                    <div class="form-check"> <input class="form-check-input" type="checkbox" > <label class="form-check-label">Residential Apartment</label> </div>
-                                                    <div class="form-check"> <input class="form-check-input" type="checkbox" > <label class="form-check-label">Bunglow</label> </div>
-                                                    <div class="form-check"> <input class="form-check-input" type="checkbox" > <label class="form-check-label">Row House</label> </div>
-                                                    <div class="form-check"> <input class="form-check-input" type="checkbox" > <label class="form-check-label">Open Land</label> </div>
+                                                    <div class="form-check"> <input name="property_detail[]" value="Shop" class="form-check-input" type="checkbox" > <label class="form-check-label">Shop</label> </div>
+                                                    <div class="form-check"> <input name="property_detail[]" value="Office" class="form-check-input" type="checkbox" > <label class="form-check-label">Office</label> </div>
+                                                    <div class="form-check"> <input name="property_detail[]" value="Factory" class="form-check-input" type="checkbox" > <label class="form-check-label">Factory</label> </div>
+                                                    <div class="form-check"> <input name="property_detail[]" value="Godown" class="form-check-input" type="checkbox" > <label class="form-check-label">Godown</label> </div>
+                                                    <div class="form-check"> <input name="property_detail[]" value="Residential Apartment" class="form-check-input" type="checkbox" > <label class="form-check-label">Residential Apartment</label> </div>
+                                                    <div class="form-check"> <input name="property_detail[]" value="Bunglow" class="form-check-input" type="checkbox" > <label class="form-check-label">Bunglow</label> </div>
+                                                    <div class="form-check"> <input name="property_detail[]" value="Row House" class="form-check-input" type="checkbox" > <label class="form-check-label">Row House</label> </div>
+                                                    <div class="form-check"> <input name="property_detail[]" value="Open Land" class="form-check-input" type="checkbox" > <label class="form-check-label">Open Land</label> </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div> <!-- /.card-body -->                                    
+                                    </div> <!-- /.card-body -->
                                     <div class="card-header" style="background-color:#007bff">
                                         <h3 class="card-title" style="color:white">Health Details</h3>
-                                    </div>  
+                                    </div>
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Upload Medical Fitness Certificate</label><br> <input type="file" name="upload8" value="upload8" class="form-control"> </div>
+                                                <div class="form-group"> <label>Upload Medical Fitness Certificate</label><br> <input type="file" name="upload12" value="upload12" class="form-control"> </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label for="">ABHA Card Details</label> <input type="text" class="form-control" name="previous_marks" id="previous_marks" placeholder="Enter Details" required=""> </div>
+                                                <div class="form-group"> <label for="">ABHA Card Details</label> <input type="text" class="form-control" name="abha_card" id="abha_card" placeholder="Enter Details" required=""> </div>
                                             </div>
                                             <div class="card-footer"><label>Self Declaration Sample Form</label>
                                             <a href="MMNF_sel-declaration.pdf" target="_blank"><button type="Button" class="btn btn-primary" name="btn_submit">Download</button></a>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Upload Self Declaration Certificate</label><br> <input type="file" name="upload8" value="upload8" class="form-control"> </div>
+                                                <div class="form-group"> <label>Upload Self Declaration Certificate</label><br> <input type="file" name="upload13" value="upload13" class="form-control"> </div>
                                             </div>
                                         </div>
-                                    </div> <!-- /.card-body -->                                    
+                                    </div> <!-- /.card-body -->
                                     <div class="card-header" style="background-color:#007bff">
                                         <h3 class="card-title" style="color:white">Pre-Marriage Counselling</h3>
-                                    </div>  
+                                    </div>
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label for="">Have you completed Pre-Marriage Counselling</label> <input type="text" class="form-control" name="previous_marks" id="previous_marks" placeholder="If Yes the Types Yes | If No then type No" required=""> </div>
+                                                <div class="form-group"> <label for="">Have you completed Pre-Marriage Counselling</label> <input type="text" class="form-control" name="counselling1" id="counselling1" placeholder="If Yes the Types Yes | If No then type No" required=""> </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label for="">If Yes, then by Whom</label> <input type="text" class="form-control" name="previous_marks" id="previous_marks" placeholder="Enter Details Here" required=""> </div>
+                                                <div class="form-group"> <label for="">If Yes, then by Whom</label> <input type="text" class="form-control" name="whom1" id="whom1" placeholder="Enter Details Here" required=""> </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label for="">Date of Counselling</label> <input type="date" class="form-control" name="previous_marks" id="previous_marks" placeholder="Enter Details Here" required=""> </div>
+                                                <div class="form-group"> <label for="">Date of Counselling</label> <input type="date" class="form-control" name="date2" id="date2" placeholder="Enter Details Here" required=""> </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group"> <label for="">Mode of Counselling</label>
-                                                    <select class="form-control" name="Gender" id="Gender">
+                                                    <select class="form-control" name="mode1" id="mode1">
                                                         <option value="">--Select--</option>
                                                         <option value="offline">Offline</option>
                                                         <option value="online">Online</option>
@@ -338,24 +588,24 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div> <!-- /.card-body -->                                    
+                                    </div> <!-- /.card-body -->
                                     <div class="card-header" style="background-color:#007bff">
                                         <h3 class="card-title" style="color:white">After-Marriage Counselling</h3>
-                                    </div> 
+                                    </div>
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label for="">Have you completed After-Marriage Counselling</label> <input type="text" class="form-control" name="previous_marks" id="previous_marks" placeholder="If Yes the Types Yes | If No then type No" required=""> </div>
+                                                <div class="form-group"> <label for="">Have you completed After-Marriage Counselling</label> <input type="text" class="form-control" name="counselling2" id="counselling2" placeholder="If Yes the Types Yes | If No then type No" required=""> </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label for="">If Yes, then by Whom</label> <input type="text" class="form-control" name="previous_marks" id="previous_marks" placeholder="Enter Details Here" required=""> </div>
+                                                <div class="form-group"> <label for="">If Yes, then by Whom</label> <input type="text" class="form-control" name="whom2" id="whom2" placeholder="Enter Details Here" required=""> </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label for="">Date of Counselling</label> <input type="date" class="form-control" name="previous_marks" id="previous_marks" placeholder="Enter Details Here" required=""> </div>
+                                                <div class="form-group"> <label for="">Date of Counselling</label> <input type="date" class="form-control" name="date3" id="date3" placeholder="Enter Details Here" required=""> </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group"> <label for="">Mode of Counselling</label>
-                                                    <select class="form-control" name="Gender" id="Gender">
+                                                    <select class="form-control" name="mode2" id="mode2">
                                                         <option value="">--Select--</option>
                                                         <option value="offline">Offline</option>
                                                         <option value="online">Online</option>
@@ -363,10 +613,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div> <!-- /.card-body -->                                    
+                                    </div> <!-- /.card-body -->
                                     <div class="card-header" style="background-color:#007bff">
                                         <h3 class="card-title" style="color:white">Legal Information about Martial Realtionship</h3>
-                                    </div>  
+                                    </div>
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="card-footer">
@@ -375,7 +625,7 @@
                                             </div>
                                         </div>
                                     </div> <!-- /.card-body -->
-                                    <div class="card-footer"> <button type="submit" class="btn btn-primary" name="btn_submit">Submit</button> </div>
+                                    <div class="card-footer"> <button type="submit" class="btn btn-primary" name="submit">Submit</button> </div>
                                 </form>
                             </div> <!-- /.card -->
                         </div>
@@ -424,7 +674,7 @@
 <script src="dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/pages/dashboard.js"></script>
-    
+
     <script>
         $(function () {
           bsCustomFileInput.init();
