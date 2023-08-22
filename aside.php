@@ -24,8 +24,7 @@
                 
                 <li class="nav-item"><a href="#" class="nav-link"><i class=""></i><p>Premium Access <i class="fas fa-angle-left right"></i></p></a>
                     <ul class="nav nav-treeview">
-                    	<li class="nav-item"><a href="https://mmnf.in/meenabazaar/" target="_parent" class="nav-link"><i class="far fa-circle nav-icon"></i>
-               	      <p>Mera Bazaar</p></a></li>
+                    	<li class="nav-item"><a href="https://mmnf.in/meenabazaar/" target="_parent" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Mera Bazaar</p></a></li>
                       <li class="nav-item"><a href="job_seeker_registration.php" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Job Portal: Registration</p></a></li>
                         <li class="nav-item"><a href="matrimoniall.php" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Matrimonial</p></a></li>
                         <li class="nav-item"><a href="mmnf_network.php" class="nav-link"><i class="far fa-circle nav-icon"></i><p>MMNF Network </p></a></li>

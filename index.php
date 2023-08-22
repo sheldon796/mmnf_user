@@ -86,7 +86,7 @@
           <div class="card-header">
             <h3 class="card-title">Service Request</h3>
             <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-card-widget="card-refresh" data-source="widgets.html" data-source-selector="#card-refresh-content" data-load-on-init="false"> <i class="fas fa-sync-alt"></i> </button>
+              <!-- <button type="button" class="btn btn-tool" data-card-widget="card-refresh" data-source="widgets.html" data-source-selector="#card-refresh-content" data-load-on-init="false"> <i class="fas fa-sync-alt"></i> </button> -->
               <button type="button" class="btn btn-tool" data-card-widget="maximize"> <i class="fas fa-expand"></i> </button>
               <button type="button" class="btn btn-tool" data-card-widget="collapse"> <i class="fas fa-minus"></i> </button>
               <button type="button" class="btn btn-tool" data-card-widget="remove"> <i class="fas fa-times"></i> </button>
@@ -101,45 +101,39 @@
             </div>
             <hr>
             <div class="card-body table-responsive p-0" style="padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;">
-              <table class="table table-hover text-nowrap table-bordered">
-                <thead>
+              <table class="table table-hover text-nowrap table-bordered" >
+                <thead style="background-color:#28a745;color:white">
                   <tr>
                     <th>ID</th>
-                    <th>User</th>
-                    <th>Date</th>
+                    <th>Name</th>
+                    <th>Applied Date</th>
                     <th>Status</th>
-                    <th>Reason</th>
+                    <th>Comment</th>
                   </tr>
                 </thead>
                 <tbody>
+                  <?php
+                    // include database connection file
+                    require_once'function.php';
+                    // Object creation
+                    $sql = "SELECT * FROM service_request";
+                    $result = mysqli_query($conn, $sql);
+                    if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                  ?>
                   <tr>
-                    <td>183</td>
-                    <td>John Doe</td>
-                    <td>11-7-2014</td>
-                    <td><span class="tag tag-success">Approved</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                    <td><?php echo $row['id']; ?></td>
+                    <td><?php echo $row['applied_name']; ?></td>
+                    <td><?php echo $row['Applied_Date']; ?></td>
+                    <td><span class="tag tag-success"><?php echo $row['status']; ?></span></td>
+                    <td><?php echo $row['comment']; ?></td>
                   </tr>
-                  <tr>
-                    <td>219</td>
-                    <td>Alexander Pierce</td>
-                    <td>11-7-2014</td>
-                    <td><span class="tag tag-warning">Pending</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  </tr>
-                  <tr>
-                    <td>657</td>
-                    <td>Bob Doe</td>
-                    <td>11-7-2014</td>
-                    <td><span class="tag tag-primary">Approved</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  </tr>
-                  <tr>
-                    <td>175</td>
-                    <td>Mike Doe</td>
-                    <td>11-7-2014</td>
-                    <td><span class="tag tag-danger">Denied</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  </tr>
+                  <?php
+                    }
+                    } else {
+                    echo "";
+                    }                
+                  ?>
                 </tbody>
               </table>
             </div>
@@ -153,7 +147,7 @@
             <div class="card-header">
               <h3 class="card-title">Premium Access</h3>
               <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="card-refresh" data-source="widgets.html" data-source-selector="#card-refresh-content" data-load-on-init="false"> <i class="fas fa-sync-alt"></i> </button>
+                <!-- <button type="button" class="btn btn-tool" data-card-widget="card-refresh" data-source="widgets.html" data-source-selector="#card-refresh-content" data-load-on-init="false"> <i class="fas fa-sync-alt"></i> </button> -->
                 <button type="button" class="btn btn-tool" data-card-widget="maximize"> <i class="fas fa-expand"></i> </button>
                 <button type="button" class="btn btn-tool" data-card-widget="collapse"> <i class="fas fa-minus"></i> </button>
                 <button type="button" class="btn btn-tool" data-card-widget="remove"> <i class="fas fa-times"></i> </button>
@@ -170,7 +164,7 @@
                       <h5>Job Portal: Registration</h5>
                       </strong> </div>
                     <div class="icon"> <i class="fas fa-shopping-cart"></i> </div>
-                    <a href="#" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
+                    <a href="job_seeker_registration.php" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
                 </div>
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
@@ -180,7 +174,7 @@
                       <h5>Matrimonial: Registration</h5>
                       </strong> </div>
                     <div class="icon"> <i class="ion ion-stats-bars"></i> </div>
-                    <a href="#" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
+                    <a href="matrimoniall.php" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
                 </div>
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
@@ -190,27 +184,27 @@
                       <h5>MMNF Network</h5>
                       </strong> </div>
                     <div class="icon"> <i class="fas fa-user-plus"></i> </div>
-                    <a href="#" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
+                    <a href="mmnf_network.php" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
                 </div>
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
                   <!-- small card -->
                   <div class="small-box bg-danger" style="margin-bottom: 5px;">
                     <div class="inner"> <strong>
-                      <h5>Helping Hands</h5>
+                      <h5>Helping Hands (Crowd Funding)</h5>
                       </strong> </div>
                     <div class="icon"> <i class="fas fa-chart-pie"></i> </div>
-                    <a href="#" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
+                    <a href="helping_hands.php" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
                 </div>
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
                   <!-- small card -->
                   <div class="small-box bg-info" style="margin-bottom: 5px;">
                     <div class="inner"> <strong>
-                      <h5>Membership of other NGO</h5>
+                      <h5>NGO's with Us</h5>
                       </strong> </div>
                     <div class="icon"> <i class="fas fa-shopping-cart"></i> </div>
-                    <a href="#" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
+                    <a href="ngo_members.php" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
                 </div>
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
@@ -220,7 +214,7 @@
                       <h5>Eligible Schemes</h5>
                       </strong> </div>
                     <div class="icon"> <i class="ion ion-stats-bars"></i> </div>
-                    <a href="#" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
+                    <a href="eligible_schemes.php" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
                 </div>
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
@@ -230,7 +224,7 @@
                       <h5>Document Locker</h5>
                       </strong> </div>
                     <div class="icon"> <i class="fas fa-user-plus"></i> </div>
-                    <a href="#" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
+                    <a href="document_locker.php" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
                 </div>
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
@@ -240,7 +234,7 @@
                       <h5>GR (Government Resolutions)</h5>
                       </strong> </div>
                     <div class="icon"> <i class="fas fa-chart-pie"></i> </div>
-                    <a href="#" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
+                    <a href="gr.php" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
                 </div>
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
@@ -250,7 +244,7 @@
                       <h5>Notices</h5>
                       </strong> </div>
                     <div class="icon"> <i class="fas fa-shopping-cart"></i> </div>
-                    <a href="#" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
+                    <a href="notices.php" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
                 </div>
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
@@ -260,27 +254,46 @@
                       <h5>Mailbox</h5>
                       </strong> </div>
                     <div class="icon"> <i class="ion ion-stats-bars"></i> </div>
-                    <a href="#" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
+                    <a href="mailbox/mailbox.php" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
                 </div>
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
                   <!-- small card -->
                   <div class="small-box bg-warning" style="margin-bottom: 5px;">
                     <div class="inner"> <strong>
-                      <h5>Empty</h5>
+                      <h5>Mera Bazaar</h5>
                       </strong> </div>
                     <div class="icon"> <i class="fas fa-user-plus"></i> </div>
-                    <a href="#" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
+                    <a href="https://mmnf.in/meenabazaar/" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
                 </div>
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
                   <!-- small card -->
                   <div class="small-box bg-danger" style="margin-bottom: 5px;">
                     <div class="inner"> <strong>
-                      <h5>Empty</h5>
+                      <h5>Community Chat </h5>
                       </strong> </div>
                     <div class="icon"> <i class="fas fa-chart-pie"></i> </div>
-                    <a href="#" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
+                    <a href="community_chat.php" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                  <!-- small card -->
+                  <div class="small-box bg-info" style="margin-bottom: 5px;">
+                    <div class="inner"> <strong>
+                      <h5>24*7 Helpline </h5>
+                      </strong> </div>
+                    <div class="icon"> <i class="fas fa-shopping-cart"></i> </div>
+                    <a href="helpline.php" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                  <!-- small card -->
+                  <div class="small-box bg-success" style="margin-bottom: 5px;">
+                    <div class="inner"> <strong>
+                      <h5>Network</h5>
+                      </strong> </div>
+                    <div class="icon"> <i class="ion ion-stats-bars"></i> </div>
+                    <a href="network.php" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i> </a> </div>
                 </div>
                 <!-- ./col -->
               </div>
@@ -296,7 +309,7 @@
             <div class="card-header">
               <h3 class="card-title">Complains & Feedback</h3>
               <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="card-refresh" data-source="widgets.html" data-source-selector="#card-refresh-content" data-load-on-init="false"> <i class="fas fa-sync-alt"></i> </button>
+                <!-- <button type="button" class="btn btn-tool" data-card-widget="card-refresh" data-source="widgets.html" data-source-selector="#card-refresh-content" data-load-on-init="false"> <i class="fas fa-sync-alt"></i> </button> -->
                 <button type="button" class="btn btn-tool" data-card-widget="maximize"> <i class="fas fa-expand"></i> </button>
                 <button type="button" class="btn btn-tool" data-card-widget="collapse"> <i class="fas fa-minus"></i> </button>
                 <button type="button" class="btn btn-tool" data-card-widget="remove"> <i class="fas fa-times"></i> </button>
@@ -338,7 +351,7 @@
             <div class="card-header">
               <h3 class="card-title">Departments</h3>
               <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="card-refresh" data-source="widgets.html" data-source-selector="#card-refresh-content" data-load-on-init="false"> <i class="fas fa-sync-alt"></i> </button>
+                <!-- <button type="button" class="btn btn-tool" data-card-widget="card-refresh" data-source="widgets.html" data-source-selector="#card-refresh-content" data-load-on-init="false"> <i class="fas fa-sync-alt"></i> </button> -->
                 <button type="button" class="btn btn-tool" data-card-widget="maximize"> <i class="fas fa-expand"></i> </button>
                 <button type="button" class="btn btn-tool" data-card-widget="collapse"> <i class="fas fa-minus"></i> </button>
                 <button type="button" class="btn btn-tool" data-card-widget="remove"> <i class="fas fa-times"></i> </button>

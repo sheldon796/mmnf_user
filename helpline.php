@@ -1,6 +1,17 @@
+<?php include "function.php";
+    if (isset($_POST['submit'])) {
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $subject = $_POST['subject'];
+        $message = $_POST['message'];
+        
+        $sql = "INSERT INTO helpline (name, email, subject, message)
+                values ('$name', '$email', '$subject', '$message')";
+        mysqli_query($conn, $sql);
+    }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,14 +52,16 @@
                                 <h3 class="lead mb-5"> Phone: +91 9890009890 </h3>
                             </div>
                         </div>
-                        <div class="col-7">
-                            <h2>Fill the form, we will call you back..</h2>
-                            <div class="form-group"> <label for="inputName">Name</label> <input type="text" id="inputName" class="form-control" /> </div>
-                            <div class="form-group"> <label for="inputEmail">E-Mail</label> <input type="email" id="inputEmail" class="form-control" /> </div>
-                            <div class="form-group"> <label for="inputSubject">Subject</label> <input type="text" id="inputSubject" class="form-control" /> </div>
-                            <div class="form-group"> <label for="inputMessage">Message</label> <textarea id="inputMessage" class="form-control" rows="4"></textarea> </div>
-                            <div class="form-group"> <input type="submit" class="btn btn-primary" value="Send message"> </div>
-                        </div>
+                        <form role="form" method="post" action="" enctype="multipart/form-data">
+                            <div class="col-12">
+                                <h2>Fill the form, we will call you back..</h2>
+                                <div class="form-group"> <label >Name</label> <input type="text" class="form-control" name ="name" id="name"  /> </div>
+                                <div class="form-group"> <label >E-Mail</label> <input type="email" class="form-control" name ="email" id="email"  /> </div>
+                                <div class="form-group"> <label >Subject</label> <input type="text" name ="subject" id="subject" class="form-control" /> </div>
+                                <div class="form-group"> <label >Message</label> <textarea name ="message" id="message" class="form-control" rows="4"></textarea> </div>
+                                <div class="form-group"> <button type="submit" class="btn btn-primary" name="submit">Submit</button></div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </section> <!-- /.content -->

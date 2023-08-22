@@ -1,4 +1,6 @@
-<?php include "function.php";
+<?php
+include "function.php";
+
 if (isset($_POST['submit'])) {
     $type = $_POST['type'];
     $name = $_POST['name'];
@@ -25,8 +27,17 @@ if (isset($_POST['submit'])) {
     $mutual_fund = $_POST['mutual_fund'];
     $share_investment = $_POST['share_investment'];
     $other_investment = $_POST['other_investment'];
-    $vehicle_detail = array($_POST['vehicle_detail[]']);
-    $property_detail = array($_POST['property_detail[]']);
+    // $vehicle_detail[] = isset($_POST['vehicle_detail']) ? $_POST['vehicle_detail'] : array();
+    // $property_detail[] = isset($_POST['property_detail']) ? $_POST['property_detail'] : array();
+    // $vehicle_detailarr = serialize($vehicle_detail[]);
+    // $property_detailarr = serialize($property_detail[]);
+    $vehicle_detail = isset($_POST['vehicle_detail']) ? $_POST['vehicle_detail'] : array();
+    $property_detail = isset($_POST['property_detail']) ? $_POST['property_detail'] : array();
+
+    // Serialize the arrays
+    $vehicle_detail_serialized = serialize($vehicle_detail);
+    $property_detail_serialized = serialize($property_detail);
+    $abha_card = $_POST['abha_card'];
     $counselling1 = $_POST['counselling1'];
     $whom1 = $_POST['whom1'];
     $date2 = $_POST['date2'];
@@ -38,215 +49,224 @@ if (isset($_POST['submit'])) {
     $target = "upload/documents/";
 
     //Upload Adhar Card
-    $target = $target . basename($_FILES['upload1']['name']);
-    $upload1 = ($_FILES['upload1']['name']);
-    $upload1FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+    $target = $target . basename($_FILES['educational_certificate']['name']);
+    $educational_certificate = ($_FILES['educational_certificate']['name']);
+    $educational_certificateFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
 
     //Upload Pan Card
-    $target = $target . basename($_FILES['upload2']['name']);
-    $upload2 = ($_FILES['upload2']['name']);
-    $upload2FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+    $target = $target . basename($_FILES['appointment_letter']['name']);
+    $appointment_letter = ($_FILES['appointment_letter']['name']);
+    $appointment_letterFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
 
     //Upload OBC / EWS
-    $target = $target . basename($_FILES['upload3']['name']);
-    $upload3 = ($_FILES['upload3']['name']);
-    $upload3FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+    $target = $target . basename($_FILES['salary_slip']['name']);
+    $salary_slip = ($_FILES['salary_slip']['name']);
+    $salary_slipFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
 
     //Upload  Birth Cetificate
-    $target = $target . basename($_FILES['upload4']['name']);
-    $upload4 = ($_FILES['upload4']['name']);
-    $upload4FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+    $target = $target . basename($_FILES['supporting_document']['name']);
+    $supporting_document = ($_FILES['supporting_document']['name']);
+    $supporting_documentFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
 
     //Upload Ration Card
-    $target = $target . basename($_FILES['upload5']['name']);
-    $upload5 = ($_FILES['upload5']['name']);
-    $upload5FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+    $target = $target . basename($_FILES['pan_card']['name']);
+    $pan_card = ($_FILES['pan_card']['name']);
+    $pan_cardFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
 
     //Upload Passport
-    $target = $target . basename($_FILES['upload6']['name']);
-    $upload6 = ($_FILES['upload6']['name']);
-    $upload6FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+    $target = $target . basename($_FILES['business_pan_card']['name']);
+    $business_pan_card = ($_FILES['business_pan_card']['name']);
+    $business_pan_cardFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
     //Upload Passport
-    $target = $target . basename($_FILES['upload7']['name']);
-    $upload7 = ($_FILES['upload7']['name']);
-    $upload7FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+    $target = $target . basename($_FILES['balance_sheet']['name']);
+    $balance_sheet = ($_FILES['balance_sheet']['name']);
+    $balance_sheetFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
     //Upload Passport
-    $target = $target . basename($_FILES['upload8']['name']);
-    $upload8 = ($_FILES['upload8']['name']);
-    $upload8FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+    $target = $target . basename($_FILES['product_profile']['name']);
+    $product_profile = ($_FILES['product_profile']['name']);
+    $product_profileFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
     //Upload Passport
-    $target = $target . basename($_FILES['upload9']['name']);
-    $upload9 = ($_FILES['upload9']['name']);
-    $upload9FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+    $target = $target . basename($_FILES['itr']['name']);
+    $itr = ($_FILES['itr']['name']);
+    $itrFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
     //Upload Passport
-    $target = $target . basename($_FILES['upload10']['name']);
-    $upload10 = ($_FILES['upload10']['name']);
-    $upload10FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+    $target = $target . basename($_FILES['insurance_policy']['name']);
+    $insurance_policy = ($_FILES['insurance_policy']['name']);
+    $insurance_policyFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
     //Upload Passport
-    $target = $target . basename($_FILES['upload11']['name']);
-    $upload11 = ($_FILES['upload11']['name']);
-    $upload11FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+    $target = $target . basename($_FILES['upload_mutual_fund']['name']);
+    $upload_mutual_fund = ($_FILES['upload_mutual_fund']['name']);
+    $upload_mutual_fundFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
     //Upload Passport
-    $target = $target . basename($_FILES['upload12']['name']);
-    $upload12 = ($_FILES['upload12']['name']);
-    $upload12FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+    $target = $target . basename($_FILES['fitness_certificate']['name']);
+    $fitness_certificate = ($_FILES['fitness_certificate']['name']);
+    $fitness_certificateFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
     //Upload Passport
-    $target = $target . basename($_FILES['upload13']['name']);
-    $upload13 = ($_FILES['upload13']['name']);
-    $upload13FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+    $target = $target . basename($_FILES['self_declaration']['name']);
+    $self_declaration = ($_FILES['self_declaration']['name']);
+    $self_declarationFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
 
     // Check if the uploaded file is a PDF
-    if ($upload1FileType != "pdf") {
+    if ($educational_certificateFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
 
-    if (move_uploaded_file($_FILES['upload1']['tmp_name'], $target)) {
+    if (move_uploaded_file($_FILES['educational_certificate']['tmp_name'], $target)) {
         echo "Successfully uploaded.";
     } else {
         echo "Sorry, the file was not uploaded.";
     }
 
     // Check if the uploaded file is a PDF
-    if ($upload12FileType != "pdf") {
+    if ($appointment_letterFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
 
-    if (move_uploaded_file($_FILES['upload12']['tmp_name'], $target)) {
+    if (move_uploaded_file($_FILES['appointment_letter']['tmp_name'], $target)) {
         echo "Successfully uploaded.";
     } else {
         echo "Sorry, the file was not uploaded.";
     }
 
     // Check if the uploaded file is a PDF
-    if ($upload3FileType != "pdf") {
+    if ($salary_slipFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
 
-    if (move_uploaded_file($_FILES['upload3']['tmp_name'], $target)) {
+    if (move_uploaded_file($_FILES['salary_slip']['tmp_name'], $target)) {
         echo "Successfully uploaded.";
     } else {
         echo "Sorry, the file was not uploaded.";
     }
 
     // Check if the uploaded file is a PDF
-    if (!empty($upload14FileType) && $upload14FileType != "pdf") {
+    if ($supporting_documentFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
 
-    if (move_uploaded_file($_FILES['upload14']['tmp_name'], $target)) {
+    if (move_uploaded_file($_FILES['supporting_document']['tmp_name'], $target)) {
         echo "Successfully uploaded.";
     } else {
         echo "Sorry, the file was not uploaded.";
     }
 
     // Check if the uploaded file is a PDF
-    if ($upload5FileType != "pdf") {
+    if ($pan_cardFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
 
-    if (move_uploaded_file($_FILES['upload5']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-    } else {
-        echo "Sorry, the file was not uploaded.";
-    }
-
-    // Check if the uploaded file is a PDF
-    if ($upload6FileType != "pdf") {
-        echo "Only PDF files are allowed.";
-        exit;
-    }
-
-    if (move_uploaded_file($_FILES['upload6']['tmp_name'], $target)) {
+    if (move_uploaded_file($_FILES['pan_card']['tmp_name'], $target)) {
         echo "Successfully uploaded.";
     } else {
         echo "Sorry, the file was not uploaded.";
     }
     // Check if the uploaded file is a PDF
-    if ($upload7FileType != "pdf") {
+    if ($business_pan_cardFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
 
-    if (move_uploaded_file($_FILES['upload7']['tmp_name'], $target)) {
+    if (move_uploaded_file($_FILES['business_pan_card']['tmp_name'], $target)) {
         echo "Successfully uploaded.";
     } else {
         echo "Sorry, the file was not uploaded.";
     }
     // Check if the uploaded file is a PDF
-    if ($upload8FileType != "pdf") {
+    if ($balance_sheetFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
 
-    if (move_uploaded_file($_FILES['upload8']['tmp_name'], $target)) {
+    if (move_uploaded_file($_FILES['balance_sheet']['tmp_name'], $target)) {
         echo "Successfully uploaded.";
     } else {
         echo "Sorry, the file was not uploaded.";
     }
     // Check if the uploaded file is a PDF
-    if ($upload9FileType != "pdf") {
+    if ($product_profileFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
 
-    if (move_uploaded_file($_FILES['upload9']['tmp_name'], $target)) {
+    if (move_uploaded_file($_FILES['product_profile']['tmp_name'], $target)) {
         echo "Successfully uploaded.";
     } else {
         echo "Sorry, the file was not uploaded.";
     }
     // Check if the uploaded file is a PDF
-    if ($upload10FileType != "pdf") {
+    if ($itrFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
 
-    if (move_uploaded_file($_FILES['upload10']['tmp_name'], $target)) {
+    if (move_uploaded_file($_FILES['itr']['tmp_name'], $target)) {
         echo "Successfully uploaded.";
     } else {
         echo "Sorry, the file was not uploaded.";
     }
     // Check if the uploaded file is a PDF
-    if ($upload11FileType != "pdf") {
+    if ($insurance_policyFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
 
-    if (move_uploaded_file($_FILES['upload11']['tmp_name'], $target)) {
+    if (move_uploaded_file($_FILES['insurance_policy']['tmp_name'], $target)) {
         echo "Successfully uploaded.";
     } else {
         echo "Sorry, the file was not uploaded.";
     }
     // Check if the uploaded file is a PDF
-    if ($upload12FileType != "pdf") {
+    if ($upload_mutual_fundFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
 
-    if (move_uploaded_file($_FILES['upload12']['tmp_name'], $target)) {
+    if (move_uploaded_file($_FILES['upload_mutual_fund']['tmp_name'], $target)) {
         echo "Successfully uploaded.";
     } else {
         echo "Sorry, the file was not uploaded.";
     }
     // Check if the uploaded file is a PDF
-    if ($upload13FileType != "pdf") {
+    if ($fitness_certificateFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
 
-    if (move_uploaded_file($_FILES['upload13']['tmp_name'], $target)) {
+    if (move_uploaded_file($_FILES['fitness_certificate']['tmp_name'], $target)) {
         echo "Successfully uploaded.";
     } else {
         echo "Sorry, the file was not uploaded.";
     }
 
-    $sql = "INSERT INTO matermonial_registration (type, name, fname, Mobile, whatsno, email, Gender, Age, Blood_Group, Caste, Castigates, other_castigates, marital_status, current_occupation, Family_Income, current_class, A_course, upload1, upload2, upload3, B_R_number, upload4, P_C_details, upload5, firm_details, upload6, upload7, upload8, B_website, upload9, insurance, upload10, mutual_fund, upload11, share_investment, other_investment, vehicle_detail[], property_detail[], upload12, abha_card, upload13, counselling1, whom1, date2, mode1, counselling2, whom2, date3, mode2)
-                values ('$type', '$name', '$fname', '$Mobile', '$whatsno', '$email', '$Gender', '$Age', '$Blood_Group', '$Caste', '$Castigates', '$other_castigates', '$marital_status', '$current_occupation', '$Family_Income', '$current_class', '$A_course', '$upload1', '$upload2', '$upload3', '$B_R_number', '$upload4', '$P_C_details', '$upload5', '$firm_details', '$upload6', '$upload7', '$upload8', '$B_website', '$upload9', '$insurance', '$upload10', '$mutual_fund', '$upload11', '$share_investment', '$other_investment', '$vehicle_detail', '$property_detail', '$upload12', '$abha_card', '$upload13', '$counselling1', '$whom1', '$date2', '$mode1', '$counselling2', '$whom2', '$date3', '$mode2')";
+    if ($self_declarationFileType != "pdf") {
+        echo "Only PDF files are allowed.";
+        exit;
+    }
+
+    if (move_uploaded_file($_FILES['self_declaration']['tmp_name'], $target)) {
+        echo "Successfully uploaded.";
+    } else {
+        echo "Sorry, the file was not uploaded.";
+    }
+
+    $sql = "INSERT INTO matrimonial_registration (type, name, fname, Mobile, whatsno, email, Gender, Age, Blood_Group, Caste, Castigates, other_castigates, marital_status,
+                                                current_occupation, Family_Income, current_class, A_course, educational_certificate, appointment_letter, salary_slip, B_R_number,
+                                                supporting_document, P_C_details, pan_card, firm_details, business_pan_card, balance_sheet, product_profile, B_website, itr,
+                                                insurance, insurance_policy, mutual_fund, upload_mutual_fund, share_investment, other_investment, vehicle_detail, property_detail,
+                                                fitness_certificate, abha_card, self_declaration, counselling1, whom1, date2, mode1, counselling2, whom2, date3, mode2)
+                                                values ('$type', '$name', '$fname', '$Mobile', '$whatsno', '$email', '$Gender', '$Age', '$Blood_Group', '$Caste', '$Castigates',
+                                                '$other_castigates', '$marital_status', '$current_occupation', '$Family_Income', '$current_class', '$A_course', '$educational_certificate',
+                                                '$appointment_letter', '$salary_slip', '$B_R_number', '$supporting_document', '$P_C_details', '$pan_card', '$firm_details', '$business_pan_card',
+                                                '$balance_sheet', '$product_profile', '$B_website', '$itr', '$insurance', '$insurance_policy', '$mutual_fund', '$upload_mutual_fund', '$share_investment',
+                                                '$other_investment', '$vehicle_detail_serialized', '$property_detail_serialized', '$fitness_certificate', '$abha_card', '$self_declaration', '$counselling1', '$whom1', '$date2',
+                                                '$mode1', '$counselling2', '$whom2', '$date3', '$mode2')";
     mysqli_query($conn, $sql);
+
 }
 ?>
 <!DOCTYPE html>
@@ -436,7 +456,7 @@ if (isset($_POST['submit'])) {
                                                 <div class="form-group"> <label>Please Specify Additional Course Details</label> <input type="text" class="form-control" name="A_course" id="A_course" placeholder="If Yes, Please Specify | If No, Type N.A." required=""> </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Upload Educational certificate</label><br> <input type="file" name="upload1" value="upload1" class="form-control"> </div>
+                                                <div class="form-group"> <label>Upload Educational certificate</label><br> <input type="file" name="educational_certificate" value="educational_certificate" class="form-control"> </div>
                                             </div>
                                         </div>
                                     </div> <!-- /.card-body -->
@@ -446,10 +466,10 @@ if (isset($_POST['submit'])) {
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <div class="form-group"> <label>Appointment Letter</label><br> <input type="file" name="upload2" value="upload2" class="form-control"> </div>
+                                                <div class="form-group"> <label>Appointment Letter</label><br> <input type="file" name="appointment_letter" value="appointment_letter" class="form-control"> </div>
                                             </div>
                                             <div class="col-lg-6" >
-                                                <div class="form-group"> <label>Salary Slip</label><br> <input type="file" name="upload3" value="upload3" class="form-control"> </div>
+                                                <div class="form-group"> <label>Salary Slip</label><br> <input type="file" name="salary_slip" value="salary_slip" class="form-control"> </div>
                                             </div>
                                         </div>
                                     </div> <!-- /.card-body -->
@@ -462,25 +482,25 @@ if (isset($_POST['submit'])) {
                                                 <div class="form-group"> <label>Business Registration Number</label> <input type="text" class="form-control" name="B_R_number" id="B_R_number" placeholder="Enter Details Here" required=""> </div>
                                             </div>
                                             <div class="col-lg-3">
-                                                <div class="form-group"> <label>Upload Supporting Document</label><br> <input type="file" name="upload4" value="upload4" class="form-control"> </div>
+                                                <div class="form-group"> <label>Upload Supporting Document</label><br> <input type="file" name="supporting_document" value="supporting_document" class="form-control"> </div>
                                             </div>
                                             <div class="col-lg-3">
                                                 <div class="form-group"> <label>Pan Card Details</label> <input type="text" class="form-control" name="P_C_details" id="P_C_details" placeholder="Enter Details Here" required=""> </div>
                                             </div>
                                             <div class="col-lg-3">
-                                                <div class="form-group"> <label>Upload Pan Card </label><br> <input type="file" name="upload5" value="upload5" class="form-control"> </div>
+                                                <div class="form-group"> <label>Upload Pan Card </label><br> <input type="file" name="pan_card" value="pan_card" class="form-control"> </div>
                                             </div>
                                             <div class="col-lg-3">
                                                 <div class="form-group"> <label>If Other than Proprietor</label> <input type="text" class="form-control" name="firm_details" id="firm_details" placeholder="If Yes, Please Specify | If No, Type N.A." required=""> </div>
                                             </div>
                                             <div class="col-lg-3">
-                                                <div class="form-group"> <label>Upload Business Pan Card</label><br> <input type="file" name="upload6" value="upload6" class="form-control"> </div>
+                                                <div class="form-group"> <label>Upload Business Pan Card</label><br> <input type="file" name="business_pan_card" value="business_pan_card" class="form-control"> </div>
                                             </div>
                                             <div class="col-lg-3">
-                                                <div class="form-group"> <label>Balance Sheet</label><br> <input type="file" name="upload7" value="upload7" class="form-control"> </div>
+                                                <div class="form-group"> <label>Balance Sheet</label><br> <input type="file" name="balance_sheet" value="balance_sheet" class="form-control"> </div>
                                             </div>
                                             <div class="col-lg-3">
-                                                <div class="form-group"> <label>Upload Product Profile</label><br> <input type="file" name="upload8" value="upload8" class="form-control"> </div>
+                                                <div class="form-group"> <label>Upload Product Profile</label><br> <input type="file" name="product_profile" value="product_profile" class="form-control"> </div>
                                             </div>
                                             <div class="col-lg-3">
                                                 <div class="form-group"> <label>Business Website</label> <input type="text" class="form-control" name="B_website" id="B_website" placeholder="Enter URL Here" required=""> </div>
@@ -493,19 +513,19 @@ if (isset($_POST['submit'])) {
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Upload ITR Copy</label><br> <input type="file" name="upload9" value="upload9" class="form-control"> </div>
+                                                <div class="form-group"> <label>Upload ITR Copy</label><br> <input type="file" name="itr" value="itr" class="form-control"> </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group"> <label>Insurance Policy Number</label> <input type="text" class="form-control" name="insurance" id="insurance" placeholder="Enter Details Here" required=""> </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Upload File (Insurance Policy Copy)</label><br> <input type="file" name="upload10" value="upload10" class="form-control"> </div>
+                                                <div class="form-group"> <label>Upload File (Insurance Policy Copy)</label><br> <input type="file" name="insurance_policy" value="insurance_policy" class="form-control"> </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group"> <label>Mutual Funds Details</label> <input type="text" class="form-control" name="mutual_fund" id="mutual_fund" placeholder="Enter Details Here" required=""> </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Upload File (Mutual Fund Details)</label><br> <input type="file" name="upload11" value="upload11" class="form-control"> </div>
+                                                <div class="form-group"> <label>Upload File (Mutual Fund Details)</label><br> <input type="file" name="upload_mutual_fund" value="upload_mutual_fund" class="form-control"> </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group"> <label>Share Investment Details</label> <input type="text" class="form-control" name="share_investment" id="share_investment" placeholder="Enter Details Here" required=""> </div>
@@ -551,7 +571,7 @@ if (isset($_POST['submit'])) {
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Upload Medical Fitness Certificate</label><br> <input type="file" name="upload12" value="upload12" class="form-control"> </div>
+                                                <div class="form-group"> <label>Upload Medical Fitness Certificate</label><br> <input type="file" name="fitness_certificate" value="fitness_certificate" class="form-control"> </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group"> <label for="">ABHA Card Details</label> <input type="text" class="form-control" name="abha_card" id="abha_card" placeholder="Enter Details" required=""> </div>
@@ -560,7 +580,7 @@ if (isset($_POST['submit'])) {
                                             <a href="MMNF_sel-declaration.pdf" target="_blank"><button type="Button" class="btn btn-primary" name="btn_submit">Download</button></a>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Upload Self Declaration Certificate</label><br> <input type="file" name="upload13" value="upload13" class="form-control"> </div>
+                                                <div class="form-group"> <label>Upload Self Declaration Certificate</label><br> <input type="file" name="self_declaration" value="self_declaration" class="form-control"> </div>
                                             </div>
                                         </div>
                                     </div> <!-- /.card-body -->
