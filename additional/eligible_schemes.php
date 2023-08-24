@@ -1,9 +1,3 @@
-<?php
-// include database connection file
-
-require_once 'function.php';
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +12,7 @@ require_once 'function.php';
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
-    <div class="wrapper"> <?php include "navbar.php";?> <?php include "aside.php";?>
+    <div class="wrapper"> <?php include "navbar.php" ; ?> <?php include "aside.php" ; ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -36,16 +30,16 @@ require_once 'function.php';
                         </div>
                     </div>
                 </div><!-- /.container-fluid -->
-            </section> <!-- Main content -->
+            </section> <!-- Main content -->        
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-header">
+                                <div class="card-header">                                    
                                     <ul class="nav nav-pills ml-auto p-2">
                                         <li class="nav-item"><a class="nav-link active" href="scholarship_form.php">Add Scholarships</a></li>
-                                    </ul>
+                                    </ul>    
                                 </div> <!-- /.card-header -->
                                 <div class="card-body justify-content-center">
                                     <table id="example1" class="table table-bordered table-striped">
@@ -53,78 +47,49 @@ require_once 'function.php';
                                             <tr>
                                                 <th class="text-center">Sr.No.</th>
                                                 <th class="text-center">Scholarship Schemes</th>
-                                                <th class="text-center">Educational Background</th>
+                                                <th class="text-center">Beneficiaries</th>
                                                 <th class="text-center">Eligibility Criteria</th>
-                                                <th class="text-center"> Minimum Required Percentage</th>
+                                                <th class="text-center">Desired Percentage</th>
                                                 <th class="text-center">Gender</th>
                                                 <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
+                                                // include database connection file
+                                                require_once 'function.php';
+                                                // Object creation
+                                                $sql = "SELECT * FROM scholarship_details";
+                                                $result = mysqli_query($conn, $sql);
 
-$sql_portal = "SELECT * FROM portal_membership where user_id = " . $_SESSION['user_id'];
-$result_portal = mysqli_query($conn, $sql_portal);
-$row_portal = mysqli_fetch_assoc($result_portal);
-
-$sql = "SELECT * FROM scholarship_details where id in (SELECT scheme_id FROM schemes_trans where class_id=" . $row_portal['current_class'] . ") and gender = " . $_SESSION['gender'] . " or gender = 2";
-$result = mysqli_query($conn, $sql);
-if (mysqli_num_rows($result) > 0) {
-    $sr = 1;
-    while ($row = mysqli_fetch_assoc($result)) {
-        ?>
+                                                if (mysqli_num_rows($result) > 0) {
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                            ?>
                                             <tr>
-                                                <td class="text-center"><?php echo $sr++; ?></td>
+                                                <td class="text-center"><?php echo $row['id']; ?></td>
                                                 <td class="text-center"><?php echo $row['scholarship']; ?></td>
                                                 <td class="text-center"><?php echo $row['beneficiaries']; ?></td>
-                                                <td class="text-center"> <?php
-if ($row['eligibility_income'] == 0) {
-            echo "Not Applicable";
-        } else {
-            echo " Income Limit Rs. " . $row['eligibility_income'];
-
-        }
-        ?></td>
-
-                                                <td class="text-center"> <?php
-if ($row['percentage'] == 0) {
-            echo "Not Applicable";
-        } else {
-            echo " Minimum " . $row['percentage'] . "%";
-
-        }
-        ?></td>
-                                                <td class="text-center">
-                                                <?php
-if ($row['gender'] == 0) {
-            echo "Male";
-        }
-        if ($row['gender'] == 1) {
-            echo "Female";
-        }
-        if ($row['gender'] == 2) {
-            echo "Both (Male &amp; Female)";
-        }
-        ?>
-                                                </td>
+                                                <td class="text-center"><?php echo $row['eligibility']; ?></td>
+                                                <td class="text-center"><?php echo $row['percentage']; ?></td>
+                                                <td class="text-center"><?php echo $row['gender']; ?></td>
                                                 <td class="project-actions text-center">
                                                     <a class="btn btn-danger btn-sm" href="scholarship_delete.php?delete=<?php echo $row['id']; ?>"><i class="fas fa-trash"></i>Delete</a>
                                                 </td>
                                             </tr>
                                             <?php
-}
-} else {
-    echo "";
-}
-?>
+                                                }
+                                                } else {
+                                                echo "";
+                                                }
+                                            ?>
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th class="text-center">Sr.No.</th>
                                                 <th class="text-center">Scholarship Schemes</th>
-                                                <th class="text-center">Educational Background</th>
+                                                <th class="text-center">Beneficiaries</th>
                                                 <th class="text-center">Eligibility Criteria</th>
-                                                <th class="text-center"> Minimum Required Percentage</th>
+                                                <th class="text-center">Desired Percentage</th>
                                                 <th class="text-center">Gender</th>
                                                 <th class="text-center">Action</th>
                                             </tr>
@@ -141,10 +106,10 @@ if ($row['gender'] == 0) {
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-header">
+                                <div class="card-header">                                    
                                     <ul class="nav nav-pills ml-auto p-2">
                                         <li class="nav-item"><a class="nav-link active" href="government_form.php">Add Government Schemes</a></li>
-                                    </ul>
+                                    </ul>    
                                 </div> <!-- /.card-header -->
                                 <div class="card-body justify-content-center">
                                     <table id="example3" class="table table-bordered table-striped">
@@ -161,15 +126,15 @@ if ($row['gender'] == 0) {
                                         </thead>
                                         <tbody>
                                             <?php
-// include database connection file
-require_once 'function.php';
-// Object creation
-$sql = "SELECT * FROM government_scheme_details";
-$result = mysqli_query($conn, $sql);
+                                                // include database connection file
+                                                require_once 'function.php';
+                                                // Object creation
+                                                $sql = "SELECT * FROM government_scheme_details";
+                                                $result = mysqli_query($conn, $sql);
 
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        ?>
+                                                if (mysqli_num_rows($result) > 0) {
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                            ?>
                                             <tr>
                                                 <td class="text-center"><?php echo $row['id']; ?></td>
                                                 <td class="text-center"><?php echo $row['scholarship']; ?></td>
@@ -182,11 +147,11 @@ if (mysqli_num_rows($result) > 0) {
                                                 </td>
                                             </tr>
                                             <?php
-}
-} else {
-    echo "";
-}
-?>
+                                                }
+                                                } else {
+                                                echo "";
+                                                }
+                                            ?>
                                         </tbody>
                                         <tfoot>
                                             <tr>
@@ -211,10 +176,10 @@ if (mysqli_num_rows($result) > 0) {
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-header">
+                                <div class="card-header">                                    
                                     <ul class="nav nav-pills ml-auto p-2">
                                         <li class="nav-item"><a class="nav-link active" href="non_government_form.php">Add Non Government Schemes</a></li>
-                                    </ul>
+                                    </ul>    
                                 </div> <!-- /.card-header -->
                                 <div class="card-body justify-content-center">
                                     <table id="example5" class="table table-bordered table-striped">
@@ -231,15 +196,15 @@ if (mysqli_num_rows($result) > 0) {
                                         </thead>
                                         <tbody>
                                             <?php
-// include database connection file
-require_once 'function.php';
-// Object creation
-$sql = "SELECT * FROM non_government_scheme_details";
-$result = mysqli_query($conn, $sql);
+                                                // include database connection file
+                                                require_once 'function.php';
+                                                // Object creation
+                                                $sql = "SELECT * FROM non_government_scheme_details";
+                                                $result = mysqli_query($conn, $sql);
 
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        ?>
+                                                if (mysqli_num_rows($result) > 0) {
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                            ?>
                                             <tr>
                                                 <td class="text-center"><?php echo $row['id']; ?></td>
                                                 <td class="text-center"><?php echo $row['scholarship']; ?></td>
@@ -252,11 +217,11 @@ if (mysqli_num_rows($result) > 0) {
                                                 </td>
                                             </tr>
                                             <?php
-}
-} else {
-    echo "";
-}
-?>
+                                                }
+                                                } else {
+                                                echo "";
+                                                }
+                                            ?>
                                         </tbody>
                                         <tfoot>
                                             <tr>
@@ -281,10 +246,10 @@ if (mysqli_num_rows($result) > 0) {
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-header">
+                                <div class="card-header">                                    
                                     <ul class="nav nav-pills ml-auto p-2">
                                         <li class="nav-item"><a class="nav-link active" href="educational_form.php">Add Educational Loan</a></li>
-                                    </ul>
+                                    </ul>    
                                 </div> <!-- /.card-header -->
                                 <div class="card-body justify-content-center">
                                     <table id="example7" class="table table-bordered table-striped">
@@ -301,15 +266,15 @@ if (mysqli_num_rows($result) > 0) {
                                         </thead>
                                         <tbody>
                                             <?php
-// include database connection file
-require_once 'function.php';
-// Object creation
-$sql = "SELECT * FROM educational_details";
-$result = mysqli_query($conn, $sql);
+                                                // include database connection file
+                                                require_once 'function.php';
+                                                // Object creation
+                                                $sql = "SELECT * FROM educational_details";
+                                                $result = mysqli_query($conn, $sql);
 
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        ?>
+                                                if (mysqli_num_rows($result) > 0) {
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                            ?>
                                             <tr>
                                                 <td class="text-center"><?php echo $row['id']; ?></td>
                                                 <td class="text-center"><?php echo $row['scholarship']; ?></td>
@@ -318,15 +283,15 @@ if (mysqli_num_rows($result) > 0) {
                                                 <td class="text-center"><?php echo $row['percentage']; ?></td>
                                                 <td class="text-center"><?php echo $row['gender']; ?></td>
                                                 <td class="project-actions text-center">
-                                                    <a class="btn btn-danger btn-sm" href="scholarship_delete.php?delete=<?php echo $row['id']; ?>"><i class="fas fa-trash"></i>Delete</a>
+                                                    <a class="btn btn-danger btn-sm" href="educational_delete.php?delete=<?php echo $row['id']; ?>"><i class="fas fa-trash"></i>Delete</a>
                                                 </td>
                                             </tr>
                                             <?php
-}
-} else {
-    echo "";
-}
-?>
+                                                }
+                                                } else {
+                                                echo "";
+                                                }
+                                            ?>
                                         </tbody>
                                         <tfoot>
                                             <tr>
@@ -370,7 +335,7 @@ if (mysqli_num_rows($result) > 0) {
     <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script> <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script> <!-- AdminLTE for demo purposes -->
-
+    
     <script>
         $(function () {
           $("#example1").DataTable({

@@ -1,47 +1,21 @@
-<?php
-include "function.php";
-
+<?php include "function.php";
 if (isset($_POST['submit'])) {
-    $scholarship = mysqli_escape_string($conn, $_POST['scholarship']);
-    $beneficiaries = mysqli_escape_string($conn, $_POST['beneficiaries']);
-    $eligibility = mysqli_escape_string($conn, $_POST['eligibility']);
-    $percentage = mysqli_escape_string($conn, $_POST['percentage']);
-    $gender = mysqli_escape_string($conn, $_POST['gender']);
-    $class_id = $_POST['class_id'];
-
-    $sql = "INSERT INTO scholarship_details (scholarship, beneficiaries, eligibility_income, percentage, gender)
-            VALUES ('$scholarship', '$beneficiaries', '$eligibility', '$percentage', '$gender')";
-
-    if ($res_sch = mysqli_query($conn, $sql)) {
-        unset($_POST);
-        unset($_REQUEST);
-        echo "Data inserted successfully.";
-        $last_id = mysqli_insert_id($conn);
-
-        foreach ($class_id as $class_id) {
-            $sql_scheme_trans = "INSERT INTO `schemes_trans`(`class_id`, `scheme_id`) VALUES ($class_id,  $last_id)";
-            mysqli_query($conn, $sql_scheme_trans);
-        }
-
-        echo "Last inserted ID is: " . $last_id;
-        ?>
-        <script>
-            window.location = "eligible_schemes.php";
-        </script>
-<?php
-} else {
-        echo "Error: " . mysqli_error($conn);
-    }
-
+    $sr_no = $_POST['sr_no'];
+    $scholarship = $_POST['scholarship'];
+    $beneficiaries = $_POST['beneficiaries'];
+    $eligibility = $_POST['eligibility'];
+    $percentage = $_POST['percentage'];
+    $gender = $_POST['gender'];
+    ?>
+    <script>
+        window.location = "eligible_schemes.php";
+    </script>
+    <?php
+    $sql = "INSERT INTO scholarship_details (sr_no, scholarship, beneficiaries, eligibility, percentage, gender)
+            values ('$sr_no', '$scholarship', '$beneficiaries', '$eligibility', '$percentage', '$gender')";
+    mysqli_query($conn, $sql);
 }
-
-// Select all eduation list from tbl_edu_master
-$sql_edu_master = "SELECT * FROM `tbl_education_master`";
-$res_edu_master = mysqli_query($conn, $sql_edu_master);
-$rows_edu_mater = mysqli_fetch_all($res_edu_master, MYSQLI_ASSOC);
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -84,15 +58,15 @@ $rows_edu_mater = mysqli_fetch_all($res_edu_master, MYSQLI_ASSOC);
                             <!-- general form elements -->
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Scholarship Form</h3>
+                                    <h3 class="card-title">Educational Loan Form</h3>
                                 </div> <!-- /.card-header -->
                                 <!-- form start -->
-                                <form role="form" method="post" action="scholarship_form.php" enctype="multipart/form-data">
+                                <form role="form" method="post" action="" enctype="multipart/form-data">
                                     <div class="card-body">
                                         <div class="row">
-                                            <!-- <div class="col-lg-4">
+                                            <div class="col-lg-4">
                                                 <div class="form-group"> <label>Serial Number</label> <input type="text" class="form-control" name="sr_no" id="sr_no" placeholder="Enter Serial Number" required=""> </div>
-                                            </div> -->
+                                            </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group"> <label>Scholarship Name</label> <input type="text" class="form-control" name="scholarship" id="scholarship" placeholder="Enter Scholarship Name" required=""> </div>
                                             </div>
@@ -100,36 +74,13 @@ $rows_edu_mater = mysqli_fetch_all($res_edu_master, MYSQLI_ASSOC);
                                                 <div class="form-group"> <label>Beneficiaries</label> <input type="text" class="form-control" name="beneficiaries" id="beneficiaries" placeholder="Enter Beneficiaries Details" required=""> </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Eligibility Income Criteria</label> <input type="number" class="form-control" name="eligibility" id="eligibility" placeholder="Enter Eligibility Income Criteria" required=""> </div>
+                                                <div class="form-group"> <label>Eligibility Criteria</label> <input type="text" class="form-control" name="eligibility" id="eligibility" placeholder="Enter Eligibility Criteria" required=""> </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Desirable Percentage</label> <input type="number" class="form-control" name="percentage" id="percentage" placeholder="Enter Percentage" required=""> </div>
+                                                <div class="form-group"> <label>Desirable Percentage</label> <input type="text" class="form-control" name="percentage" id="percentage" placeholder="Enter Percentage" required=""> </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <label for="gender">Education Criteria</label>
-<?php
-
-if (count($rows_edu_mater) > 0) {
-
-    foreach ($rows_edu_mater as $value) {
-        ?>
-            <div class="form-check">
-                <input type="checkbox" name="class_id[]" class="form-check-input" id="<?=$value['id'];?>" value="<?=$value['id'];?>">
-                <label class="form-check-label" for="<?=$value['id'];?>" style="cursor: pointer;"><?=$value['edu_name'];?></label>
-            </div>
-<?php
-}
-}
-?>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <label for="gender">Gender</label>
-                                                <select class="form-control" name="gender" id="gender" required>
-                                                    <option value="">Select gender</option>
-                                                    <option value="0">Male</option>
-                                                    <option value="1">Female</option>
-                                                    <option value="2">Both (Male &amp; Female)</option>
-                                                </select>
+                                                <div class="form-group"> <label>Gender</label> <input type="text" class="form-control" name="gender" id="gender" placeholder="Enter Gender" required=""> </div>
                                             </div>
                                         </div>
                                     </div> <!-- /.card-body -->

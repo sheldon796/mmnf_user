@@ -1,6 +1,9 @@
+<?php
+// include database connection file
 
+require_once 'function.php';
 
-
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -164,7 +167,6 @@
 </body>
 </html>
 <?php
-include "function.php";
 if (isset($_POST['submit'])) {
     $department = $_POST['department'];
     $title1 = $_POST['title1'];

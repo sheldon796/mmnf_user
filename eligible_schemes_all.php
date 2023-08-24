@@ -1,9 +1,3 @@
-<?php
-// include database connection file
-
-require_once 'function.php';
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,58 +49,29 @@ require_once 'function.php';
                                                 <th class="text-center">Scholarship Schemes</th>
                                                 <th class="text-center">Educational Background</th>
                                                 <th class="text-center">Eligibility Criteria</th>
-                                                <th class="text-center"> Minimum Required Percentage</th>
+                                                <th class="text-center">Desired Percentage</th>
                                                 <th class="text-center">Gender</th>
                                                 <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-
-$sql_portal = "SELECT * FROM portal_membership where user_id = " . $_SESSION['user_id'];
-$result_portal = mysqli_query($conn, $sql_portal);
-$row_portal = mysqli_fetch_assoc($result_portal);
-
-$sql = "SELECT * FROM scholarship_details where id in (SELECT scheme_id FROM schemes_trans where class_id=" . $row_portal['current_class'] . ") and gender = " . $_SESSION['gender'] . " or gender = 2";
+// include database connection file
+require_once 'function.php';
+// Object creation
+$sql = "SELECT * FROM scholarship_details";
 $result = mysqli_query($conn, $sql);
+
 if (mysqli_num_rows($result) > 0) {
-    $sr = 1;
     while ($row = mysqli_fetch_assoc($result)) {
         ?>
                                             <tr>
-                                                <td class="text-center"><?php echo $sr++; ?></td>
+                                                <td class="text-center"><?php echo $row['id']; ?></td>
                                                 <td class="text-center"><?php echo $row['scholarship']; ?></td>
                                                 <td class="text-center"><?php echo $row['beneficiaries']; ?></td>
-                                                <td class="text-center"> <?php
-if ($row['eligibility_income'] == 0) {
-            echo "Not Applicable";
-        } else {
-            echo " Income Limit Rs. " . $row['eligibility_income'];
-
-        }
-        ?></td>
-
-                                                <td class="text-center"> <?php
-if ($row['percentage'] == 0) {
-            echo "Not Applicable";
-        } else {
-            echo " Minimum " . $row['percentage'] . "%";
-
-        }
-        ?></td>
-                                                <td class="text-center">
-                                                <?php
-if ($row['gender'] == 0) {
-            echo "Male";
-        }
-        if ($row['gender'] == 1) {
-            echo "Female";
-        }
-        if ($row['gender'] == 2) {
-            echo "Both (Male &amp; Female)";
-        }
-        ?>
-                                                </td>
+                                                <td class="text-center">Income Limit Rs.<?php echo $row['eligibility_income']; ?></td>
+                                                <td class="text-center"><?php echo $row['percentage']; ?></td>
+                                                <td class="text-center"><?php echo $row['gender']; ?></td>
                                                 <td class="project-actions text-center">
                                                     <a class="btn btn-danger btn-sm" href="scholarship_delete.php?delete=<?php echo $row['id']; ?>"><i class="fas fa-trash"></i>Delete</a>
                                                 </td>
@@ -124,7 +89,7 @@ if ($row['gender'] == 0) {
                                                 <th class="text-center">Scholarship Schemes</th>
                                                 <th class="text-center">Educational Background</th>
                                                 <th class="text-center">Eligibility Criteria</th>
-                                                <th class="text-center"> Minimum Required Percentage</th>
+                                                <th class="text-center">Desired Percentage</th>
                                                 <th class="text-center">Gender</th>
                                                 <th class="text-center">Action</th>
                                             </tr>

@@ -1,7 +1,3 @@
-<?php
-// include database connection file
-require_once 'function.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,16 +50,8 @@ require_once 'function.php';
                   <div class="card-header d-flex p-0">
                     <ul class="nav nav-pills ml-auto p-2">
                       <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">About Department</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Our Team</a></li>
+                      <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Team</a></li>
                       <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Achievements and Projects</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Associates with us</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Schemes</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Services</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Information</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Project</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Programs</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Feedback</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Service Request Form</a></li>
                       <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">Download</a></li>
                       <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">Notice Board</a></li>
                       <li class="nav-item"><a class="nav-link" href="#tab_6" data-toggle="tab">Chat Box</a></li>
@@ -82,6 +70,7 @@ require_once 'function.php';
                   <div class="card-body">
                     <?php
 // include database connection file
+require_once 'function.php';
 
 if (isset($_GET['name'])) {
     $dpt_name = $_GET['name'];

@@ -1,8 +1,6 @@
 <?php
 
-            // include database connection file
-            require_once 'function.php';
-if (!isset($_SESSION["user_id"])) {
+if (!isset($_SESSION["phone"])) {
     header("Location: login.php");
     exit();
 }
@@ -122,7 +120,8 @@ if (!isset($_SESSION["user_id"])) {
                 </thead>
                 <tbody>
                   <?php
-
+// include database connection file
+require_once 'function.php';
 // Object creation
 $sql = "SELECT * FROM service_request";
 $result = mysqli_query($conn, $sql);

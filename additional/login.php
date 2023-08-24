@@ -1,5 +1,6 @@
 <?php
 require 'function.php';
+
 // When form submitted, check and create user session.
 if (isset($_POST['submit'])) {
     $username = stripslashes($_POST['phone']); // removes backslashes
@@ -7,22 +8,12 @@ if (isset($_POST['submit'])) {
     $password = stripslashes($_POST['password']);
     $password = mysqli_real_escape_string($conn, $password);
     // Check user is exist in the database
-    $query = "SELECT * FROM `registration` WHERE phone='$username' AND password='" . ($password) . "'";
+    $query = "SELECT * FROM `registration` WHERE phone='$username'
+                     AND password='" . ($password) . "'";
     $result = mysqli_query($conn, $query) or die(mysql_error());
-    $numrows = mysqli_num_rows($result);
-    $rows = mysqli_fetch_array($result);
-
-    if ($numrows > 0) {
+    $rows = mysqli_num_rows($result);
+    if ($rows > 0) {
         $_SESSION['phone'] = $username;
-        $_SESSION['user_id'] = $rows['id'];
-        $_SESSION['is_profile_complete'] = $rows['is_profile_complete'];
-
-        $sql_portal = "SELECT * FROM portal_membership where user_id = " . $rows['id'];
-        $result_portal = mysqli_query($conn, $sql_portal);
-        $row_portal = mysqli_fetch_assoc($result_portal);
-        $_SESSION['class_id'] = $row_portal['current_class'];
-        $_SESSION['gender'] = $row_portal['gender'];
-
         // Redirect to user dashboard page
         header("Location: index.php");
     } else {

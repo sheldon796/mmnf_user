@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +16,7 @@
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-        <!-- Navbar --> <?php include "navbar.php" ; ?> <?php include "aside.php" ; ?>
+        <!-- Navbar --> <?php include "navbar.php";?> <?php include "aside.php";?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -38,18 +41,35 @@
                         <div class="col-lg-2"> </div>
                         <div class="col-md-8">
                             <!-- Profile Image -->
+                            <?php
+// include database connection file
+require_once 'function.php';
+// Object creation
+$sql = "SELECT * FROM registration where id = " . $_SESSION['user_id'];
+
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        ?>
                             <div class="card card-primary card-outline">
                                 <div class="card-body box-profile">
                                     <div class="text-center"> <img class="profile-user-img img-fluid img-circle" src="dist/img/user4-128x128.jpg" alt="User profile picture"> </div>
-                                    <h3 class="profile-username text-center">Nina Mcintire</h3>
-                                    <p class="text-muted text-center">GH32GH0000</p>
+                                    <h3 class="profile-username text-center"><?php echo $row['name']; ?></h3>
+                                    <!-- <p class="text-muted text-center">GH32GH0000</p> -->
                                     <ul class="list-group list-group-unbordered mb-3">
-                                        <li class="list-group-item"> <b>Mobile Number</b> <a class="float-right">9359663912</a> </li>
-                                        <li class="list-group-item"> <b>Occupation</b> <a class="float-right">Web Developer</a> </li>
-                                        <li class="list-group-item"> <b>Address</b> <a class="float-right">At/post nardana, tal shindhkheda, district dhule 425404.</a> </li>
+                                        <li class="list-group-item"> <b>Mobile Number</b> <a class="float-right"><?php echo $row['phone']; ?></a> </li>
+                                        <li class="list-group-item"> <b>Email Address</b> <a class="float-right"><?php echo $row['email']; ?></a> </li>
+                                        <!-- <li class="list-group-item"> <b>Address</b> <a class="float-right">At/post nardana, tal shindhkheda, district dhule 425404.</a> </li> -->
                                     </ul> <a href="#" class="btn btn-primary btn-block"><b>Download your ID Card.</b></a>
                                 </div> <!-- /.card-body -->
                             </div> <!-- /.card -->
+                            <?php
+}
+} else {
+    echo "";
+}
+?>
                         </div> <!-- /.col -->
                         <div class="col-lg-2"> </div> <!-- /.col -->
                     </div> <!-- /.row -->
@@ -67,7 +87,7 @@
     <script src="plugins/jquery/jquery.min.js"></script> <!-- Bootstrap 4 -->
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script> <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script> <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js"></script>
+    <!-- <script src="dist/js/demo.js"></script> -->
 </body>
 
 </html>

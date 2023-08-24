@@ -12,7 +12,13 @@ if(isset($_POST['submit'])){
     $gender = $_POST['gender'];
     $r_join = $_POST['r_join'];
     $sql = "INSERT INTO general (name, mobile, email, address, qualification, occ, experty, s_experience, age_group, gender, r_join) values ('$name', '$mobile', '$email', '$address', '$qualification', '$occ', '$experty', '$s_experience', '$age_group', '$gender', '$r_join')";
+    $sql = "UPDATE registration SET is_form_completed = 1 WHERE id = " . $_SESSION['user_id'];
     mysqli_query($conn,$sql);
+    ?>
+        <script>
+            window.location = "fees.php";
+        </script>
+<?php
 }
 ?>
 <!DOCTYPE html>

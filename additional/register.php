@@ -7,7 +7,6 @@ if(isset($_POST['submit'])){
     $role = $_POST['role'];
     $sql = "INSERT INTO registration (name, email, phone, password, role ) values ('$name', '$email', '$phone', '$password', '$role')";
     mysqli_query($conn,$sql);
-    header("location: login.php");
 }
 ?>
 <!DOCTYPE html>

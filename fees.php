@@ -1,19 +1,16 @@
-<?php include "function.php";
-if (isset($_POST['submit'])) {
-    $sr_no = $_POST['sr_no'];
-    $scholarship = $_POST['scholarship'];
-    $beneficiaries = $_POST['beneficiaries'];
-    $eligibility = $_POST['eligibility'];
-    $percentage = $_POST['percentage'];
-    $gender = $_POST['gender'];
+<?php  include "function.php";
+if(isset($_POST['submit'])){
+    $name = $_POST['name'];
+  
+    $sql = "INSERT INTO portal_membership_fees (name) values ('$name')";
+    $sql1 = "UPDATE registration SET is_form_completed = 2 WHERE id = " . $_SESSION['user_id'];
+    mysqli_query($conn,$sql);
+    mysqli_query($conn,$sql1);
     ?>
-    <script>
-        window.location = "eligible_schemes.php";
-    </script>
-    <?php
-    $sql = "INSERT INTO government_scheme_details (sr_no, scholarship, beneficiaries, eligibility, percentage, gender)
-            values ('$sr_no', '$scholarship', '$beneficiaries', '$eligibility', '$percentage', '$gender')";
-    mysqli_query($conn, $sql);
+        <script>
+            window.location = "main_registration.php";
+        </script>
+<?php
 }
 ?>
 <!DOCTYPE html>
@@ -31,23 +28,23 @@ if (isset($_POST['submit'])) {
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-        <!-- Navbar --> <?php include "navbar.php";?> <?php include "aside.php";?>
+        <!-- Navbar --> <?php include "navbar.php" ; ?> <?php include "aside.php" ; ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <div class="container-fluid">
-                    <!-- <div class="row mb-2">
+                    <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Membership Form</h1>
+                            <h1>Registration Form</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Membership Form</li>
+                                <li class="breadcrumb-item active">Registration Form</li>
                             </ol>
                         </div>
-                    </div> -->
+                    </div>
                 </div><!-- /.container-fluid -->
             </section> <!-- Main content -->
             <section class="content">
@@ -58,33 +55,22 @@ if (isset($_POST['submit'])) {
                             <!-- general form elements -->
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Government Scheme Form</h3>
+                                    <h3 class="card-title">Individual Registration Form</h3>
                                 </div> <!-- /.card-header -->
                                 <!-- form start -->
-                                <form role="form" method="post" action="" enctype="multipart/form-data">
+                                <form method="post" action="fees.php" enctype="multipart/form-data">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Serial Number</label> <input type="text" class="form-control" name="sr_no" id="sr_no" placeholder="Enter Serial Number" required=""> </div>
+                                                <div class="form-group"> <label>Name</label> <input type="text" name="name" id="name" placeholder="Enter Full Name" class="form-control"> </div>
                                             </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group"> <label>Scholarship Name</label> <input type="text" class="form-control" name="scholarship" id="scholarship" placeholder="Enter Scholarship Name" required=""> </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group"> <label>Beneficiaries</label> <input type="text" class="form-control" name="beneficiaries" id="beneficiaries" placeholder="Enter Beneficiaries Details" required=""> </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group"> <label>Eligibility Criteria</label> <input type="text" class="form-control" name="eligibility" id="eligibility" placeholder="Enter Eligibility Criteria" required=""> </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group"> <label>Desirable Percentage</label> <input type="text" class="form-control" name="percentage" id="percentage" placeholder="Enter Percentage" required=""> </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group"> <label>Gender</label> <input type="text" class="form-control" name="gender" id="gender" placeholder="Enter Gender" required=""> </div>
-                                            </div>
-                                        </div>
-                                    </div> <!-- /.card-body -->
-                                    <div class="card-footer"> <button type="submit" class="btn btn-primary" name="submit">Submit</button> </div>
+                                           
+                                           
+                                           
+                                        <!-- /.card-body -->
+                                        <div class="card-footer"> <button type="submit" name="submit" class="btn btn-primary">Submit</button> </div>
+</div>
+</div>
                                 </form>
                             </div> <!-- /.card -->
                         </div>
@@ -106,7 +92,7 @@ if (isset($_POST['submit'])) {
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script> <!-- bs-custom-file-input -->
     <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script> <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script> <!-- AdminLTE for demo purposes -->
-
+    
     <script>
         $(function () {
           bsCustomFileInput.init();

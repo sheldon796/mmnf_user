@@ -1,18 +1,34 @@
 <?php include "function.php";
 if (isset($_POST['submit'])) {
-    $sr_no = $_POST['sr_no'];
-    $scholarship = $_POST['scholarship'];
-    $beneficiaries = $_POST['beneficiaries'];
-    $eligibility = $_POST['eligibility'];
-    $percentage = $_POST['percentage'];
-    $gender = $_POST['gender'];
-    ?>
+    $title = $_POST['title'];
+    $description = $_POST['description'];    
+    $target = "upload/documents/ngo/";
+    
+    //Upload GR    
+    $target = $target . basename($_FILES['attachment']['name']);
+    $attachment = ($_FILES['attachment']['name']);
+    $attachmentFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+    
+
+    // Check if the uploaded file is a PDF
+    if ($attachmentFileType != "pdf") {
+      echo "Only PDF files are allowed.";
+      exit;
+    }
+  
+    if (move_uploaded_file($_FILES['attachment']['tmp_name'], $target)) {
+      echo "Successfully uploaded.";
+      ?>
     <script>
-        window.location = "eligible_schemes.php";
+        window.location = "ngo_members.php";
     </script>
     <?php
-    $sql = "INSERT INTO government_scheme_details (sr_no, scholarship, beneficiaries, eligibility, percentage, gender)
-            values ('$sr_no', '$scholarship', '$beneficiaries', '$eligibility', '$percentage', '$gender')";
+    } else {
+      echo "Sorry, the file was not uploaded.";
+    }
+
+    $sql = "INSERT INTO ngo (title, description, attachment)
+            values ('$title', '$description', '$attachment')";
     mysqli_query($conn, $sql);
 }
 ?>
@@ -58,29 +74,20 @@ if (isset($_POST['submit'])) {
                             <!-- general form elements -->
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Government Scheme Form</h3>
+                                    <h3 class="card-title">Notice Form</h3>
                                 </div> <!-- /.card-header -->
                                 <!-- form start -->
                                 <form role="form" method="post" action="" enctype="multipart/form-data">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Serial Number</label> <input type="text" class="form-control" name="sr_no" id="sr_no" placeholder="Enter Serial Number" required=""> </div>
+                                                <div class="form-group"> <label>Title</label> <input type="text" class="form-control" name="title" id="title" placeholder="Enter Title Here" required=""> </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Scholarship Name</label> <input type="text" class="form-control" name="scholarship" id="scholarship" placeholder="Enter Scholarship Name" required=""> </div>
+                                                <div class="form-group"> <label>Description</label> <input type="text" class="form-control" name="description" id="description" placeholder="Enter Description" required=""> </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Beneficiaries</label> <input type="text" class="form-control" name="beneficiaries" id="beneficiaries" placeholder="Enter Beneficiaries Details" required=""> </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group"> <label>Eligibility Criteria</label> <input type="text" class="form-control" name="eligibility" id="eligibility" placeholder="Enter Eligibility Criteria" required=""> </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group"> <label>Desirable Percentage</label> <input type="text" class="form-control" name="percentage" id="percentage" placeholder="Enter Percentage" required=""> </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group"> <label>Gender</label> <input type="text" class="form-control" name="gender" id="gender" placeholder="Enter Gender" required=""> </div>
+                                                <div class="form-group"> <label>Upload Attachment</label><br> <input type="file" name="attachment" class="form-control"> </div>
                                             </div>
                                         </div>
                                     </div> <!-- /.card-body -->
