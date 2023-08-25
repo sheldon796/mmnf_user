@@ -1,37 +1,47 @@
-<?php include "function.php";
+<?php
+//include auth_session.php file on all user panel pages
+include "config.php";include "auth_session.php";
+
 if (isset($_POST['submit'])) {
     $title = $_POST['title'];
-    $description = $_POST['description'];    
-    $target = "upload/documents/ngo/";
-    
-    //Upload GR    
-    $target = $target . basename($_FILES['attachment']['name']);
-    $attachment = ($_FILES['attachment']['name']);
-    $attachmentFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
-    
+    $description = $_POST['description'];
+    $targetDirectory = "upload/documents/ngo/";
+    $attachment = $_FILES['attachment'];
 
     // Check if the uploaded file is a PDF
+    $attachmentFileType = strtolower(pathinfo($attachment['name'], PATHINFO_EXTENSION));
     if ($attachmentFileType != "pdf") {
-      echo "Only PDF files are allowed.";
-      exit;
-    }
-  
-    if (move_uploaded_file($_FILES['attachment']['tmp_name'], $target)) {
-      echo "Successfully uploaded.";
-      ?>
-    <script>
-        window.location = "ngo_members.php";
-    </script>
-    <?php
-    } else {
-      echo "Sorry, the file was not uploaded.";
+        echo "Only PDF files are allowed.";
+        exit;
     }
 
-    $sql = "INSERT INTO ngo (title, description, attachment)
-            values ('$title', '$description', '$attachment')";
-    mysqli_query($conn, $sql);
+    // Create the target path including a unique filename
+    $targetPath = $targetDirectory . uniqid() . '_' . $attachment['name'];
+
+    // Move the uploaded file to the target path
+    if (move_uploaded_file($attachment['tmp_name'], $targetPath)) {
+        echo "Successfully uploaded.";
+    } else {
+        echo "Sorry, the file was not uploaded.";
+    }
+
+    // Insert data into the database
+    $sql = "INSERT INTO ngo (title, description, attachment) VALUES ('$title', '$description', '$targetPath')";
+    if (mysqli_query($link, $sql)) {
+
+        echo "Successfully Submitted";
+
+        ?>
+       <script>
+           window.location = "ngo_members.php";
+       </script>
+       <?php
+} else {
+        echo "Error: " . mysqli_error($link);
+    }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,7 +87,7 @@ if (isset($_POST['submit'])) {
                                     <h3 class="card-title">Notice Form</h3>
                                 </div> <!-- /.card-header -->
                                 <!-- form start -->
-                                <form role="form" method="post" action="" enctype="multipart/form-data">
+                                <form role="form" method="post" action="ngo_form.php" enctype="multipart/form-data">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-lg-4">

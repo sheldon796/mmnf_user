@@ -3,7 +3,7 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "mmnf_new";
+$dbname = "mmnf_datab2";
 // $servername = "localhost";
 // $username = "u481847985_mmnf_users";
 // $password = "Z#ep+/Uwoz84";

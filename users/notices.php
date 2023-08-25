@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
-    <div class="wrapper"> <?php include "navbar.php" ; ?> <?php include "aside.php" ; ?>
+    <div class="wrapper"> <?php include "navbar.php";?> <?php include "aside.php";?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -32,16 +32,16 @@
                         </div>
                     </div>
                 </div><!-- /.container-fluid -->
-            </section> <!-- Main content -->        
+            </section> <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-header">                                    
+                                <div class="card-header">
                                     <ul class="nav nav-pills ml-auto p-2">
-                                        <li class="nav-item"><a class="nav-link active" href="notice_form.php">Add Notices</a></li>
-                                    </ul>    
+                                        <!-- <li class="nav-item"><a class="nav-link active" href="notice_form.php">Add Notices</a></li> -->
+                                    </ul>
                                 </div> <!-- /.card-header -->
                                 <div class="card-body justify-content-center">
                                     <table id="example1" class="table table-bordered table-striped">
@@ -51,7 +51,6 @@
                                               <th class="text-center">Title</th>
                                               <th class="text-center">Description</th>
                                               <th class="text-center">Attachment</th>
-                                              <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -63,25 +62,22 @@
                                                 $result = mysqli_query($conn, $sql);
 
                                                 if (mysqli_num_rows($result) > 0) {
-                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                    while ($row = mysqli_fetch_assoc($result)) {
                                             ?>
                                             <tr>
                                                 <td class="text-center"><?php echo $row['id']; ?></td>
                                                 <td class="text-center"><?php echo $row['title']; ?></td>
                                                 <td class="text-center"><?php echo $row['description']; ?></td>
                                                 <td class="text-center">
-                                                    <a href="upload/documents/notices/<?php echo $row['attachment']; ?>" target="_blank">
+                                                    <a href="../portal/upload/documents/notices/<?php echo $row['attachment']; ?>" target="_blank">
                                                         <img src="pdf.png" alt="PDF Icon" width="32" height="32">
                                                     </a>
-                                                </td>
-                                                <td class="project-actions text-center">
-                                                    <a class="btn btn-danger btn-sm" href="notice_delete.php?delete=<?php echo $row['id']; ?>"><i class="fas fa-trash"></i>Delete</a>
                                                 </td>
                                             </tr>
                                             <?php
                                                 }
                                                 } else {
-                                                echo "";
+                                                    echo "";
                                                 }
                                             ?>
                                         </tbody>
@@ -91,7 +87,6 @@
                                               <th class="text-center">Title</th>
                                               <th class="text-center">Description</th>
                                               <th class="text-center">Attachment</th>
-                                              <th class="text-center">Action</th>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -125,7 +120,7 @@
     <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script> <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script> <!-- AdminLTE for demo purposes -->
-    
+
     <script>
         $(function () {
           $("#example1").DataTable({

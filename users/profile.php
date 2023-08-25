@@ -1,5 +1,6 @@
 <?php
 
+require_once 'function.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +44,6 @@
                             <!-- Profile Image -->
                             <?php
 // include database connection file
-require_once 'function.php';
 // Object creation
 $sql = "SELECT * FROM registration where id = " . $_SESSION['user_id'];
 

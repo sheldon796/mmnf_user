@@ -147,7 +147,7 @@ if ($is_profile_complete == 1) {
                         <li class="nav-item"><a href="services.php" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Services</p></a></li>
                     </ul>
                 </li>
-                 <li class="nav-item"><a href="departmental_information.php" class="nav-link"> <p>Departments Information </p></a></li>
+                 <!-- <li class="nav-item"><a href="departmental_information.php" class="nav-link"> <p>Departments Information </p></a></li> -->
                 <li class="nav-item"><a href="#" class="nav-link"><i class=""></i><p>Departments<i class="fas fa-angle-left right"></i></p></a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item"><a href="dept_info.php?name=Minority Development Centre" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Minority Development Centre</p></a></li>

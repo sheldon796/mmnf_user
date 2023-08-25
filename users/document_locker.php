@@ -40,7 +40,7 @@
                             <div class="card">
                                 <div class="card-header">                                    
                                     <ul class="nav nav-pills ml-auto p-2">
-                                        <li class="nav-item"><a class="nav-link active" href="document_locker_form.php">Add Document</a></li>
+                                        <!-- <li class="nav-item"><a class="nav-link active" href="document_locker_form.php">Add Document</a></li> -->
                                     </ul>    
                                 </div> <!-- /.card-header -->
                                 <div class="card-body justify-content-center">
@@ -51,7 +51,6 @@
                                               <th class="text-center">Title</th>
                                               <th class="text-center">Description</th>
                                               <th class="text-center">Attachment</th>
-                                              <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -70,12 +69,9 @@
                                                 <td class="text-center"><?php echo $row['title']; ?></td>
                                                 <td class="text-center"><?php echo $row['description']; ?></td>
                                                 <td class="text-center">
-                                                    <a href="upload/documents/locker/<?php echo $row['attachment']; ?>" target="_blank">
+                                                    <a href="../portal/upload/documents/locker/<?php echo $row['attachment']; ?>" target="_blank">
                                                         <img src="pdf.png" alt="PDF Icon" width="32" height="32">
                                                     </a>
-                                                </td>
-                                                <td class="project-actions text-center">
-                                                    <a class="btn btn-danger btn-sm" href="locker_delete.php?delete=<?php echo $row['id']; ?>"><i class="fas fa-trash"></i>Delete</a>
                                                 </td>
                                             </tr>
                                             <?php
@@ -91,7 +87,6 @@
                                               <th class="text-center">Title</th>
                                               <th class="text-center">Description</th>
                                               <th class="text-center">Attachment</th>
-                                              <th class="text-center">Action</th>
                                             </tr>
                                         </tfoot>
                                     </table>

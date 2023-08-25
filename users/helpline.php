@@ -7,7 +7,11 @@
         
         $sql = "INSERT INTO helpline (name, email, subject, message)
                 values ('$name', '$email', '$subject', '$message')";
-        mysqli_query($conn, $sql);
+        if (mysqli_query($conn, $sql)){
+            echo "success";
+        } else {
+            echo"Not Submitted: " . mysqli_error($conn);
+        }
     }
     ?>
 <!DOCTYPE html>

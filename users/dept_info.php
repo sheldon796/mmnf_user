@@ -103,7 +103,7 @@ require_once 'function.php';
                               </ol>
                               <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                  <img class="d-block w-100" src="upload/departments/<?php echo $row['department_images1']; ?>" alt="First slide">
+                                  <img class="d-block w-100" src="../portal/upload/departments/<?php echo $row['department_images1']; ?>" alt="First slide">
                                 </div>
                                 <!-- <div class="carousel-item">
                                   <img class="d-block w-100" src="https://placehold.it/900x500/3c8dbc/ffffff&text=I+Love+Bootstrap" alt="Second slide">
@@ -201,7 +201,7 @@ require_once 'function.php';
                                     </ul>
                                   </div>
                                   <div class="col-5 text-center">
-                                    <img src="upload/departments/team/<?php echo $team_row['photo']; ?>" alt="user-avatar" class="img-circle img-fluid">
+                                    <img src="../portal/upload/departments/team/<?php echo $team_row['photo']; ?>" alt="user-avatar" class="img-circle img-fluid">
                                   </div>
                                 </div>
                               </div>
@@ -231,7 +231,7 @@ require_once 'function.php';
                                   </ol>
                                   <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                      <img class="d-block w-100" src="upload/departments/<?php echo $row['department_images2']; ?>" alt="First slide">
+                                      <img class="d-block w-100" src="../portal/upload/departments/<?php echo $row['department_images2']; ?>" alt="First slide">
                                     </div>
                                     <!-- <div class="carousel-item">
                                       <img class="d-block w-100" src="https://placehold.it/900x500/3c8dbc/ffffff&amp;text=I+Love+Bootstrap" alt="Second slide">
@@ -270,7 +270,7 @@ require_once 'function.php';
                                   </ol>
                                   <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                      <img class="d-block w-100" src="upload/departments/<?php echo $row['department_images2']; ?>" alt="First slide">
+                                      <img class="d-block w-100" src="../portal/upload/departments/<?php echo $row['department_images2']; ?>" alt="First slide">
                                     </div>
                                     <!-- <div class="carousel-item">
                                       <img class="d-block w-100" src="https://placehold.it/900x500/3c8dbc/ffffff&amp;text=I+Love+Bootstrap" alt="Second slide">
@@ -309,7 +309,7 @@ require_once 'function.php';
                                   </ol>
                                   <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                      <img class="d-block w-100" src="upload/departments/<?php echo $row['department_images2']; ?>" alt="First slide">
+                                      <img class="d-block w-100" src="../portal/upload/departments/<?php echo $row['department_images2']; ?>" alt="First slide">
                                     </div>
                                     <!-- <div class="carousel-item">
                                       <img class="d-block w-100" src="https://placehold.it/900x500/3c8dbc/ffffff&amp;text=I+Love+Bootstrap" alt="Second slide">
@@ -348,7 +348,7 @@ require_once 'function.php';
                                     </ol>
                                     <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                      <img class="d-block w-100" src="upload/departments/<?php echo $row['department_images2']; ?>" alt="First slide">
+                                      <img class="d-block w-100" src="../portal/upload/departments/<?php echo $row['department_images2']; ?>" alt="First slide">
                                     </div>
                                       <!-- <div class="carousel-item">
                                         <img class="d-block w-100" src="https://placehold.it/900x500/3c8dbc/ffffff&amp;text=I+Love+Bootstrap" alt="Second slide">
@@ -387,7 +387,7 @@ require_once 'function.php';
                                     </ol>
                                     <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                      <img class="d-block w-100" src="upload/departments/<?php echo $row['department_images2']; ?>" alt="First slide">
+                                      <img class="d-block w-100" src="../portal/upload/departments/<?php echo $row['department_images2']; ?>" alt="First slide">
                                     </div>
                                       <!-- <div class="carousel-item">
                                         <img class="d-block w-100" src="https://placehold.it/900x500/3c8dbc/ffffff&amp;text=I+Love+Bootstrap" alt="Second slide">

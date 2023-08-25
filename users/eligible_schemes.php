@@ -44,7 +44,7 @@ require_once 'function.php';
                             <div class="card">
                                 <div class="card-header">
                                     <ul class="nav nav-pills ml-auto p-2">
-                                        <li class="nav-item"><a class="nav-link active" href="scholarship_form.php">Add Scholarships</a></li>
+                                        <!-- <li class="nav-item"><a class="nav-link active" href="scholarship_form.php">Add Scholarships</a></li> -->
                                     </ul>
                                 </div> <!-- /.card-header -->
                                 <div class="card-body justify-content-center">
@@ -57,7 +57,6 @@ require_once 'function.php';
                                                 <th class="text-center">Eligibility Criteria</th>
                                                 <th class="text-center"> Minimum Required Percentage</th>
                                                 <th class="text-center">Gender</th>
-                                                <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -107,9 +106,6 @@ if ($row['gender'] == 0) {
         }
         ?>
                                                 </td>
-                                                <td class="project-actions text-center">
-                                                    <a class="btn btn-danger btn-sm" href="scholarship_delete.php?delete=<?php echo $row['id']; ?>"><i class="fas fa-trash"></i>Delete</a>
-                                                </td>
                                             </tr>
                                             <?php
 }
@@ -126,7 +122,6 @@ if ($row['gender'] == 0) {
                                                 <th class="text-center">Eligibility Criteria</th>
                                                 <th class="text-center"> Minimum Required Percentage</th>
                                                 <th class="text-center">Gender</th>
-                                                <th class="text-center">Action</th>
                                             </tr>
                                         </tfoot>
                                     </table>
