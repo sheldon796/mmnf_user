@@ -173,16 +173,16 @@ if (isset($_POST['submit'])) {
     }
     $sql = "INSERT INTO portal_membership (name, user_id, fname, mobile, whatsno, email, gender, age, blood_group, Caste, Castigates, other_castigates, marital_status, current_occupation, Family_Income, current_class, previous_class, previous_marks, Address, District, Taluka, State, PIN, Mashjid, OBC_EWS, Aadhar, VoterID, Ration, PANCard, BirthCertificate, Passport, Maktab, VoterCard, Domicile_Nationality, Ayushman_Bharat_Card, E_Shram_Card, Labourcard, AccidentalInsurance, locker, U_Adhar_Card, U_Pan_Card, U_VoterCard, U_OBC_EWS, U_BirthCertificate, U_RationCard, U_Passport, U_DomicileNationality, U_BharatCard, U_E_ShramCard, U_Labourcard, U_AccidentalInsurance)
                     values ('$name', " . $_SESSION['user_id'] . ",'$fname', '$mobile', '$whatsno', '$email', '$gender', '$age', '$blood_group', '$Caste', '$Castigates', '$other_castigates', '$marital_status', '$current_occupation', '$Family_Income', '$current_class', '$previous_class', '$previous_marks', '$Address', '$District', '$Taluka', '$State', '$PIN', '$Mashjid', '$OBC_EWS', '$Aadhar', '$VoterID', '$Ration', '$PANCard', '$BirthCertificate', '$Passport', '$Maktab', '$VoterCard', '$Domicile_Nationality', '$Ayushman_Bharat_Card', '$E_Shram_Card', '$Labourcard', '$AccidentalInsurance', '$locker', '$U_Adhar_Card', '$U_Pan_Card', '$U_VoterCard', '$U_OBC_EWS', '$U_BirthCertificate', '$U_RationCard', '$U_Passport', '$U_DomicileNationality', '$U_BharatCard', '$U_E_ShramCard', '$U_Labourcard', '$U_AccidentalInsurance')";
-   $sql1 = "UPDATE registration SET is_form_completed = 3 ,is_profile_complete = 1 WHERE id = " . $_SESSION['user_id'];
-   
-   mysqli_query($conn, $sql);
-   mysqli_query($conn, $sql1);
-} ?>
+    $sql1 = "UPDATE registration SET is_form_completed = 3 ,is_profile_complete = 1 WHERE id = " . $_SESSION['user_id'];
+
+    mysqli_query($conn, $sql);
+    mysqli_query($conn, $sql1);
+    ?>
 <script>
-    window.location = "index.php.php";
+    window.location = "index.php";
 </script>
 <?php
-
+}
 // Select all eduation list from tbl_edu_master
 $sql_edu_master = "SELECT * FROM `tbl_education_master`";
 $res_edu_master = mysqli_query($conn, $sql_edu_master);
@@ -367,7 +367,7 @@ if (count($rows_edu_mater) > 0) {
                                                 <div class="form-group"> <label for="">Marks Obtained</label> <input type="text" class="form-control" name="previous_marks" id="previous_marks" placeholder="Enter Details" required=""> </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label for="">Address</label> <textarea class="form-control" name="Address" id="" rows="3" placeholder="Enter Address" data-lt-tmp-id="lt-867403" spellcheck="false" data-gramm="false" required=""></textarea> </div>
+                                                <div class="form-group"> <label for="">Address</label> <textarea class="form-control" name="Address" id="" rows="1" placeholder="Enter Address" data-lt-tmp-id="lt-867403" spellcheck="false" data-gramm="false" required=""></textarea> </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group"> <label>District</label> <input type="text" class="form-control" name="District" id="District" placeholder="Enter District" required=""> </div>
