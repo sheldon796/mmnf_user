@@ -4,9 +4,8 @@
 
     // If you have not set database password on localhost then set empty.
 
-    $con = mysqli_connect("localhost","root","","mmnf_datab2");
     // $con = mysqli_connect("localhost","u481847985_mmnf_users","Z#ep+/Uwoz84","u481847985_mmnf_datab");
-
+$con = mysqli_connect("localhost", "root", "", "mmnf_datab2");
     // Check connection
 
     if (mysqli_connect_errno()){
@@ -15,4 +14,4 @@
 
     }
 
-?> 
+?>
