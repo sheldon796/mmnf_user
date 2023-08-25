@@ -31,7 +31,7 @@ require_once 'function.php';
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center"> <img class="animation__shake"
                 src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="250" width="250"> </div> <!-- Navbar -->
-        <?php include "navbar.php";?> <?php include "aside.php";?>
+        <?php include "navbar.php"; ?> <?php include "aside.php"; ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -107,22 +107,47 @@ require_once 'function.php';
 
                                 <div class="card-body">
                                     <?php
-                  // include database connection file
-                  $dept_id ;
-                  if (isset($_GET['name'])) {
-                      $dpt_name = $_GET['name'];
-                      $sql = "SELECT * FROM departmental_information where department = '$dpt_name'";
-                      $result = mysqli_query($conn, $sql);
-                      if (mysqli_num_rows($result) > 0) {
-                          while ($row = mysqli_fetch_assoc($result)) {
-                              $dept_id = $row['id'];
-                              $sql = "SELECT * FROM team_member where department_id = $row[id]";
-                              $team_result = mysqli_query($conn, $sql);
-                              ?>
+                                    // include database connection file
+                                    $dept_id;
+                                    if (isset($_GET['name'])) {
+                                        $dpt_name = $_GET['name'];
+                                        $sql = "SELECT * FROM departmental_information where department = '$dpt_name'";
+                                        $result = mysqli_query($conn, $sql);
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                $dept_id = $row['id'];
+                                                $sql = "SELECT * FROM team_member where department_id = $row[id]";
+                                                $team_result = mysqli_query($conn, $sql);
+                                                ?>
+                                                <div class="tab-content">
+                                                    <div class="tab-pane active" id="tab_1">
+                                                        <div class="row">
+                                                            <?php include "marquee.php"; ?>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-lg-7">
+                                                                <div id="carouselExampleIndicators" class="carousel slide"
+                                                                    data-ride="carousel">
+                                                                    <ol class="carousel-indicators">
+                                                                        <li data-target="#carouselExampleIndicators"
+                                                                            data-slide-to="0" class="active"></li>
+                                                                        <li data-target="#carouselExampleIndicators"
+                                                                            data-slide-to="1"></li>
+                                                                        <li data-target="#carouselExampleIndicators"
+                                                                            data-slide-to="2"></li>
+                                                                    </ol>
+                                                                    <div class="carousel-inner">
+                                                                        <div class="carousel-item active">
+                                                                            <img class="d-block w-100"
+                                                                                src="../portal/upload/departments/<?php echo $row['department_images1']; ?>"
+                                                                                alt="First slide">
+                                                                        </div>
+                                                                        <!-- <div class="carousel-item">
+=======
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="tab_1">
                                             <div class="row">
-                                                <?php include "marquee.php";?>
+                                                <?php include "marquee.php"; ?>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-7">
@@ -143,172 +168,174 @@ require_once 'function.php';
                                                                     alt="First slide">
                                                             </div>
                                                             <!-- <div class="carousel-item">
+
                                   <img class="d-block w-100" src="https://placehold.it/900x500/3c8dbc/ffffff&text=I+Love+Bootstrap" alt="Second slide">
                                 </div>
                                 <div class="carousel-item">
                                   <img class="d-block w-100" src="https://placehold.it/900x500/f39c12/ffffff&text=I+Love+Bootstrap" alt="Third slide">
                                 </div> -->
-                                                        </div>
-                                                        <a class="carousel-control-prev"
-                                                            href="#carouselExampleIndicators" role="button"
-                                                            data-slide="prev">
-                                                            <span class="carousel-control-custom-icon"
-                                                                aria-hidden="true">
-                                                                <i class="fas fa-chevron-left"></i>
-                                                            </span>
-                                                            <span class="sr-only">Previous</span>
-                                                        </a>
-                                                        <a class="carousel-control-next"
-                                                            href="#carouselExampleIndicators" role="button"
-                                                            data-slide="next">
-                                                            <span class="carousel-control-custom-icon"
-                                                                aria-hidden="true">
-                                                                <i class="fas fa-chevron-right"></i>
-                                                            </span>
-                                                            <span class="sr-only">Next</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-5">
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <h4><b><?php echo $row['department']; ?></b></h4>
-                                                            <p align="justify"><?php echo $row['description1']; ?></p>
-                                                            <button type="button" class="btn" data-toggle="modal"
-                                                                data-target="#exampleModal"
-                                                                style="background-color:#b84463; color: white;"> Read
-                                                                More </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-4  col-sm-12">
-                                                    <div class="small-box bg-info">
-                                                        <div style="margin: 10px; padding-top:10px">
-                                                            <img src="images/logos/m.png" alt="Third" width="100px"
-                                                                height="100px">
-                                                        </div>
-                                                        <div class="inner">
-                                                            <h5>Our Mission</h5>
-                                                            <p align="justify"><?php echo $row['mission']; ?></p>
-                                                        </div>
-                                                        <a href="#" class="small-box-footer">More info <i
-                                                                class="fas fa-arrow-circle-right"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4  col-sm-12">
-                                                    <div class="small-box bg-success">
-                                                        <div style="margin: 10px; padding-top:10px">
-                                                            <img src="images/logos/v.png" alt="Third" width="100px"
-                                                                height="100px">
-                                                        </div>
-                                                        <div class="inner">
-                                                            <h5>Our Vision</h5>
-                                                            <p align="justify"><?php echo $row['vision']; ?></p>
-                                                            </p>
-                                                        </div> <a href="#" class="small-box-footer">More info <i
-                                                                class="fas fa-arrow-circle-right"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4  col-sm-12">
-                                                    <div class="small-box bg-danger">
-                                                        <div style="margin: 10px; padding-top:10px">
-                                                            <img src="images/logos/o.png" alt="Third" width="100px"
-                                                                height="100px">
-                                                        </div>
-                                                        <div class="inner">
-                                                            <h5>Our Objectives</h5>
-                                                            <p align="justify"><?php echo $row['objectives']; ?></p>
-                                                        </div>
-                                                        <a href="#" class="small-box-footer">More info <i
-                                                                class="fas fa-arrow-circle-right"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="tab-pane" id="tab_2">
-                                            <div class="card-header d-flex p-0">
-                                                <ul class="nav nav-pills ml-auto p-2">
-                                                    <li class="nav-item"><a class="nav-link"
-                                                            href="departmental_team.php?id=<?php echo $row['id']; ?>">Add
-                                                            Team Members</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="row">
-                                                <?php
-                          while ($team_row = mysqli_fetch_assoc($team_result)) {
-                                          ?>
-                                                <div
-                                                    class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-                                                    <div class="card bg-light d-flex flex-fill">
-                                                        <div class="card-header text-muted border-bottom-0">
-                                                            Team of MDC
-                                                        </div>
-
-                                                        <<<<<<< Updated upstream <div class="card-body pt-0">
-                                                            <div class="row">
-                                                                <div class="col-7">
-                                                                    <h2 class="lead">
-                                                                        <b><?php echo $team_row['name']; ?></b>
-                                                                    </h2>
-                                                                    <li class="small"><span class="fa-li"><i
-                                                                                class="fas fa-lg fa-mail"></i></span>
-                                                                        Email: <?php echo $team_row['email']; ?></li>
-                                                                    <ul class="ml-4 mb-0 fa-ul text-muted">
-                                                                        <li class="small"><span class="fa-li"><i
-                                                                                    class="fas fa-lg fa-building"></i></span>
-                                                                            Address:
-                                                                            <?php echo $team_row['location']; ?></li>
-                                                                        <li class="small"><span class="fa-li"><i
-                                                                                    class="fas fa-lg fa-phone"></i></span>
-                                                                            Phone :<?php echo $team_row['phone']; ?>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="col-5 text-center">
-                                                                    <img src="../portal/upload/departments/team/<?php echo $team_row['photo']; ?>"
-                                                                        alt="user-avatar" class="img-circle img-fluid">
+                                                                    </div>
+                                                                    <a class="carousel-control-prev"
+                                                                        href="#carouselExampleIndicators" role="button"
+                                                                        data-slide="prev">
+                                                                        <span class="carousel-control-custom-icon"
+                                                                            aria-hidden="true">
+                                                                            <i class="fas fa-chevron-left"></i>
+                                                                        </span>
+                                                                        <span class="sr-only">Previous</span>
+                                                                    </a>
+                                                                    <a class="carousel-control-next"
+                                                                        href="#carouselExampleIndicators" role="button"
+                                                                        data-slide="next">
+                                                                        <span class="carousel-control-custom-icon"
+                                                                            aria-hidden="true">
+                                                                            <i class="fas fa-chevron-right"></i>
+                                                                        </span>
+                                                                        <span class="sr-only">Next</span>
+                                                                    </a>
                                                                 </div>
                                                             </div>
-                                                    </div>
-                                                    <div class="card-footer">
-                                                        <h2 class="lead"><b><?php echo $team_row['designation']; ?></b>
-                                                        </h2>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <?php
-}
-            ?>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane" id="tab_3">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        <h3 class="card-title">Carousel</h3>
-                                                    </div>
-                                                    <div class="card-body" style="padding:0">
-                                                        <div id="carouselExampleIndicators" class="carousel slide"
-                                                            data-ride="carousel">
-                                                            <ol class="carousel-indicators">
-                                                                <li data-target="#carouselExampleIndicators"
-                                                                    data-slide-to="0" class=""></li>
-                                                                <li data-target="#carouselExampleIndicators"
-                                                                    data-slide-to="1" class=""></li>
-                                                                <li data-target="#carouselExampleIndicators"
-                                                                    data-slide-to="2" class="active"></li>
-                                                            </ol>
-                                                            <div class="carousel-inner">
-                                                                <div class="carousel-item active">
-                                                                    <img class="d-block w-100"
-                                                                        src="../portal/upload/departments/<?php echo $row['department_images2']; ?>"
-                                                                        alt="First slide">
+                                                            <div class="col-lg-5">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <h4><b><?php echo $row['department']; ?></b></h4>
+                                                                        <p align="justify"><?php echo $row['description1']; ?></p>
+                                                                        <button type="button" class="btn" data-toggle="modal"
+                                                                            data-target="#exampleModal"
+                                                                            style="background-color:#b84463; color: white;"> Read
+                                                                            More </button>
+                                                                    </div>
                                                                 </div>
-                                                                <!-- <div class="carousel-item">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-lg-4  col-sm-12">
+                                                                <div class="small-box bg-info">
+                                                                    <div style="margin: 10px; padding-top:10px">
+                                                                        <img src="images/logos/m.png" alt="Third" width="100px"
+                                                                            height="100px">
+                                                                    </div>
+                                                                    <div class="inner">
+                                                                        <h5>Our Mission</h5>
+                                                                        <p align="justify"><?php echo $row['mission']; ?></p>
+                                                                    </div>
+                                                                    <a href="#" class="small-box-footer">More info <i
+                                                                            class="fas fa-arrow-circle-right"></i></a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4  col-sm-12">
+                                                                <div class="small-box bg-success">
+                                                                    <div style="margin: 10px; padding-top:10px">
+                                                                        <img src="images/logos/v.png" alt="Third" width="100px"
+                                                                            height="100px">
+                                                                    </div>
+                                                                    <div class="inner">
+                                                                        <h5>Our Vision</h5>
+                                                                        <p align="justify"><?php echo $row['vision']; ?></p>
+                                                                        </p>
+                                                                    </div> <a href="#" class="small-box-footer">More info <i
+                                                                            class="fas fa-arrow-circle-right"></i></a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4  col-sm-12">
+                                                                <div class="small-box bg-danger">
+                                                                    <div style="margin: 10px; padding-top:10px">
+                                                                        <img src="images/logos/o.png" alt="Third" width="100px"
+                                                                            height="100px">
+                                                                    </div>
+                                                                    <div class="inner">
+                                                                        <h5>Our Objectives</h5>
+                                                                        <p align="justify"><?php echo $row['objectives']; ?></p>
+                                                                    </div>
+                                                                    <a href="#" class="small-box-footer">More info <i
+                                                                            class="fas fa-arrow-circle-right"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tab-pane" id="tab_2">
+                                                        <div class="card-header d-flex p-0">
+                                                            <ul class="nav nav-pills ml-auto p-2">
+                                                                <li class="nav-item"><a class="nav-link"
+                                                                        href="departmental_team.php?id=<?php echo $row['id']; ?>">Add
+                                                                        Team Members</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="row">
+                                                            <?php
+                                                            while ($team_row = mysqli_fetch_assoc($team_result)) {
+                                                                ?>
+                                                                <div
+                                                                    class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                                                                    <div class="card bg-light d-flex flex-fill">
+                                                                        <div class="card-header text-muted border-bottom-0">
+                                                                            Team of MDC
+                                                                        </div>
+
+                                                                        <div class="card-body pt-0">
+                                                                            <div class="row">
+                                                                                <div class="col-7">
+                                                                                    <h2 class="lead">
+                                                                                        <b><?php echo $team_row['name']; ?></b>
+                                                                                    </h2>
+                                                                                    <li class="small"><span class="fa-li"><i
+                                                                                                class="fas fa-lg fa-mail"></i></span>
+                                                                                        Email: <?php echo $team_row['email']; ?></li>
+                                                                                    <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                                                        <li class="small"><span class="fa-li"><i
+                                                                                                    class="fas fa-lg fa-building"></i></span>
+                                                                                            Address:
+                                                                                            <?php echo $team_row['location']; ?></li>
+                                                                                        <li class="small"><span class="fa-li"><i
+                                                                                                    class="fas fa-lg fa-phone"></i></span>
+                                                                                            Phone :<?php echo $team_row['phone']; ?>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                                <div class="col-5 text-center">
+                                                                                    <img src="../portal/upload/departments/team/<?php echo $team_row['photo']; ?>"
+                                                                                        alt="user-avatar" class="img-circle img-fluid">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="card-footer">
+                                                                            <h2 class="lead">
+                                                                                <b><?php echo $team_row['designation']; ?></b>
+                                                                            </h2>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane" id="tab_3">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="card">
+                                                                    <div class="card-header">
+                                                                        <h3 class="card-title">Carousel</h3>
+                                                                    </div>
+                                                                    <div class="card-body" style="padding:0">
+                                                                        <div id="carouselExampleIndicators" class="carousel slide"
+                                                                            data-ride="carousel">
+                                                                            <ol class="carousel-indicators">
+                                                                                <li data-target="#carouselExampleIndicators"
+                                                                                    data-slide-to="0" class=""></li>
+                                                                                <li data-target="#carouselExampleIndicators"
+                                                                                    data-slide-to="1" class=""></li>
+                                                                                <li data-target="#carouselExampleIndicators"
+                                                                                    data-slide-to="2" class="active"></li>
+                                                                            </ol>
+                                                                            <div class="carousel-inner">
+                                                                                <div class="carousel-item active">
+                                                                                    <img class="d-block w-100"
+                                                                                        src="../portal/upload/departments/<?php echo $row['department_images2']; ?>"
+                                                                                        alt="First slide">
+                                                                                </div>
+                                                                                <!-- <div class="carousel-item">
 =======
                                                         <div class="card-body pt-0">
                                                             <div class="row">
@@ -344,8 +371,8 @@ require_once 'function.php';
                                                     </div>
                                                 </div>
                                                 <?php
-}
-            ?>
+                                            }
+                                            ?>
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="tab_3">
@@ -373,58 +400,58 @@ require_once 'function.php';
                                                                             alt="First slide">
                                                                     </div>
                                                                     <!-- <div class="carousel-item">
->>>>>>> Stashed changes
+
                                       <img class="d-block w-100" src="https://placehold.it/900x500/3c8dbc/ffffff&amp;text=I+Love+Bootstrap" alt="Second slide">
                                     </div>
                                     <div class="carousel-item active">
                                       <img class="d-block w-100" src="https://placehold.it/900x500/f39c12/ffffff&amp;text=I+Love+Bootstrap" alt="Third slide">
                                     </div> -->
-                                                                <<<<<<< Updated upstream </div>
-                                                                    <a class="carousel-control-prev"
-                                                                        href="#carouselExampleIndicators" role="button"
-                                                                        data-slide="prev">
-                                                                        <span class="carousel-control-custom-icon"
-                                                                            aria-hidden="true">
-                                                                            <i class="fas fa-chevron-left"></i>
-                                                                        </span>
-                                                                        <span class="sr-only">Previous</span>
-                                                                    </a>
-                                                                    <a class="carousel-control-next"
-                                                                        href="#carouselExampleIndicators" role="button"
-                                                                        data-slide="next">
-                                                                        <span class="carousel-control-custom-icon"
-                                                                            aria-hidden="true">
-                                                                            <i class="fas fa-chevron-right"></i>
-                                                                        </span>
-                                                                        <span class="sr-only">Next</span>
-                                                                    </a>
+                                                                        </div>
+                                                                        <a class="carousel-control-prev"
+                                                                            href="#carouselExampleIndicators" role="button"
+                                                                            data-slide="prev">
+                                                                            <span class="carousel-control-custom-icon"
+                                                                                aria-hidden="true">
+                                                                                <i class="fas fa-chevron-left"></i>
+                                                                            </span>
+                                                                            <span class="sr-only">Previous</span>
+                                                                        </a>
+                                                                        <a class="carousel-control-next"
+                                                                            href="#carouselExampleIndicators" role="button"
+                                                                            data-slide="next">
+                                                                            <span class="carousel-control-custom-icon"
+                                                                                aria-hidden="true">
+                                                                                <i class="fas fa-chevron-right"></i>
+                                                                            </span>
+                                                                            <span class="sr-only">Next</span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="card">
-                                                        <div class="card-header">
-                                                            <h3 class="card-title">Carousel</h3>
-                                                        </div>
-                                                        <div class="card-body" style="padding:0">
-                                                            <div id="carouselExampleIndicators" class="carousel slide"
-                                                                data-ride="carousel">
-                                                                <ol class="carousel-indicators">
-                                                                    <li data-target="#carouselExampleIndicators"
-                                                                        data-slide-to="0" class=""></li>
-                                                                    <li data-target="#carouselExampleIndicators"
-                                                                        data-slide-to="1" class=""></li>
-                                                                    <li data-target="#carouselExampleIndicators"
-                                                                        data-slide-to="2" class="active"></li>
-                                                                </ol>
-                                                                <div class="carousel-inner">
-                                                                    <div class="carousel-item active">
-                                                                        <img class="d-block w-100"
-                                                                            src="../portal/upload/departments/<?php echo $row['department_images2']; ?>"
-                                                                            alt="First slide">
-                                                                    </div>
-                                                                    <!-- <div class="carousel-item">
+                                                        <div class="col-md-6">
+                                                            <div class="card">
+                                                                <div class="card-header">
+                                                                    <h3 class="card-title">Carousel</h3>
+                                                                </div>
+                                                                <div class="card-body" style="padding:0">
+                                                                    <div id="carouselExampleIndicators" class="carousel slide"
+                                                                        data-ride="carousel">
+                                                                        <ol class="carousel-indicators">
+                                                                            <li data-target="#carouselExampleIndicators"
+                                                                                data-slide-to="0" class=""></li>
+                                                                            <li data-target="#carouselExampleIndicators"
+                                                                                data-slide-to="1" class=""></li>
+                                                                            <li data-target="#carouselExampleIndicators"
+                                                                                data-slide-to="2" class="active"></li>
+                                                                        </ol>
+                                                                        <div class="carousel-inner">
+                                                                            <div class="carousel-item active">
+                                                                                <img class="d-block w-100"
+                                                                                    src="../portal/upload/departments/<?php echo $row['department_images2']; ?>"
+                                                                                    alt="First slide">
+                                                                            </div>
+                                                                            <!-- <div class="carousel-item">
 =======
                                                                 </div>
                                                                 <a class="carousel-control-prev"
@@ -472,16 +499,16 @@ require_once 'function.php';
                                                                             alt="First slide">
                                                                     </div>
                                                                     <!-- <div class="carousel-item">
->>>>>>> Stashed changes
+
                                       <img class="d-block w-100" src="https://placehold.it/900x500/3c8dbc/ffffff&amp;text=I+Love+Bootstrap" alt="Second slide">
                                     </div>
                                     <div class="carousel-item active">
                                       <img class="d-block w-100" src="https://placehold.it/900x500/f39c12/ffffff&amp;text=I+Love+Bootstrap" alt="Third slide">
                                     </div> -->
-                                                                    <<<<<<< Updated upstream </div>
+                                                                        </div>
                                                                         <a class="carousel-control-prev"
-                                                                            href="#carouselExampleIndicators"
-                                                                            role="button" data-slide="prev">
+                                                                            href="#carouselExampleIndicators" role="button"
+                                                                            data-slide="prev">
                                                                             <span class="carousel-control-custom-icon"
                                                                                 aria-hidden="true">
                                                                                 <i class="fas fa-chevron-left"></i>
@@ -489,41 +516,41 @@ require_once 'function.php';
                                                                             <span class="sr-only">Previous</span>
                                                                         </a>
                                                                         <a class="carousel-control-next"
-                                                                            href="#carouselExampleIndicators"
-                                                                            role="button" data-slide="next">
+                                                                            href="#carouselExampleIndicators" role="button"
+                                                                            data-slide="next">
                                                                             <span class="carousel-control-custom-icon"
                                                                                 aria-hidden="true">
                                                                                 <i class="fas fa-chevron-right"></i>
                                                                             </span>
                                                                             <span class="sr-only">Next</span>
                                                                         </a>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="card">
-                                                            <div class="card-header">
-                                                                <h3 class="card-title">Carousel</h3>
-                                                            </div>
-                                                            <div class="card-body" style="padding:0">
-                                                                <div id="carouselExampleIndicators"
-                                                                    class="carousel slide" data-ride="carousel">
-                                                                    <ol class="carousel-indicators">
-                                                                        <li data-target="#carouselExampleIndicators"
-                                                                            data-slide-to="0" class=""></li>
-                                                                        <li data-target="#carouselExampleIndicators"
-                                                                            data-slide-to="1" class=""></li>
-                                                                        <li data-target="#carouselExampleIndicators"
-                                                                            data-slide-to="2" class="active"></li>
-                                                                    </ol>
-                                                                    <div class="carousel-inner">
-                                                                        <div class="carousel-item active">
-                                                                            <img class="d-block w-100"
-                                                                                src="../portal/upload/departments/<?php echo $row['department_images2']; ?>"
-                                                                                alt="First slide">
-                                                                        </div>
-                                                                        <!-- <div class="carousel-item">
+                                                        <div class="col-md-6">
+                                                            <div class="card">
+                                                                <div class="card-header">
+                                                                    <h3 class="card-title">Carousel</h3>
+                                                                </div>
+                                                                <div class="card-body" style="padding:0">
+                                                                    <div id="carouselExampleIndicators" class="carousel slide"
+                                                                        data-ride="carousel">
+                                                                        <ol class="carousel-indicators">
+                                                                            <li data-target="#carouselExampleIndicators"
+                                                                                data-slide-to="0" class=""></li>
+                                                                            <li data-target="#carouselExampleIndicators"
+                                                                                data-slide-to="1" class=""></li>
+                                                                            <li data-target="#carouselExampleIndicators"
+                                                                                data-slide-to="2" class="active"></li>
+                                                                        </ol>
+                                                                        <div class="carousel-inner">
+                                                                            <div class="carousel-item active">
+                                                                                <img class="d-block w-100"
+                                                                                    src="../portal/upload/departments/<?php echo $row['department_images2']; ?>"
+                                                                                    alt="First slide">
+                                                                            </div>
+                                                                            <!-- <div class="carousel-item">
 =======
                                                                 </div>
                                                                 <a class="carousel-control-prev"
@@ -571,69 +598,16 @@ require_once 'function.php';
                                                                             alt="First slide">
                                                                     </div>
                                                                     <!-- <div class="carousel-item">
->>>>>>> Stashed changes
+
                                       <img class="d-block w-100" src="https://placehold.it/900x500/3c8dbc/ffffff&amp;text=I+Love+Bootstrap" alt="Second slide">
                                     </div>
                                     <div class="carousel-item active">
                                       <img class="d-block w-100" src="https://placehold.it/900x500/f39c12/ffffff&amp;text=I+Love+Bootstrap" alt="Third slide">
                                     </div> -->
-                                                                        <<<<<<< Updated upstream </div>
-                                                                            <a class="carousel-control-prev"
-                                                                                href="#carouselExampleIndicators"
-                                                                                role="button" data-slide="prev">
-                                                                                <span
-                                                                                    class="carousel-control-custom-icon"
-                                                                                    aria-hidden="true">
-                                                                                    <i class="fas fa-chevron-left"></i>
-                                                                                </span>
-                                                                                <span class="sr-only">Previous</span>
-                                                                            </a>
-                                                                            <a class="carousel-control-next"
-                                                                                href="#carouselExampleIndicators"
-                                                                                role="button" data-slide="next">
-                                                                                <span
-                                                                                    class="carousel-control-custom-icon"
-                                                                                    aria-hidden="true">
-                                                                                    <i class="fas fa-chevron-right"></i>
-                                                                                </span>
-                                                                                <span class="sr-only">Next</span>
-                                                                            </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="card">
-                                                                <div class="card-header">
-                                                                    <h3 class="card-title">Carousel</h3>
-                                                                </div>
-                                                                <div class="card-body" style="padding:0">
-                                                                    <div id="carouselExampleIndicators"
-                                                                        class="carousel slide" data-ride="carousel">
-                                                                        <ol class="carousel-indicators">
-                                                                            <li data-target="#carouselExampleIndicators"
-                                                                                data-slide-to="0" class=""></li>
-                                                                            <li data-target="#carouselExampleIndicators"
-                                                                                data-slide-to="1" class=""></li>
-                                                                            <li data-target="#carouselExampleIndicators"
-                                                                                data-slide-to="2" class="active"></li>
-                                                                        </ol>
-                                                                        <div class="carousel-inner">
-                                                                            <div class="carousel-item active">
-                                                                                <img class="d-block w-100"
-                                                                                    src="../portal/upload/departments/<?php echo $row['department_images2']; ?>"
-                                                                                    alt="First slide">
-                                                                            </div>
-                                                                            <!-- <div class="carousel-item">
-                                        <img class="d-block w-100" src="https://placehold.it/900x500/3c8dbc/ffffff&amp;text=I+Love+Bootstrap" alt="Second slide">
-                                      </div>
-                                      <div class="carousel-item active">
-                                        <img class="d-block w-100" src="https://placehold.it/900x500/f39c12/ffffff&amp;text=I+Love+Bootstrap" alt="Third slide">
-                                      </div> -->
                                                                         </div>
                                                                         <a class="carousel-control-prev"
-                                                                            href="#carouselExampleIndicators"
-                                                                            role="button" data-slide="prev">
+                                                                            href="#carouselExampleIndicators" role="button"
+                                                                            data-slide="prev">
                                                                             <span class="carousel-control-custom-icon"
                                                                                 aria-hidden="true">
                                                                                 <i class="fas fa-chevron-left"></i>
@@ -641,8 +615,8 @@ require_once 'function.php';
                                                                             <span class="sr-only">Previous</span>
                                                                         </a>
                                                                         <a class="carousel-control-next"
-                                                                            href="#carouselExampleIndicators"
-                                                                            role="button" data-slide="next">
+                                                                            href="#carouselExampleIndicators" role="button"
+                                                                            data-slide="next">
                                                                             <span class="carousel-control-custom-icon"
                                                                                 aria-hidden="true">
                                                                                 <i class="fas fa-chevron-right"></i>
@@ -659,8 +633,8 @@ require_once 'function.php';
                                                                     <h3 class="card-title">Carousel</h3>
                                                                 </div>
                                                                 <div class="card-body" style="padding:0">
-                                                                    <div id="carouselExampleIndicators"
-                                                                        class="carousel slide" data-ride="carousel">
+                                                                    <div id="carouselExampleIndicators" class="carousel slide"
+                                                                        data-ride="carousel">
                                                                         <ol class="carousel-indicators">
                                                                             <li data-target="#carouselExampleIndicators"
                                                                                 data-slide-to="0" class=""></li>
@@ -683,8 +657,8 @@ require_once 'function.php';
                                       </div> -->
                                                                         </div>
                                                                         <a class="carousel-control-prev"
-                                                                            href="#carouselExampleIndicators"
-                                                                            role="button" data-slide="prev">
+                                                                            href="#carouselExampleIndicators" role="button"
+                                                                            data-slide="prev">
                                                                             <span class="carousel-control-custom-icon"
                                                                                 aria-hidden="true">
                                                                                 <i class="fas fa-chevron-left"></i>
@@ -692,8 +666,59 @@ require_once 'function.php';
                                                                             <span class="sr-only">Previous</span>
                                                                         </a>
                                                                         <a class="carousel-control-next"
-                                                                            href="#carouselExampleIndicators"
-                                                                            role="button" data-slide="next">
+                                                                            href="#carouselExampleIndicators" role="button"
+                                                                            data-slide="next">
+                                                                            <span class="carousel-control-custom-icon"
+                                                                                aria-hidden="true">
+                                                                                <i class="fas fa-chevron-right"></i>
+                                                                            </span>
+                                                                            <span class="sr-only">Next</span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="card">
+                                                                <div class="card-header">
+                                                                    <h3 class="card-title">Carousel</h3>
+                                                                </div>
+                                                                <div class="card-body" style="padding:0">
+                                                                    <div id="carouselExampleIndicators" class="carousel slide"
+                                                                        data-ride="carousel">
+                                                                        <ol class="carousel-indicators">
+                                                                            <li data-target="#carouselExampleIndicators"
+                                                                                data-slide-to="0" class=""></li>
+                                                                            <li data-target="#carouselExampleIndicators"
+                                                                                data-slide-to="1" class=""></li>
+                                                                            <li data-target="#carouselExampleIndicators"
+                                                                                data-slide-to="2" class="active"></li>
+                                                                        </ol>
+                                                                        <div class="carousel-inner">
+                                                                            <div class="carousel-item active">
+                                                                                <img class="d-block w-100"
+                                                                                    src="../portal/upload/departments/<?php echo $row['department_images2']; ?>"
+                                                                                    alt="First slide">
+                                                                            </div>
+                                                                            <!-- <div class="carousel-item">
+                                        <img class="d-block w-100" src="https://placehold.it/900x500/3c8dbc/ffffff&amp;text=I+Love+Bootstrap" alt="Second slide">
+                                      </div>
+                                      <div class="carousel-item active">
+                                        <img class="d-block w-100" src="https://placehold.it/900x500/f39c12/ffffff&amp;text=I+Love+Bootstrap" alt="Third slide">
+                                      </div> -->
+                                                                        </div>
+                                                                        <a class="carousel-control-prev"
+                                                                            href="#carouselExampleIndicators" role="button"
+                                                                            data-slide="prev">
+                                                                            <span class="carousel-control-custom-icon"
+                                                                                aria-hidden="true">
+                                                                                <i class="fas fa-chevron-left"></i>
+                                                                            </span>
+                                                                            <span class="sr-only">Previous</span>
+                                                                        </a>
+                                                                        <a class="carousel-control-next"
+                                                                            href="#carouselExampleIndicators" role="button"
+                                                                            data-slide="next">
                                                                             <span class="carousel-control-custom-icon"
                                                                                 aria-hidden="true">
                                                                                 <i class="fas fa-chevron-right"></i>
@@ -723,8 +748,8 @@ require_once 'function.php';
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label>Name</label>
-                                                                            <input type="text" class="form-control"
-                                                                                name="name" id="name" />
+                                                                            <input type="text" class="form-control" name="name"
+                                                                                id="name" />
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label>E-Mail</label>
@@ -733,18 +758,16 @@ require_once 'function.php';
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label>Subject</label>
-                                                                            <input type="text" name="subject"
-                                                                                id="subject" class="form-control" />
+                                                                            <input type="text" name="subject" id="subject"
+                                                                                class="form-control" />
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label>Message</label>
                                                                             <textarea name="message" id="message"
-                                                                                class="form-control"
-                                                                                rows="4"></textarea>
+                                                                                class="form-control" rows="4"></textarea>
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <button type="submit"
-                                                                                class="btn btn-primary"
+                                                                            <button type="submit" class="btn btn-primary"
                                                                                 name="submit">Submit</button>
                                                                         </div>
                                                                     </form>
@@ -755,15 +778,15 @@ require_once 'function.php';
                                                 </div>
                                                 =======
                                             </div>
-                                            <a class="carousel-control-prev" href="#carouselExampleIndicators"
-                                                role="button" data-slide="prev">
+                                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                                                data-slide="prev">
                                                 <span class="carousel-control-custom-icon" aria-hidden="true">
                                                     <i class="fas fa-chevron-left"></i>
                                                 </span>
                                                 <span class="sr-only">Previous</span>
                                             </a>
-                                            <a class="carousel-control-next" href="#carouselExampleIndicators"
-                                                role="button" data-slide="next">
+                                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                                                data-slide="next">
                                                 <span class="carousel-control-custom-icon" aria-hidden="true">
                                                     <i class="fas fa-chevron-right"></i>
                                                 </span>
@@ -773,7 +796,7 @@ require_once 'function.php';
                                     </div>
                                 </div>
                             </div>
-                            >>>>>>> Stashed changes
+
 
 
 
@@ -788,53 +811,53 @@ require_once 'function.php';
                                 </div>
                                 <div class="row">
                                     <?php
-                    while ($team_row = mysqli_fetch_assoc($team_result)) {
-                        ?>
-                                    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-                                        <div class="card bg-light d-flex flex-fill">
-                                            <div class="card-header text-muted border-bottom-0">
-                                                Team of MDC
-                                            </div>
+                                    while ($team_row = mysqli_fetch_assoc($team_result)) {
+                                        ?>
+                                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                                            <div class="card bg-light d-flex flex-fill">
+                                                <div class="card-header text-muted border-bottom-0">
+                                                    Team of MDC
+                                                </div>
 
-                                            <div class="card-body pt-0">
-                                                <div class="row">
-                                                    <div class="col-7">
-                                                        <h2 class="lead">
-                                                            <b><?php echo $team_row['name']; ?></b>
-                                                        </h2>
-                                                        <li class="small"><span class="fa-li"><i
-                                                                    class="fas fa-lg fa-mail"></i></span>
-                                                            Email: <?php echo $team_row['email']; ?>
-                                                        </li>
-                                                        <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                <div class="card-body pt-0">
+                                                    <div class="row">
+                                                        <div class="col-7">
+                                                            <h2 class="lead">
+                                                                <b><?php echo $team_row['name']; ?></b>
+                                                            </h2>
                                                             <li class="small"><span class="fa-li"><i
-                                                                        class="fas fa-lg fa-building"></i></span>
-                                                                Address:
-                                                                <?php echo $team_row['location']; ?>
+                                                                        class="fas fa-lg fa-mail"></i></span>
+                                                                Email: <?php echo $team_row['email']; ?>
                                                             </li>
-                                                            <li class="small"><span class="fa-li"><i
-                                                                        class="fas fa-lg fa-phone"></i></span>
-                                                                Phone
-                                                                :<?php echo $team_row['phone']; ?>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-5 text-center">
-                                                        <img src="upload/departments/team/<?php echo $team_row['photo']; ?>"
-                                                            alt="user-avatar" class="img-circle img-fluid">
+                                                            <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                                <li class="small"><span class="fa-li"><i
+                                                                            class="fas fa-lg fa-building"></i></span>
+                                                                    Address:
+                                                                    <?php echo $team_row['location']; ?>
+                                                                </li>
+                                                                <li class="small"><span class="fa-li"><i
+                                                                            class="fas fa-lg fa-phone"></i></span>
+                                                                    Phone
+                                                                    :<?php echo $team_row['phone']; ?>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-5 text-center">
+                                                            <img src="upload/departments/team/<?php echo $team_row['photo']; ?>"
+                                                                alt="user-avatar" class="img-circle img-fluid">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="card-footer">
-                                                <h2 class="lead">
-                                                    <b><?php echo $team_row['designation']; ?></b>
-                                                </h2>
+                                                <div class="card-footer">
+                                                    <h2 class="lead">
+                                                        <b><?php echo $team_row['designation']; ?></b>
+                                                    </h2>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <?php
-                    }
-                    ?>
+                                        <?php
+                                    }
+                                    ?>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -849,8 +872,8 @@ require_once 'function.php';
                                                 </li>
                                                 <li data-target="#carouselExampleIndicators" data-slide-to="1" class="">
                                                 </li>
-                                                <li data-target="#carouselExampleIndicators" data-slide-to="2"
-                                                    class="active"></li>
+                                                <li data-target="#carouselExampleIndicators" data-slide-to="2" class="active">
+                                                </li>
                                             </ol>
                                             <div class="carousel-inner">
                                                 <div class="carousel-item active">
@@ -865,15 +888,15 @@ require_once 'function.php';
                                         <img class="d-block w-100" src="https://placehold.it/900x500/f39c12/ffffff&amp;text=I+Love+Bootstrap" alt="Third slide">
                                       </div> -->
                                             </div>
-                                            <a class="carousel-control-prev" href="#carouselExampleIndicators"
-                                                role="button" data-slide="prev">
+                                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                                                data-slide="prev">
                                                 <span class="carousel-control-custom-icon" aria-hidden="true">
                                                     <i class="fas fa-chevron-left"></i>
                                                 </span>
                                                 <span class="sr-only">Previous</span>
                                             </a>
-                                            <a class="carousel-control-next" href="#carouselExampleIndicators"
-                                                role="button" data-slide="next">
+                                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                                                data-slide="next">
                                                 <span class="carousel-control-custom-icon" aria-hidden="true">
                                                     <i class="fas fa-chevron-right"></i>
                                                 </span>
@@ -895,8 +918,8 @@ require_once 'function.php';
                                                 </li>
                                                 <li data-target="#carouselExampleIndicators" data-slide-to="1" class="">
                                                 </li>
-                                                <li data-target="#carouselExampleIndicators" data-slide-to="2"
-                                                    class="active"></li>
+                                                <li data-target="#carouselExampleIndicators" data-slide-to="2" class="active">
+                                                </li>
                                             </ol>
                                             <div class="carousel-inner">
                                                 <div class="carousel-item active">
@@ -911,15 +934,15 @@ require_once 'function.php';
                                         <img class="d-block w-100" src="https://placehold.it/900x500/f39c12/ffffff&amp;text=I+Love+Bootstrap" alt="Third slide">
                                       </div> -->
                                             </div>
-                                            <a class="carousel-control-prev" href="#carouselExampleIndicators"
-                                                role="button" data-slide="prev">
+                                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                                                data-slide="prev">
                                                 <span class="carousel-control-custom-icon" aria-hidden="true">
                                                     <i class="fas fa-chevron-left"></i>
                                                 </span>
                                                 <span class="sr-only">Previous</span>
                                             </a>
-                                            <a class="carousel-control-next" href="#carouselExampleIndicators"
-                                                role="button" data-slide="next">
+                                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                                                data-slide="next">
                                                 <span class="carousel-control-custom-icon" aria-hidden="true">
                                                     <i class="fas fa-chevron-right"></i>
                                                 </span>
@@ -930,108 +953,103 @@ require_once 'function.php';
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="tab-pane" id="tab_10">
-                        <div class="row justify-content-center">
-                            <div class="col-md-4">
-                                <!-- Adjust the column width as needed -->
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h2>Feedback Form</h2>
-                                        <form role="form" method="post" action="departmental_feedback_form.php"
-                                            enctype="multipart/form-data">
-                                            <div class="form-group">
-                                                <input type="hidden" class="form-control" name="dept_id" id="dept_id"
-                                                    value="<?php echo $dept_id; ?>" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Name</label>
-                                                <input type="text" class="form-control" name="name" id="name" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>E-Mail</label>
-                                                <input type="email" class="form-control" name="email" id="email" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Subject</label>
-                                                <input type="text" name="subject" id="subject" class="form-control" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Message</label>
-                                                <textarea name="message" id="message" class="form-control"
-                                                    rows="4"></textarea>
-                                            </div>
-                                            <div class="form-group">
-                                                <button type="submit" class="btn btn-primary"
-                                                    name="submit">Submit</button>
-                                            </div>
-                                        </form>
-                                    </div>
+                </div>
+                <div class="tab-pane" id="tab_10">
+                    <div class="row justify-content-center">
+                        <div class="col-md-4">
+                            <!-- Adjust the column width as needed -->
+                            <div class="card">
+                                <div class="card-body">
+                                    <h2>Feedback Form</h2>
+                                    <form role="form" method="post" action="departmental_feedback_form.php"
+                                        enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <input type="hidden" class="form-control" name="dept_id" id="dept_id"
+                                                value="<?php echo $dept_id; ?>" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <input type="text" class="form-control" name="name" id="name" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>E-Mail</label>
+                                            <input type="email" class="form-control" name="email" id="email" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Subject</label>
+                                            <input type="text" name="subject" id="subject" class="form-control" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Message</label>
+                                            <textarea name="message" id="message" class="form-control" rows="4"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane" id="tab_11">
+                </div>
+                <div class="tab-pane" id="tab_11">
 
-                        <?php include "service_request_form.php";?>
-
-                    </div>
-
-                    <div class="tab-pane" id="tab_4">
-
-                        <?php include "associates_with_us.php";?>
-
-                    </div>
-                    <div class="tab-pane" id="tab_6">
-                        <div class="row justify-content-center">
-                            <div class="col-md-4">
-                                <!-- Adjust the column width as needed -->
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h2></h2>
-                                        <form role="form" method="post" action=".php" enctype="multipart/form-data">
-                                            <div class="form-group">
-                                                <input type="hidden" class="form-control" name="dept_id" id="dept_id"
-                                                    value="<?php echo $dept_id; ?>" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Name</label>
-                                                <input type="text" class="form-control" name="name" id="name" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>E-Mail</label>
-                                                <input type="email" class="form-control" name="email" id="email" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Subject</label>
-                                                <input type="text" name="subject" id="subject" class="form-control" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Message</label>
-                                                <textarea name="message" id="message" class="form-control"
-                                                    rows="4"></textarea>
-                                            </div>
-                                            <div class="form-group">
-                                                <button type="submit" class="btn btn-primary"
-                                                    name="submit">Submit</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php include "service_request_form.php"; ?>
 
                 </div>
-        </div>
-        <?php
-                      }
-                          }
-                       else {
-                          echo "";
-                      }
 
-                      ?>
+                <div class="tab-pane" id="tab_4">
+
+                    <?php include "associates_with_us.php"; ?>
+
+                </div>
+                <div class="tab-pane" id="tab_6">
+                    <div class="row justify-content-center">
+                        <div class="col-md-4">
+                            <!-- Adjust the column width as needed -->
+                            <div class="card">
+                                <div class="card-body">
+                                    <h2></h2>
+                                    <form role="form" method="post" action=".php" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <input type="hidden" class="form-control" name="dept_id" id="dept_id"
+                                                value="<?php echo $dept_id; ?>" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <input type="text" class="form-control" name="name" id="name" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>E-Mail</label>
+                                            <input type="email" class="form-control" name="email" id="email" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Subject</label>
+                                            <input type="text" name="subject" id="subject" class="form-control" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Message</label>
+                                            <textarea name="message" id="message" class="form-control" rows="4"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+            <?php
+                                        }
+                                    } else {
+                                        echo "";
+                                    }
+
+                                    ?>
 
     </div>
 
