@@ -1,6 +1,7 @@
-
-
-
+<?php
+// include database connection file
+require_once 'function.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -56,42 +56,38 @@ require_once 'function.php';
                       <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">About Department</a></li>
                       <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Our Team</a></li>
                       <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Achievements and Projects</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Associates with us</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Schemes</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Services</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Information</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Project</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Programs</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Feedback</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Service Request Form</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">Download</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">Notice Board</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#tab_6" data-toggle="tab">Chat Box</a></li>
-                      <!-- <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <span class="caret"></span></a>
+                      <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">Associates with us</a></li>
+                      <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">Schemes</a></li>
+                      <li class="nav-item"><a class="nav-link" href="#tab_6" data-toggle="tab">Services</a></li>
+                      <li class="nav-item"><a class="nav-link" href="#tab_7" data-toggle="tab">Information</a></li>
+                      <li class="nav-item"><a class="nav-link" href="#tab_8" data-toggle="tab">Project</a></li>
+                      <li class="nav-item"><a class="nav-link" href="#tab_9" data-toggle="tab">Programs</a></li>
+                      <li class="nav-item"><a class="nav-link" href="#tab_10" data-toggle="tab">Feedback</a></li>
+                      <li class="nav-item"><a class="nav-link" href="#tab_11" data-toggle="tab">Service Request Form</a></li>
+                      <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <span class="caret"></span></a>
                         <div class="dropdown-menu">
                           <a class="dropdown-item" tabindex="-1" href="#">Download</a>
                           <a class="dropdown-item" tabindex="-1" href="#">Notice Board</a>
                           <a class="dropdown-item" tabindex="-1" href="#">Chat Box</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" tabindex="-1" href="#">Separated link</a>
                         </div>
-                      </li> -->
+                      </li>
                     </ul>
                   </div>
 
                   <div class="card-body">
                     <?php
-// include database connection file
-
-if (isset($_GET['name'])) {
-    $dpt_name = $_GET['name'];
-    $sql = "SELECT * FROM departmental_information where department = '$dpt_name'";
-    $result = mysqli_query($conn, $sql);
-    if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            $sql = "SELECT * FROM team_member where department_id = $row[id]";
-            $team_result = mysqli_query($conn, $sql);
-            ?>
+                  // include database connection file
+                  $dept_id ;
+                  if (isset($_GET['name'])) {
+                      $dpt_name = $_GET['name'];
+                      $sql = "SELECT * FROM departmental_information where department = '$dpt_name'";
+                      $result = mysqli_query($conn, $sql);
+                      if (mysqli_num_rows($result) > 0) {
+                          while ($row = mysqli_fetch_assoc($result)) {
+                              $dept_id = $row['id'];
+                              $sql = "SELECT * FROM team_member where department_id = $row[id]";
+                              $team_result = mysqli_query($conn, $sql);
+                              ?>
                     <div class="tab-content">
                       <div class="tab-pane active" id="tab_1">
                         <div class="row">
@@ -179,15 +175,15 @@ if (isset($_GET['name'])) {
                       </div>
 
                       <div class="tab-pane" id="tab_2">
-                      <div class="card-header d-flex p-0">
-                        <ul class="nav nav-pills ml-auto p-2">
-                          <li class="nav-item"><a class="nav-link" href="departmental_team.php?id=<?php echo $row['id']; ?>" >Add Team Members</a></li>
-                        </ul>
-                    </div>
+                        <div class="card-header d-flex p-0">
+                          <ul class="nav nav-pills ml-auto p-2">
+                            <li class="nav-item"><a class="nav-link" href="departmental_team.php?id=<?php echo $row['id']; ?>" >Add Team Members</a></li>
+                          </ul>
+                        </div>
                         <div class="row">
                         <?php
-while ($team_row = mysqli_fetch_assoc($team_result)) {
-                ?>
+                          while ($team_row = mysqli_fetch_assoc($team_result)) {
+                                          ?>
                           <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
                             <div class="card bg-light d-flex flex-fill">
                               <div class="card-header text-muted border-bottom-0">
@@ -418,17 +414,55 @@ while ($team_row = mysqli_fetch_assoc($team_result)) {
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                    <?php
-}
-    }
-} else {
-    echo "";
-}
+                        <div class="tab-pane" id="tab_10">
+                          <div class="row justify-content-center">
+                              <div class="col-md-4"> <!-- Adjust the column width as needed -->
+                                  <div class="card">
+                                      <div class="card-body">
+                                          <h2>Feedback Form</h2>
+                                          <form role="form" method="post" action="departmental_feedback_form.php" enctype="multipart/form-data">
+                                              <div class="form-group">
+                                                  <input type="hidden" class="form-control" name="dept_id" id="dept_id" value="<?php echo $dept_id; ?>"/>
+                                              </div>
+                                              <div class="form-group">
+                                                  <label>Name</label>
+                                                  <input type="text" class="form-control" name="name" id="name" />
+                                              </div>
+                                              <div class="form-group">
+                                                  <label>E-Mail</label>
+                                                  <input type="email" class="form-control" name="email" id="email" />
+                                              </div>
+                                              <div class="form-group">
+                                                  <label>Subject</label>
+                                                  <input type="text" name="subject" id="subject" class="form-control" />
+                                              </div>
+                                              <div class="form-group">
+                                                  <label>Message</label>
+                                                  <textarea name="message" id="message" class="form-control" rows="4"></textarea>
+                                              </div>
+                                              <div class="form-group">
+                                                  <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                                              </div>
+                                          </form>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
 
-?>
+                      </div>
+                    </div>  
+                    <?php
+                      }
+                          }
+                      } else {
+                          echo "";
+                      }
+
+                      ?>
+                      
                   </div>
+
                 </div>
               </div>
             </div>

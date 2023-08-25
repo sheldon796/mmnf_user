@@ -1,19 +1,19 @@
-<?php  include "function.php";
-if(isset($_POST['submit'])){
+<?php include "function.php";
+if (isset($_POST['submit'])) {
     $name = $_POST['name'];
-    $mobile = $_POST['mobile'];	
+    $mobile = $_POST['mobile'];
     $email = $_POST['email'];
     $address = $_POST['address'];
     $qualification = $_POST['qualification'];
-    $occ = $_POST['occ'];	
+    $occ = $_POST['occ'];
     $experty = $_POST['experty'];
     $s_experience = $_POST['s_experience'];
-    $age_group = $_POST['age_group'];	
+    $age_group = $_POST['age_group'];
     $gender = $_POST['gender'];
     $r_join = $_POST['r_join'];
     $sql = "INSERT INTO general (name, mobile, email, address, qualification, occ, experty, s_experience, age_group, gender, r_join) values ('$name', '$mobile', '$email', '$address', '$qualification', '$occ', '$experty', '$s_experience', '$age_group', '$gender', '$r_join')";
     $sql = "UPDATE registration SET is_form_completed = 1 WHERE id = " . $_SESSION['user_id'];
-    mysqli_query($conn,$sql);
+    mysqli_query($conn, $sql);
     ?>
         <script>
             window.location = "fees.php";
@@ -36,7 +36,7 @@ if(isset($_POST['submit'])){
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-        <!-- Navbar --> <?php include "navbar.php" ; ?> <?php include "aside.php" ; ?>
+        <!-- Navbar --> <?php include "navbar.php";?> <?php include "aside.php";?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -96,7 +96,13 @@ if(isset($_POST['submit'])){
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Occupation</label> <input type="text" name="occ" id="occ" placeholder="Enter Occupation" class="form-control"> </div>
+                                                <div class="form-group"> <label>Occupation</label>
+                                                    <div class="input-select"> <select name="occ" id="occ" class="form-control">
+                                                            <option>-Select-</option>
+                                                            <option value="Entrepreneur">Entrepreneur</option>
+                                                            <option value="Student">Student</option>
+                                                        </select> </div>
+                                                </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group"> <label>Experty</label> <input type="text" name="experty" id="experty" placeholder="Enter Experty" class="form-control"> </div>
@@ -119,12 +125,14 @@ if(isset($_POST['submit'])){
                                                     <div class="input-select"> <select name="age_group" id="age_group" class="form-control">
                                                             <option>-Select-</option>
                                                             <option value="Below 15">Below 15</option>
-                                                            <option value="15-20">15-20</option>
-                                                            <option value="20-25">20-25</option>
-                                                            <option value="25-30">25-30</option>
-                                                            <option value="30-35">30-35</option>
-                                                            <option value="35-40">35-40</option>
-                                                            <option value="Above 40">Above 40</option>
+                                                            <option value="Between 15-20">Between 15-20</option>
+                                                            <option value="Between 20-25">Between 20-25</option>
+                                                            <option value="Between 25-30">Between 25-30</option>
+                                                            <option value="Between 30-35">Between 30-35</option>
+                                                            <option value="Between 35-40">Between 35-40</option>
+                                                            <option value="Between 40-50">Between 40-50</option>
+                                                            <option value="Between 50-60">Between 50-60</option>
+                                                            <option value="Above 60">Above 60</option>
                                                         </select> </div>
                                                 </div>
                                             </div>
@@ -177,7 +185,7 @@ if(isset($_POST['submit'])){
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script> <!-- bs-custom-file-input -->
     <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script> <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script> <!-- AdminLTE for demo purposes -->
-    
+
     <script>
         $(function () {
           bsCustomFileInput.init();

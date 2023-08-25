@@ -4,6 +4,7 @@
         <!-- Sidebar user panel (optional) -->
         <?php
 // Object creation
+require_once 'function.php';
 $is_profile_complete = 0;
 $is_form_completed = 0;
 $sql = "SELECT * FROM registration where id = " . $_SESSION['user_id'];

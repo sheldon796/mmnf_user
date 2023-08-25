@@ -67,7 +67,7 @@ $sql_portal = "SELECT * FROM portal_membership where user_id = " . $_SESSION['us
 $result_portal = mysqli_query($conn, $sql_portal);
 $row_portal = mysqli_fetch_assoc($result_portal);
 
-$sql = "SELECT * FROM scholarship_details where id in (SELECT scheme_id FROM schemes_trans where class_id=" . $row_portal['current_class'] . ") and gender = " . $_SESSION['gender'] . " or gender = 2";
+$sql = "SELECT * FROM scholarship_details where id in (SELECT scheme_id FROM schemes_trans where class_id=" . $row_portal['current_class'] . ") and (gender = " . $_SESSION['gender'] . " or gender = 2)";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     $sr = 1;
