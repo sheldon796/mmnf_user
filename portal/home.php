@@ -386,7 +386,7 @@ include("auth_session.php");
 
                       </div>
 
-                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Enter in Department  </span> </div>
+                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i>  </span> </div>
 
                     <!-- /.info-box-content -->
 
@@ -412,7 +412,7 @@ include("auth_session.php");
 
                       </div>
 
-                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Enter in Department  </span> </div>
+                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Dapter  </span> </div>
 
                     <!-- /.info-box-content -->
 
@@ -440,7 +440,7 @@ include("auth_session.php");
 
                       </div>
 
-                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Enter in Department  </span> </div>
+                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i>   </span> </div>
 
                     <!-- /.info-box-content -->
 
@@ -478,7 +478,7 @@ include("auth_session.php");
 
                       </div>
 
-                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Enter in Department  </span> </div>
+                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Marit  </span> </div>
 
                     <!-- /.info-box-content -->
 
@@ -508,7 +508,7 @@ include("auth_session.php");
 
                       </div>
 
-                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Enter in Department  </span> </div>
+                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Brainac </span> </div>
 
                     <!-- /.info-box-content -->
 
@@ -530,7 +530,7 @@ include("auth_session.php");
 
                   <div class="info-box " style="border-radius:10px; background-color:#CCCCFF ; color:#FFFFFF"> <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
 
-                    <div class="info-box-content"> <span class="info-box-text">.....</span> <span class="info-box-number"><small>Human Rights and Legal Forum</small></span>
+                    <div class="info-box-content"> <span class="info-box-text">.....</span> <span class="info-box-number"><small>Human Rights and Legal Center</small></span>
 
                       <div class="progress">
 
@@ -538,7 +538,7 @@ include("auth_session.php");
 
                       </div>
 
-                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Enter in Department  </span> </div>
+                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Salahkar  </span> </div>
 
                     <!-- /.info-box-content -->
 
@@ -568,7 +568,7 @@ include("auth_session.php");
 
                   <div class="info-box" style="border-radius:10px; background-color:#B8ABAA; color:#FFFFFF"> <span class="info-box-icon"><i class="fa fa-user-secret"></i></span>
 
-                    <div class="info-box-content"> <span class="info-box-text">.....</span> <span class="info-box-number"><small>Skill Development Forum</small></span>
+                    <div class="info-box-content"> <span class="info-box-text">.....</span> <span class="info-box-number"><small>Skill Development Center</small></span>
 
                       <div class="progress">
 
@@ -576,7 +576,7 @@ include("auth_session.php");
 
                       </div>
 
-                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Enter in Department  </span> </div>
+                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Hunar  </span> </div>
 
                     <!-- /.info-box-content -->
 
@@ -598,7 +598,7 @@ include("auth_session.php");
 
                   <div class="info-box" style="border-radius:10px; background-color:#9C27B0; color:#FFFFFF"> <span class="info-box-icon"><i class="fa fa-comments-o"></i></span>
 
-                    <div class="info-box-content"> <span class="info-box-text">.....</span> <span class="info-box-number"><small>Technobuiz</small></span>
+                    <div class="info-box-content"> <span class="info-box-text">.....</span> <span class="info-box-number"><small>Educational Research & Development center</small></span>
 
                       <div class="progress">
 
@@ -606,7 +606,7 @@ include("auth_session.php");
 
                       </div>
 
-                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Enter in Department  </span> </div>
+                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Technobuiz  </span> </div>
 
                     <!-- /.info-box-content -->
 
@@ -628,7 +628,7 @@ include("auth_session.php");
 
                   <div class="info-box" style="border-radius:10px; background-color:#558B2F ; color:#FFFFFF"> <span class="info-box-icon"><i class="fa fa-building-o"></i></span>
 
-                    <div class="info-box-content"> <span class="info-box-text">.....</span> <span class="info-box-number"><small>Business Development Forum</small></span>
+                    <div class="info-box-content"> <span class="info-box-text">.....</span> <span class="info-box-number"><small>Business Research & Development Center</small></span>
 
                       <div class="progress">
 
@@ -636,7 +636,7 @@ include("auth_session.php");
 
                       </div>
 
-                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Enter in Department  </span> </div>
+                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Tijarat  </span> </div>
 
                     <!-- /.info-box-content -->
 
@@ -658,7 +658,7 @@ include("auth_session.php");
 
                   <div class="info-box bg-green" style="border-radius:10px;"> <span class="info-box-icon"><i class="fa fa-heartbeat"></i></span>
 
-                    <div class="info-box-content"> <span class="info-box-text">.....</span> <span class="info-box-number"><small>Healthcare and Paramedical</small></span>
+                    <div class="info-box-content"> <span class="info-box-text">.....</span> <span class="info-box-number"><small>Healthcare and Paramedical Center</small></span>
 
                       <div class="progress">
 
@@ -666,7 +666,7 @@ include("auth_session.php");
 
                       </div>
 
-                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Enter in Department  </span> </div>
+                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Tibbenani  </span> </div>
 
                     <!-- /.info-box-content -->
 
@@ -704,7 +704,7 @@ include("auth_session.php");
 
                       </div>
 
-                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Enter in Department  </span> </div>
+                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Fatima  </span> </div>
 
                     <!-- /.info-box-content -->
 
@@ -734,7 +734,7 @@ include("auth_session.php");
 
                       </div>
 
-                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Enter in Department  </span> </div>
+                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Bilasudi  </span> </div>
 
                     <!-- /.info-box-content -->
 
@@ -764,7 +764,7 @@ include("auth_session.php");
 
                       </div>
 
-                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Enter in Department  </span> </div>
+                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Rahbar  </span> </div>
 
                     <!-- /.info-box-content -->
 
@@ -786,7 +786,7 @@ include("auth_session.php");
 
                   <div class="info-box bg-green" style="border-radius:10px;"> <span class="info-box-icon"><i class="fa fa-free-code-camp"></i></span>
 
-                    <div class="info-box-content"> <span class="info-box-text">.....</span> <span class="info-box-number"><small>Disaster Management Centre</small></span>
+                    <div class="info-box-content"> <span class="info-box-text">.....</span> <span class="info-box-number"><small> Humanity & Disaster Management Centre</small></span>
 
                       <div class="progress">
 
@@ -794,7 +794,7 @@ include("auth_session.php");
 
                       </div>
 
-                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Enter in Department  </span> </div>
+                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Insaniyat  </span> </div>
 
                     <!-- /.info-box-content -->
 
@@ -816,7 +816,7 @@ include("auth_session.php");
 
                   <div class="info-box bg-yellow" style="border-radius:10px;"> <span class="info-box-icon"><i class="fa fa-university"></i></span>
 
-                    <div class="info-box-content"> <span class="info-box-text">.....</span> <span class="info-box-number"><small>Waqf Development Forum</small></span>
+                    <div class="info-box-content"> <span class="info-box-text">.....</span> <span class="info-box-number"><small>Waqf Development Center</small></span>
 
                       <div class="progress">
 
@@ -824,7 +824,7 @@ include("auth_session.php");
 
                       </div>
 
-                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Enter in Department  </span> </div>
+                      <span class="progress-description"><i class="fa fa-arrow-circle-right"></i> Amanat  </span> </div>
 
                     <!-- /.info-box-content -->
 

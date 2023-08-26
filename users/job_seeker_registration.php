@@ -1,186 +1,161 @@
 <?php include "function.php";
-    if (isset($_POST['submit'])) {
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $mobile = $_POST['mobile'];
-        $password = $_POST['password'];
-        $c_password = $_POST['c_password'];
-        $G_name = $_POST['G_name'];
-        $DOB = $_POST['DOB'];
-        $pre_address = $_POST['pre_address'];
-        $per_name = $_POST['per_name'];
-        $city = $_POST['city'];
-        $state = $_POST['state'];
-        $pincode = $_POST['pincode'];
-        $C_name1 = $_POST['C_name1'];
-        $board1 = $_POST['board1'];
-        $P_year1 = $_POST['P_year1'];
-        $percentage1 = $_POST['percentage1'];
-        $C_name2 = $_POST['C_name2'];
-        $board2 = $_POST['board2'];
-        $P_year2 = $_POST['P_year2'];
-        $percentage2 = $_POST['percentage2'];
-        $C_name3 = $_POST['C_name3'];
-        $board3 = $_POST['board3'];
-        $P_year3 = $_POST['P_year3'];
-        $percentage3 = $_POST['percentage3'];
-        $C_name4 = $_POST['C_name4'];
-        $board4 = $_POST['board4'];
-        $P_year4 = $_POST['P_year4'];
-        $percentage4 = $_POST['percentage4'];
-        $C_name5 = $_POST['C_name5'];
-        $board5 = $_POST['board5'];
-        $P_year5 = $_POST['P_year5'];
-        $percentage5 = $_POST['percentage5'];
-        $company1 = $_POST['company1'];
-        $designation1 = $_POST['designation1'];
-        $period1 = $_POST['period1'];
-        $responsibilities1 = $_POST['responsibilities1'];
-        $company2 = $_POST['company2'];
-        $designation2 = $_POST['designation2'];
-        $period2 = $_POST['period2'];
-        $responsibilities2 = $_POST['responsibilities2'];
-        $company3 = $_POST['company3'];
-        $designation3 = $_POST['designation3'];
-        $period3 = $_POST['period3'];
-        $responsibilities3 = $_POST['responsibilities3'];
-        $company4 = $_POST['company4'];
-        $designation4 = $_POST['designation4'];
-        $period4 = $_POST['period4'];
-        $responsibilities4 = $_POST['responsibilities4'];
-        $company5 = $_POST['company5'];
-        $designation5 = $_POST['designation5'];
-        $period5 = $_POST['period5'];
-        $responsibilities5 = $_POST['responsibilities5'];
-        $activity1 = $_POST['activity1'];
-        $activity2 = $_POST['activity2'];
-        $activity3 = $_POST['activity3'];
-        $hobby1 = $_POST['hobby1'];
-        $hobby2 = $_POST['hobby2'];
-        $hobby3 = $_POST['hobby3'];
-        $project1 = $_POST['project1'];
-        $completion1 = $_POST['completion1'];
-        $project2 = $_POST['project2'];
-        $completion2 = $_POST['completion2'];
-        $project3 = $_POST['project3'];
-        $completion3 = $_POST['completion3'];
-        $salary = $_POST['salary'];
-        $N_period = $_POST['N_period'];
-        $disabled = $_POST['disabled'];
-        $target = "upload/documents/";
-        
-        //Upload Adhar Card    
-        $target = $target . basename($_FILES['upload5']['name']);
-        $upload5 = ($_FILES['upload5']['name']);
-        $upload5FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
-        
-        //Upload Pan Card    
-        $target = $target . basename($_FILES['upload4']['name']);
-        $upload4 = ($_FILES['upload4']['name']);
-        $upload4FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
-        
-        //Upload OBC / EWS    
-        $target = $target . basename($_FILES['upload3']['name']);
-        $upload3 = ($_FILES['upload3']['name']);
-        $upload3FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
-            
-        //Upload  Birth Cetificate   
-        $target = $target . basename($_FILES['upload2']['name']);
-        $upload2 = ($_FILES['upload2']['name']);
-        $upload2FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
-            
-        //Upload Ration Card    
-        $target = $target . basename($_FILES['upload1']['name']);
-        $upload1 = ($_FILES['upload1']['name']);
-        $upload1FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
-            
-        //Upload Passport    
-        $target = $target . basename($_FILES['resume']['name']);
-        $resume = ($_FILES['resume']['name']);
-        $resumeFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+if (isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $mobile = $_POST['mobile'];
+    $password = $_POST['password'];
+    $c_password = $_POST['c_password'];
+    $G_name = $_POST['G_name'];
+    $DOB = $_POST['DOB'];
+    $pre_address = $_POST['pre_address'];
+    $per_name = $_POST['per_name'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $pincode = $_POST['pincode'];
+    $C_name1 = $_POST['C_name1'];
+    $board1 = $_POST['board1'];
+    $P_year1 = $_POST['P_year1'];
+    $percentage1 = $_POST['percentage1'];
+    $C_name2 = $_POST['C_name2'];
+    $board2 = $_POST['board2'];
+    $P_year2 = $_POST['P_year2'];
+    $percentage2 = $_POST['percentage2'];
+    $C_name3 = $_POST['C_name3'];
+    $board3 = $_POST['board3'];
+    $P_year3 = $_POST['P_year3'];
+    $percentage3 = $_POST['percentage3'];
+    $C_name4 = $_POST['C_name4'];
+    $board4 = $_POST['board4'];
+    $P_year4 = $_POST['P_year4'];
+    $percentage4 = $_POST['percentage4'];
+    $C_name5 = $_POST['C_name5'];
+    $board5 = $_POST['board5'];
+    $P_year5 = $_POST['P_year5'];
+    $percentage5 = $_POST['percentage5'];
+    $company1 = $_POST['company1'];
+    $designation1 = $_POST['designation1'];
+    $period1 = $_POST['period1'];
+    $responsibilities1 = $_POST['responsibilities1'];
+    $company2 = $_POST['company2'];
+    $designation2 = $_POST['designation2'];
+    $period2 = $_POST['period2'];
+    $responsibilities2 = $_POST['responsibilities2'];
+    $company3 = $_POST['company3'];
+    $designation3 = $_POST['designation3'];
+    $period3 = $_POST['period3'];
+    $responsibilities3 = $_POST['responsibilities3'];
+    $company4 = $_POST['company4'];
+    $designation4 = $_POST['designation4'];
+    $period4 = $_POST['period4'];
+    $responsibilities4 = $_POST['responsibilities4'];
+    $company5 = $_POST['company5'];
+    $designation5 = $_POST['designation5'];
+    $period5 = $_POST['period5'];
+    $responsibilities5 = $_POST['responsibilities5'];
+    $activity1 = $_POST['activity1'];
+    $activity2 = $_POST['activity2'];
+    $activity3 = $_POST['activity3'];
+    $hobby1 = $_POST['hobby1'];
+    $hobby2 = $_POST['hobby2'];
+    $hobby3 = $_POST['hobby3'];
+    $project1 = $_POST['project1'];
+    $completion1 = $_POST['completion1'];
+    $project2 = $_POST['project2'];
+    $completion2 = $_POST['completion2'];
+    $project3 = $_POST['project3'];
+    $completion3 = $_POST['completion3'];
+    $salary = $_POST['salary'];
+    $N_period = $_POST['N_period'];
+    $disabled = $_POST['disabled'];
+    $target = "upload/documents/";
 
-        // Check if the uploaded file is a PDF
-        if ($upload5FileType != "pdf") {
+    //Upload Adhar Card
+    $target = $target . basename($_FILES['upload5']['name']);
+    $upload5 = ($_FILES['upload5']['name']);
+    $upload5FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+
+    //Upload Pan Card
+    $target = $target . basename($_FILES['upload4']['name']);
+    $upload4 = ($_FILES['upload4']['name']);
+    $upload4FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+
+    //Upload OBC / EWS
+    $target = $target . basename($_FILES['upload3']['name']);
+    $upload3 = ($_FILES['upload3']['name']);
+    $upload3FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+
+    //Upload  Birth Cetificate
+    $target = $target . basename($_FILES['upload2']['name']);
+    $upload2 = ($_FILES['upload2']['name']);
+    $upload2FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+
+    //Upload Ration Card
+    $target = $target . basename($_FILES['upload1']['name']);
+    $upload1 = ($_FILES['upload1']['name']);
+    $upload1FileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+
+    //Upload Passport
+    $target = $target . basename($_FILES['resume']['name']);
+    $resume = ($_FILES['resume']['name']);
+    $resumeFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+
+    // Check if the uploaded file is a PDF
+    if ($upload5FileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
-        }
-    
-        if (move_uploaded_file($_FILES['upload5']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-        } else {
-        echo "Sorry, the file was not uploaded.";
-        }
-        
+    }
 
-        // Check if the uploaded file is a PDF
-        if ($upload4FileType != "pdf") {
-            echo "Only PDF files are allowed.";
-            exit;
-        }
-        
-        if (move_uploaded_file($_FILES['upload4']['tmp_name'], $target)) {
-            echo "Successfully uploaded.";
-        } else {
-            echo "Sorry, the file was not uploaded.";
-        }
-        
+    // Check if the uploaded file is a PDF
+    if ($upload4FileType != "pdf") {
+        echo "Only PDF files are allowed.";
+        exit;
+    }
 
-        // Check if the uploaded file is a PDF
-        if ($upload3FileType != "pdf") {
-            echo "Only PDF files are allowed.";
-            exit;
-        }
-        
-        if (move_uploaded_file($_FILES['upload3']['tmp_name'], $target)) {
-            echo "Successfully uploaded.";
-        } else {
-            echo "Sorry, the file was not uploaded.";
-        }
-        
+    // Check if the uploaded file is a PDF
+    if ($upload3FileType != "pdf") {
+        echo "Only PDF files are allowed.";
+        exit;
+    }
 
-        // Check if the uploaded file is a PDF
-        if ($upload2FileType != "pdf") {
-            echo "Only PDF files are allowed.";
-            exit;
-        }
-        
-        if (move_uploaded_file($_FILES['upload2']['tmp_name'], $target)) {
-            echo "Successfully uploaded.";
-        } else {
-            echo "Sorry, the file was not uploaded.";
-        }
-        
+    // Check if the uploaded file is a PDF
+    if ($upload2FileType != "pdf") {
+        echo "Only PDF files are allowed.";
+        exit;
+    }
 
-        // Check if the uploaded file is a PDF
-        if ($upload1FileType != "pdf") {
-            echo "Only PDF files are allowed.";
-            exit;
-        }
-        
-        if (move_uploaded_file($_FILES['upload1']['tmp_name'], $target)) {
-            echo "Successfully uploaded.";
-        } else {
-            echo "Sorry, the file was not uploaded.";
-        }
+    // Check if the uploaded file is a PDF
+    if ($upload1FileType != "pdf") {
+        echo "Only PDF files are allowed.";
+        exit;
+    }
 
-
-        // Check if the uploaded file is a PDF
-        if ($resumeFileType != "pdf") {
-            echo "Only PDF files are allowed.";
-            exit;
-        }
-        
-        if (move_uploaded_file($_FILES['resume']['tmp_name'], $target)) {
-            echo "Successfully uploaded.";
-        } else {
-            echo "Sorry, the file was not uploaded.";
-        }
-        
-        $sql = "INSERT INTO job_seeker ( name, email, mobile, password, c_password, resume, G_name, DOB, pre_address, per_name, city, state, pincode, C_name1, board1, P_year1, percentage1, upload1, C_name2, board2, P_year2, percentage2, upload2, C_name3, board3, P_year3, percentage3, upload3, C_name4, board4, P_year4, percentage4, upload4, C_name5, board5, P_year5, percentage5, upload5, company1, designation1, period1, responsibilities1, company2, designation2, period2, responsibilities2, company3, designation3, period3, responsibilities3, company4, designation4, period4, responsibilities4, company5, designation5, period5, responsibilities5, activity1, activity2, activity3, hobby1, hobby2, hobby3, project1, completion1, project2, completion2, project3, completion3, salary, N_period, disabled)
-                values ('$name', '$email', '$mobile', '$password', '$c_password', '$resume', '$G_name', '$DOB', '$pre_address', '$per_name', '$city', '$state', '$pincode', '$C_name1', '$board1', '$P_year1', '$percentage1', '$upload1', '$C_name2', '$board2', '$P_year2', '$percentage2', '$upload2', '$C_name3', '$board3', '$P_year3', '$percentage3', '$upload3', '$C_name4', '$board4', '$P_year4', '$percentage4', '$upload4', '$C_name5', '$board5', '$P_year5', '$percentage5', '$upload5', '$company1', '$designation1', '$period1', '$responsibilities1', '$company2', '$designation2', '$period2', '$responsibilities2', '$company3', '$designation3', '$period3', '$responsibilities3', '$company4', '$designation4', '$period4', '$responsibilities4', '$company5', '$designation5', '$period5', '$responsibilities5', '$activity1', '$activity2', '$activity3', '$hobby1', '$hobby2', '$hobby3', '$project1', '$completion1', '$project2', '$completion2', '$project3', '$completion3', '$salary', '$N_period', '$disabled')";
-        mysqli_query($conn, $sql);
+    // Check if the uploaded file is a PDF
+    if ($resumeFileType != "pdf") {
+        echo "Only PDF files are allowed.";
+        exit;
     }
     ?>
+        <script>
+            function showConfirmationPopup() {
+            var result = confirm("Your registration is completed. Do you want to proceed?");
+            if (result) {
+                window.location.href = "https://mmnf.in/jobsportal/"; // Replace with the actual URL
+            } else {
+                window.location.href = "index.php";  // Replace with the actual URL
+            }
+            }
+        </script>
+      <?php
+$sql = "INSERT INTO job_seeker ( name, email, mobile, password, c_password, resume, G_name, DOB, pre_address, per_name, city, state, pincode, C_name1, board1, P_year1, percentage1, upload1, C_name2, board2, P_year2, percentage2, upload2, C_name3, board3, P_year3, percentage3, upload3, C_name4, board4, P_year4, percentage4, upload4, C_name5, board5, P_year5, percentage5, upload5, company1, designation1, period1, responsibilities1, company2, designation2, period2, responsibilities2, company3, designation3, period3, responsibilities3, company4, designation4, period4, responsibilities4, company5, designation5, period5, responsibilities5, activity1, activity2, activity3, hobby1, hobby2, hobby3, project1, completion1, project2, completion2, project3, completion3, salary, N_period, disabled)
+                values ('$name', '$email', '$mobile', '$password', '$c_password', '$resume', '$G_name', '$DOB', '$pre_address', '$per_name', '$city', '$state', '$pincode', '$C_name1', '$board1', '$P_year1', '$percentage1', '$upload1', '$C_name2', '$board2', '$P_year2', '$percentage2', '$upload2', '$C_name3', '$board3', '$P_year3', '$percentage3', '$upload3', '$C_name4', '$board4', '$P_year4', '$percentage4', '$upload4', '$C_name5', '$board5', '$P_year5', '$percentage5', '$upload5', '$company1', '$designation1', '$period1', '$responsibilities1', '$company2', '$designation2', '$period2', '$responsibilities2', '$company3', '$designation3', '$period3', '$responsibilities3', '$company4', '$designation4', '$period4', '$responsibilities4', '$company5', '$designation5', '$period5', '$responsibilities5', '$activity1', '$activity2', '$activity3', '$hobby1', '$hobby2', '$hobby3', '$project1', '$completion1', '$project2', '$completion2', '$project3', '$completion3', '$salary', '$N_period', '$disabled')";
+    mysqli_query($conn, $sql);
+    ?>
+            <script>
+        showConfirmationPopup();
+        </script>
+          <?php
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -198,7 +173,7 @@
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-        <!-- Navbar --> <?php include "navbar.php" ; ?> <?php include "aside.php" ; ?>
+        <!-- Navbar --> <?php include "navbar.php";?> <?php include "aside.php";?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -244,7 +219,7 @@
                                                 <div class="form-group"> <label>Mobile Number</label> <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Enter Mobile Number" required=""> </div>
                                             </div>
                                             <div class="col-lg-6">
-                                                <div class="form-group"> <label for="">Work Status</label> 
+                                                <div class="form-group"> <label for="">Work Status</label>
                                                     <select class="form-control" name="work" id="work">
                                                         <option value="">--Select--</option>
                                                         <option value="Experienced">Experienced</option>
@@ -260,12 +235,12 @@
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group"> <label>Upload Resume</label><br> <input type="file" name="resume" value="resume" class="form-control"> </div>
-                                            </div>                                            
+                                            </div>
                                         </div>
-                                    </div> <!-- /.card-body -->                                    
+                                    </div> <!-- /.card-body -->
                                     <div class="card-header" style="background-color:#007bff">
                                         <h3 class="card-title" style="color:white">Personal Information</h3>
-                                    </div>                             
+                                    </div>
                                     <div class="card-body">
                                         <div class="row ">
                                             <div class="col-lg-6">
@@ -288,12 +263,12 @@
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group"> <label>Pincode</label> <input type="text" class="form-control" name="pincode" id="pincode" placeholder="Enter Pin code" required=""> </div>
-                                            </div>                                          
+                                            </div>
                                         </div>
-                                    </div> <!-- /.card-body -->                                    
+                                    </div> <!-- /.card-body -->
                                     <div class="card-header" style="background-color:#007bff">
                                         <h3 class="card-title" style="color:white">Educational Details</h3>
-                                    </div>                                
+                                    </div>
                                     <div class="card-body">
                                         <div class="row ">
                                         <div class="col-md-12" style="padding-top:20px;padding-bottom:20px;overflow-x:auto;">
@@ -349,12 +324,12 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                            </div>                                           
+                                            </div>
                                         </div>
-                                    </div> <!-- /.card-body -->                                    
+                                    </div> <!-- /.card-body -->
                                     <div class="card-header" style="background-color:#007bff">
                                         <h3 class="card-title" style="color:white">Work Experience</h3>
-                                    </div>                               
+                                    </div>
                                     <div class="card-body">
                                         <div class="row ">
                                             <div class="col-md-12" style="padding-top:20px;padding-bottom:20px;overflow-x:auto;">
@@ -404,12 +379,12 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                            </div>                                           
+                                            </div>
                                         </div>
-                                    </div> <!-- /.card-body -->                                    
+                                    </div> <!-- /.card-body -->
                                     <div class="card-header" style="background-color:#007bff">
                                         <h3 class="card-title" style="color:white">Other Informations</h3>
-                                    </div>                               
+                                    </div>
                                     <div class="card-body">
                                         <div class="row ">
                                             <div class="col-md-6" style="padding-top:20px;padding-bottom:20px;overflow-x:auto;">
@@ -490,7 +465,7 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group"> <label>Are you Physically Disabled? <small>If Yes, then state the disability!</small></label> <input type="text" class="form-control" name="disabled" id="disabled" placeholder="Enter Details Here" required=""> </div>
-                                            </div>                                       
+                                            </div>
                                         </div>
                                     </div> <!-- /.card-body -->
                                     <div class="card-footer"> <button type="submit" class="btn btn-primary" name="submit">Submit</button> </div>
@@ -515,7 +490,7 @@
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script> <!-- bs-custom-file-input -->
     <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script> <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script> <!-- AdminLTE for demo purposes -->
-    
+
     <script>
         $(function () {
           bsCustomFileInput.init();

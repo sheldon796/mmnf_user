@@ -27,14 +27,10 @@ if (isset($_POST['submit'])) {
     $mutual_fund = $_POST['mutual_fund'];
     $share_investment = $_POST['share_investment'];
     $other_investment = $_POST['other_investment'];
-    // $vehicle_detail[] = isset($_POST['vehicle_detail']) ? $_POST['vehicle_detail'] : array();
-    // $property_detail[] = isset($_POST['property_detail']) ? $_POST['property_detail'] : array();
-    // $vehicle_detailarr = serialize($vehicle_detail[]);
-    // $property_detailarr = serialize($property_detail[]);
     $vehicle_detail = isset($_POST['vehicle_detail']) ? $_POST['vehicle_detail'] : array();
     $property_detail = isset($_POST['property_detail']) ? $_POST['property_detail'] : array();
 
-    // Serialize the arrays
+
     $vehicle_detail_serialized = serialize($vehicle_detail);
     $property_detail_serialized = serialize($property_detail);
     $abha_card = $_POST['abha_card'];
@@ -48,211 +44,160 @@ if (isset($_POST['submit'])) {
     $mode2 = $_POST['mode2'];
     $target = "upload/documents/";
 
-    //Upload Adhar Card
+
     $target = $target . basename($_FILES['educational_certificate']['name']);
     $educational_certificate = ($_FILES['educational_certificate']['name']);
     $educational_certificateFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
 
-    //Upload Pan Card
+
     $target = $target . basename($_FILES['appointment_letter']['name']);
     $appointment_letter = ($_FILES['appointment_letter']['name']);
     $appointment_letterFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
 
-    //Upload OBC / EWS
+
     $target = $target . basename($_FILES['salary_slip']['name']);
     $salary_slip = ($_FILES['salary_slip']['name']);
     $salary_slipFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
 
-    //Upload  Birth Cetificate
+
     $target = $target . basename($_FILES['supporting_document']['name']);
     $supporting_document = ($_FILES['supporting_document']['name']);
     $supporting_documentFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
 
-    //Upload Ration Card
+
     $target = $target . basename($_FILES['pan_card']['name']);
     $pan_card = ($_FILES['pan_card']['name']);
     $pan_cardFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
 
-    //Upload Passport
+
     $target = $target . basename($_FILES['business_pan_card']['name']);
     $business_pan_card = ($_FILES['business_pan_card']['name']);
     $business_pan_cardFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
-    //Upload Passport
+
+
     $target = $target . basename($_FILES['balance_sheet']['name']);
     $balance_sheet = ($_FILES['balance_sheet']['name']);
     $balance_sheetFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
-    //Upload Passport
+
+    
     $target = $target . basename($_FILES['product_profile']['name']);
     $product_profile = ($_FILES['product_profile']['name']);
     $product_profileFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
-    //Upload Passport
+
+    
     $target = $target . basename($_FILES['itr']['name']);
     $itr = ($_FILES['itr']['name']);
     $itrFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
-    //Upload Passport
+
+    
     $target = $target . basename($_FILES['insurance_policy']['name']);
     $insurance_policy = ($_FILES['insurance_policy']['name']);
     $insurance_policyFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
-    //Upload Passport
+
+    
     $target = $target . basename($_FILES['upload_mutual_fund']['name']);
     $upload_mutual_fund = ($_FILES['upload_mutual_fund']['name']);
     $upload_mutual_fundFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
-    //Upload Passport
+
+    
     $target = $target . basename($_FILES['fitness_certificate']['name']);
     $fitness_certificate = ($_FILES['fitness_certificate']['name']);
     $fitness_certificateFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
-    //Upload Passport
+
+    
     $target = $target . basename($_FILES['self_declaration']['name']);
     $self_declaration = ($_FILES['self_declaration']['name']);
     $self_declarationFileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
 
-    // Check if the uploaded file is a PDF
+
     if ($educational_certificateFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
 
-    if (move_uploaded_file($_FILES['educational_certificate']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-    } else {
-        echo "Sorry, the file was not uploaded.";
-    }
 
-    // Check if the uploaded file is a PDF
     if ($appointment_letterFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
 
-    if (move_uploaded_file($_FILES['appointment_letter']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-    } else {
-        echo "Sorry, the file was not uploaded.";
-    }
 
-    // Check if the uploaded file is a PDF
     if ($salary_slipFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
 
-    if (move_uploaded_file($_FILES['salary_slip']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-    } else {
-        echo "Sorry, the file was not uploaded.";
-    }
 
-    // Check if the uploaded file is a PDF
     if ($supporting_documentFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
 
-    if (move_uploaded_file($_FILES['supporting_document']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-    } else {
-        echo "Sorry, the file was not uploaded.";
-    }
 
-    // Check if the uploaded file is a PDF
     if ($pan_cardFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
 
-    if (move_uploaded_file($_FILES['pan_card']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-    } else {
-        echo "Sorry, the file was not uploaded.";
-    }
-    // Check if the uploaded file is a PDF
+
     if ($business_pan_cardFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
 
-    if (move_uploaded_file($_FILES['business_pan_card']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-    } else {
-        echo "Sorry, the file was not uploaded.";
-    }
-    // Check if the uploaded file is a PDF
+
     if ($balance_sheetFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
 
-    if (move_uploaded_file($_FILES['balance_sheet']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-    } else {
-        echo "Sorry, the file was not uploaded.";
-    }
-    // Check if the uploaded file is a PDF
+
     if ($product_profileFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
 
-    if (move_uploaded_file($_FILES['product_profile']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-    } else {
-        echo "Sorry, the file was not uploaded.";
-    }
-    // Check if the uploaded file is a PDF
+    
     if ($itrFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
 
-    if (move_uploaded_file($_FILES['itr']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-    } else {
-        echo "Sorry, the file was not uploaded.";
-    }
-    // Check if the uploaded file is a PDF
+    
     if ($insurance_policyFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
 
-    if (move_uploaded_file($_FILES['insurance_policy']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-    } else {
-        echo "Sorry, the file was not uploaded.";
-    }
-    // Check if the uploaded file is a PDF
+    
     if ($upload_mutual_fundFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
 
-    if (move_uploaded_file($_FILES['upload_mutual_fund']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-    } else {
-        echo "Sorry, the file was not uploaded.";
-    }
-    // Check if the uploaded file is a PDF
+    
     if ($fitness_certificateFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
 
-    if (move_uploaded_file($_FILES['fitness_certificate']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-    } else {
-        echo "Sorry, the file was not uploaded.";
-    }
 
     if ($self_declarationFileType != "pdf") {
         echo "Only PDF files are allowed.";
         exit;
     }
-
-    if (move_uploaded_file($_FILES['self_declaration']['tmp_name'], $target)) {
-        echo "Successfully uploaded.";
-    } else {
-        echo "Sorry, the file was not uploaded.";
-    }
+    ?>
+        <script>
+            function showConfirmationPopup() {
+            var result = confirm("Your registration is completed. Do you want to proceed?");        
+            if (result) {
+                window.location.href = "https://mmnf.in/MMNF_Matrimonial/"; // Replace with the actual URL
+            } else {
+                window.location.href = "index.php";  // Replace with the actual URL
+            }
+            }
+        </script>
+      <?php
 
     $sql = "INSERT INTO matrimonial_registration (type, name, fname, Mobile, whatsno, email, Gender, Age, Blood_Group, Caste, Castigates, other_castigates, marital_status,
                                                 current_occupation, Family_Income, current_class, A_course, educational_certificate, appointment_letter, salary_slip, B_R_number,
@@ -266,6 +211,11 @@ if (isset($_POST['submit'])) {
                                                 '$other_investment', '$vehicle_detail_serialized', '$property_detail_serialized', '$fitness_certificate', '$abha_card', '$self_declaration', '$counselling1', '$whom1', '$date2',
                                                 '$mode1', '$counselling2', '$whom2', '$date3', '$mode2')";
     mysqli_query($conn, $sql);
+    ?>
+            <script>
+        showConfirmationPopup();
+        </script>
+          <?php
 
 }
 ?>
