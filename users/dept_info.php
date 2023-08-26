@@ -472,6 +472,91 @@ require_once 'function.php';
                                     </table>
                                 </div>
                         </div>
+                        <div class="tab-pane" id="tab_5">
+                          <div class="card-body justify-content-center">
+                              <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                      <th class="text-center">Sr.No.</th>
+                                      <th class="text-center">Scholarship Schemes</th>
+                                      <th class="text-center">Educational Background</th>
+                                      <th class="text-center">Eligibility Criteria</th>
+                                      <th class="text-center">Minimum Required Percentage</th>
+                                      <th class="text-center">Gender</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                      $sql_portal = "SELECT * FROM portal_membership where user_id = " . $_SESSION['user_id'];
+                                      $result_portal = mysqli_query($conn, $sql_portal);
+                                      $row_portal = mysqli_fetch_assoc($result_portal);
+                                      
+                                      $sql = "SELECT * FROM scholarship_details ";
+                                      $result = mysqli_query($conn, $sql);
+                                      if (mysqli_num_rows($result) > 0) {
+                                          $sr = 1;
+                                          while ($row = mysqli_fetch_assoc($result)) {
+                                              ?>
+                                    <tr>
+                                      <td class="text-center"><?php echo $sr++; ?></td>
+                                      <td class="text-center"><?php echo $row['scholarship']; ?></td>
+                                      <td class="text-center"><?php echo $row['beneficiaries']; ?></td>
+                                      <td class="text-center"> <?php echo " Income Limit Rs. " . $row['eligibility_income'];?></td>
+                                         
+                                      <td class="text-center"> <?php echo " Minimum " . $row['percentage'] . "%";  ?></td>
+                                      <td class="text-center">
+                                          <?php
+                                            if ($row['gender'] == 0) {
+                                                        echo "Male";
+                                                    }
+                                                    if ($row['gender'] == 1) {
+                                                        echo "Female";
+                                                    }
+                                                    if ($row['gender'] == 2) {
+                                                        echo "Both (Male &amp; Female)";
+                                                    }
+                                                    ?>
+                                      </td>
+                                    </tr>
+                                    <?php
+                                      }
+                                      } else {
+                                          echo "";
+                                      }
+                                      ?>
+                                </tbody>
+                              </table>
+                          </div>
+                        </div>
+                        <div class="tab-pane" id="tab_6">
+                             <div class="card-body justify-content-center">
+                                  <table id="example1" class="table table-bordered table-striped">
+                                      <thead>
+                                          <tr>
+                                              <th>Id</th>
+                                          <th>Service Name</th>
+                                          <th>Service Link</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                      <?php
+                                      $sql = 'SELECT * FROM services';
+                                      $result = $conn->query($sql);
+                                      while ($row = $result->fetch_array()) { ?>
+
+                                      <tr>
+                                          <td><?php echo $row['id']; ?></td>
+                                          <td><?php echo $row['Service_Name']; ?></td>
+                                          <td><a href="" target="_blank"><?php echo $row['Service_Link']; ?></a></td>
+
+                                          
+                                      </tr>
+                                      <?php } ?>
+                                  </tbody>
+                                      
+                                  </table>
+                              </div>
+                        </div>
                         <div class="tab-pane" id="tab_10">
                           <div class="row justify-content-center">
                               <div class="col-md-4"> <!-- Adjust the column width as needed -->

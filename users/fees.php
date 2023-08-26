@@ -62,13 +62,14 @@ if(isset($_POST['submit'])){
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Name</label> <input type="text" name="name" id="name" placeholder="Enter Full Name" class="form-control"> </div>
-                                            </div>
+                                                <!-- <div class="form-group"> <label>Name</label> <input type="text" name="name" id="name" placeholder="Enter Full Name" class="form-control"> </div> -->
+                                            
+                                              <div class="form-group"> <img src="images/barcode.jpeg" width="300px" height="500px" /> <button type="submit" name="submit" class="btn btn-primary">Submit</button></div></div>
                                            
                                            
                                            
                                         <!-- /.card-body -->
-                                        <div class="card-footer"> <button type="submit" name="submit" class="btn btn-primary">Submit</button> </div>
+                                        <div >  </div>
 </div>
 </div>
                                 </form>

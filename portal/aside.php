@@ -278,6 +278,7 @@
             </span>
             </a>
             <ul class="treeview-menu">
+               <li><a href="departmental_information.php">Minority Development <br />Centre</a></li>
                <li><a href="dept_profile_mdc.php">Minority Development <br />Centre</a></li>
                <li><a href="dept_profile_cdc.php">Community Development <br />Centre </a></li>
                <li><a href="dept_profile_dpc.php">Data and Planning <br />Centre </a></li>

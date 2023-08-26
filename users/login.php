@@ -54,6 +54,7 @@ if (isset($_POST['submit'])) {
             <div class="card-body login-card-body">
                 <div align="center"> <img src="images/logo_main.png" width="140px" height="140px" />
                     <p class="login-box-msg"><b>Maharashtra Minority NGO Forum</b></p>
+                    <p class="mb"> <a href="register.php">Registration for New Member</a> </p>
                 </div>
                 <form action="login.php" method="post">
                     <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="Mobile" name="phone">

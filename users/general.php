@@ -12,8 +12,9 @@ if (isset($_POST['submit'])) {
     $gender = $_POST['gender'];
     $r_join = $_POST['r_join'];
     $sql = "INSERT INTO general (name, mobile, email, address, qualification, occ, experty, s_experience, age_group, gender, r_join) values ('$name', '$mobile', '$email', '$address', '$qualification', '$occ', '$experty', '$s_experience', '$age_group', '$gender', '$r_join')";
-    $sql = "UPDATE registration SET is_form_completed = 1 WHERE id = " . $_SESSION['user_id'];
+    $sql1 = "UPDATE registration SET is_form_completed = 1 WHERE id = " . $_SESSION['user_id'];
     mysqli_query($conn, $sql);
+    mysqli_query($conn, $sql1);
     ?>
         <script>
             window.location = "fees.php";
@@ -63,23 +64,23 @@ if (isset($_POST['submit'])) {
                             <!-- general form elements -->
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Individual Registration Form</h3>
+                                    <h3 class="card-title">Individual primary Registration Form</h3>
                                 </div> <!-- /.card-header -->
                                 <!-- form start -->
                                 <form method="post" action="general.php" enctype="multipart/form-data">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Name</label> <input type="text" name="name" id="name" placeholder="Enter Full Name" class="form-control"> </div>
+                                                <div class="form-group"> <label>Name</label> <input type="text" name="name" id="name" placeholder="Enter Full Name" class="form-control" required=""> </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Mobile</label> <input type="text" name="mobile" id="mobile" placeholder="Enter Mobile Number" class="form-control"> </div>
+                                                <div class="form-group"> <label>Mobile</label> <input type="text" name="mobile" id="mobile" placeholder="Enter Mobile Number" class="form-control" required=""> </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Email</label> <input type="text" name="email" id="email" placeholder="Enter Email ID" class="form-control"> </div>
+                                                <div class="form-group"> <label>Email</label> <input type="text" name="email" id="email" placeholder="Enter Email ID" class="form-control" required=""> </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="form-group"> <label>Address</label> <input type="text" name="address" id="address" placeholder="Enter Full Address" class="form-control"> </div>
+                                                <div class="form-group"> <label>Address</label> <input type="text" name="address" id="address" placeholder="Enter Full Address" class="form-control" required=""> </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group"> <label>Qualification</label>
@@ -161,6 +162,9 @@ if (isset($_POST['submit'])) {
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group"> <label>Reason of joining</label> <input type="text" class="form-control" name="r_join" id="r_join" placeholder="Enter The Reason of joining"> </div>
+                                            </div>
+                                             <div class="col-lg-4">
+                                                <div class="form-group"> <img src="images/barcode.jpeg" width="300px" height="500px" /> </div>
                                             </div>
                                         </div> <!-- /.card-body -->
                                         <div class="card-footer"> <button type="submit" name="submit" class="btn btn-primary">Submit</button> </div>
