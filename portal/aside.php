@@ -270,6 +270,10 @@
          <li><a href="helpline.php"><i class="fa fa-th"></i> <span>Help Line</span></a></li>
          <li><a href="helping_hands.php"><i class="fa fa-th"></i> <span>Helping Hands</span></a></li>
          <li><a href="services.php"><i class="fa fa-th"></i> <span>Services</span></a></li>
+
+
+
+
          <li class="treeview">
             <a href="#">
             <i class="fa fa-edit"></i> <span>Departments</span>
@@ -278,7 +282,7 @@
             </span>
             </a>
             <ul class="treeview-menu">
-               <li><a href="departmental_information.php">Minority Development <br />Centre</a></li>
+               <li><a href="departmental_informations.php">Minority Development <br />Centre</a></li>
                <li><a href="dept_profile_mdc.php">Minority Development <br />Centre</a></li>
                <li><a href="dept_profile_cdc.php">Community Development <br />Centre </a></li>
                <li><a href="dept_profile_dpc.php">Data and Planning <br />Centre </a></li>
@@ -312,6 +316,31 @@
                   <li><a href="rep_reg_technobuiz.php"><i class="fa fa-circle-o"></i> Technobuiz</a></li>
 
                   <li><a href="rep_reg_tijarat.php"><i class="fa fa-circle-o"></i> Tijarat</a></li>-->
+            </ul>
+         </li>
+         <li class="treeview">
+            <a href="#">
+            <i class="fa fa-edit"></i> <span>Departments Information</span>
+            <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+               <li><a href="dept_infom.php?name=Minority Development Centre"><p>Minority Development Centre</p></a></li>
+                        <li><a href="dept_infom.php?name=Community Development Centre"><p>Community Development Centre</p></a></li>
+                        <li><a href="dept_info.php?name=Minority Affairs Research"><p>Minority Affairs Research</p></a></li>
+                        <li><a href="dept_info.php?name=Academy for Competitive Exam"><p>Academy for Competitive Exam </p></a></li>
+                        <li><a href="dept_info.php?name=Human Rights and Legal Forum"><p>Human Rights and Legal Forum</p></a></li>
+                        <li><a href="dept_info.php?name=Skill Development Forum"><p>Skill Development Forum</p></a></li>
+                        <li><a href="dept_info.php?name=Technobuiz"><p>Technobuiz</p></a></li>
+                        <li><a href="dept_info.php?name=Minority"><p>Minority </p></a></li>
+                        <li><a href="dept_info.php?name=Business Development Forum"><p>Business Development Forum</p></a></li>
+                        <li><a href="dept_info.php?name=Healthcare and Paramedical"><p>Healthcare and Paramedical</p></a></li>
+                        <li><a href="dept_info.php?name=Women Empowerment Centre"><p>Women Empowerment Centre</p></a></li>
+                        <li><a href="dept_info.php?name=Financial Development Centre"><p>Financial Development Centre</p></a></li>
+                        <li><a href="dept_info.php?name=Travel and Guidance Centre"><p>Travel and Guidance Centre</p></a></li>
+                        <li><a href="dept_info.php?name=Disaster Management Centre"><p>Disaster Management Centre</p></a></li>
+                        <li><a href="dept_info.php?name=Waqf Development Forum"><p>Waqf Development Forum</p></a></li>
             </ul>
          </li>
       </ul>
